@@ -1,5 +1,5 @@
 $(function() {
-	// 业务管理-讲师管理-资料审核
+	// 经纪人-讲师管理-资料审核
 	var columns = [{
 		field : '',
 		title : '',
@@ -23,7 +23,6 @@ $(function() {
 	}];
 
 	buildList({
-		router: 'menu',
 		columns: columns,
 		pageCode: '805000',
 		deleteCode: '805004'

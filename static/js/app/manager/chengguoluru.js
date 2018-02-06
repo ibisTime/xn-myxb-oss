@@ -1,5 +1,5 @@
 $(function() {
-	// 业务管理-专家管理-成果录入
+	// 经纪人-专家管理-成果录入
     var columns = [{
         field : '',
         title : '',
@@ -40,7 +40,6 @@ $(function() {
     }];
 
 	buildList({
-		router: 'menu',
 		columns: columns,
 		pageCode: '805000',
 		deleteCode: '805004'

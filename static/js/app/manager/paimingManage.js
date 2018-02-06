@@ -1,5 +1,5 @@
 $(function() {
-	// 业务管理-美容院管理-排名管理
+	// 经纪人-专家管理-排名管理
 	var columns = [{
 		field : '',
 		title : '',
@@ -11,7 +11,7 @@ $(function() {
         type: 'select'
 	}, {
 		field : 'url',
-		title : '店铺',
+		title : '专家',
         search: true
 	}, {
 		field : 'orderNo',
@@ -22,7 +22,6 @@ $(function() {
 	}];
 
 	buildList({
-		router: 'menu',
 		columns: columns,
 		pageCode: '805000',
 		deleteCode: '805004'

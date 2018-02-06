@@ -1,5 +1,5 @@
 $(function() {
-	// 业务管理-品牌管理-订单管理
+	// 品牌顾问-订单管理
 	var columns = [{
 		field : '',
 		title : '',
@@ -40,7 +40,6 @@ $(function() {
 	}];
 
 	buildList({
-		router: 'menu',
 		columns: columns,
 		pageCode: '805000',
 		deleteCode: '805004'

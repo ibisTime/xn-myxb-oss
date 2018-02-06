@@ -1,5 +1,5 @@
 $(function() {
-	// 业务管理-讲师管理-预约处理
+	// 经纪人-讲师管理-预约处理
 	var columns = [{
 		field : '',
 		title : '',
@@ -40,7 +40,6 @@ $(function() {
 	}];
 
 	buildList({
-		router: 'menu',
 		columns: columns,
 		pageCode: '805000',
 		deleteCode: '805004'

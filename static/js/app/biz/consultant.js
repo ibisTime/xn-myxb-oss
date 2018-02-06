@@ -32,7 +32,6 @@ $(function() {
 	}];
 
 	buildList({
-		router: 'menu',
 		columns: columns,
 		pageCode: '805000',
 		deleteCode: '805004'
