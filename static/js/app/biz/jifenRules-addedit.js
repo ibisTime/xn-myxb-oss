@@ -5,13 +5,17 @@ $(function() {
 
     var fields = [{
         field : 'name',
-        title : '规则名称'
+        title : '规则名称',
+        required : true
     }, {
         field : 'url',
-        title : '规则分类'
+        title : '规则分类',
+        type : 'select',
+        required : true
     }, {
         field : 'orderNo',
-        title : '数值'
+        title : '数值',
+        required : true
     }, {
         field : 'remark',
         title : '备注'

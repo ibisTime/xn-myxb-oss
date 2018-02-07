@@ -5,25 +5,51 @@ $(function() {
 
     var fields = [{
         field : 'title',
-        title : '标题'
+        title : '标题',
+        required : true
     }, {
         field : 'status',
-        title : '状态'
-    }, {
+        title : '缩略图（单）',
+        type : 'img',
+        single : true,
+        required : true
+    },{
         field : 'orderNo',
-        title : '序号'
-    }, {
-        field : 'remark',
-        title : '备注'
+        title : '详情',
+        maxlength : 250,
+        required : true
     }];
 
-    buildDetail({
+    var options = {
         fields: fields,
-        code: {
-            userId: userId
-        },
         detailCode: '805121',
-        view: view
-    });
+        code: {
+            kind: "C",
+            companyCode:OSS.companyCode,
+            userId: userId
+        }
+    };
+    options.buttons = [{
+        title: '确认',
+        handler: function() {
+            if ($('#jsForm').valid()) {
+                var data = {};
+                data['userId'] = userId;
+                data["remark"] = $("#remark").val();
+                reqApi({
+                    code: "805195",
+                    json: data
+                }).done(function() {
+                    sucDetail();
+                });
+            }
+        }
+    }, {
+        title: '返回',
+        handler: function() {
+            goBack();
+        }
+    }];
+    buildDetail(options);
 
 });

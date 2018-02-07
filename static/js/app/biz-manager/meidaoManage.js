@@ -46,7 +46,15 @@ $(function() {
 		field : 'remark',
 		title : '备注'
 	}];
-
+// 审核
+    $('#checkBtn').click(function() {
+        var selRecords = $('#tableList').bootstrapTable('getSelections');
+        if (selRecords.length <= 0) {
+            toastr.info("请选择记录");
+            return;
+        }
+        window.location.href = "../biz-manager/meidaoManage_addeddit.html?accountCode=" + selRecords[0].accountNumber + "&check=1";
+    });
 	buildList({
 		columns: columns,
 		pageCode: '805000',

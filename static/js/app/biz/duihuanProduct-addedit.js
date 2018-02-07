@@ -5,22 +5,56 @@ $(function() {
 
     var fields = [{
         field : 'name',
-        title : '名称'
+        title : '名称',
+        required : true
+    }, {
+        field : 'name',
+        title : '广告语',
+        required : true
     }, {
         field : 'url',
-        title : '积分'
+        title : '积分',
+        required : true
     }, {
         field : 'orderNo',
-        title : '库存'
+        title : '库存',
+        required : true
     }, {
         field : 'orderNo',
-        title : '查看对象'
+        title : '广告图（单）',
+        type : 'img',
+        required : true,
+        single : true
     }, {
         field : 'orderNo',
-        title : '次序'
+        title : '展示图（多）',
+        type : 'img',
+        required : true
     }, {
-        field : 'status',
-        title : '状态'
+        field : 'remark',
+        title : '查看对象',
+        required : true,
+        type : 'checkbox',
+        items :[
+            {   // key是构建的checkbox的value属性，也就意味着是实际勾选后传过去的值
+                key : 'meidao',
+                // value是checkbox后面跟的label显示的内容，并非传到后台的内容
+                value : '美导'
+            }, {
+                key : 'teacher',
+                value : '讲师'
+            },{
+                key : 'expert',
+                value : '专家'
+            },{
+                key : 'meirongyuan',
+                value : '美容院'
+            }
+        ]
+    }, {
+        field : 'details',
+        title : '详情',
+        required : true
     }, {
         field : 'remark',
         title : '备注'

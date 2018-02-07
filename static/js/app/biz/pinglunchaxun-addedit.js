@@ -19,6 +19,16 @@ $(function() {
         field : 'remark',
         title : '评论时间',
         formatter : dateTimeFormat
+    }, {
+        field : 'remark',
+        title : '审核人'
+    }, {
+        field : 'remark',
+        title : '审核时间',
+        formatter : dateTimeFormat
+    }, {
+        field : 'remark',
+        title : '备注'
     }];
 
     buildDetail({

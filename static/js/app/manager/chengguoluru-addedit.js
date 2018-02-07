@@ -20,13 +20,15 @@ $(function() {
         title : '专家'
     }, {
         field : 'remark',
-        title : '预约时间'
+        title : '预约时间',
+        formatter : dateTimeFormat
     }, {
         field : 'remark',
         title : '预约天数'
     },{
         field : 'remark',
-        title : '排班时间'
+        title : '排班时间',
+        formatter : dateTimeFormat
     }, {
         field : 'remark',
         title : '排班天数'

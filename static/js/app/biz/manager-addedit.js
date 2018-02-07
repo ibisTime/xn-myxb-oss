@@ -5,19 +5,39 @@ $(function() {
 
     var fields = [{
         field : 'name',
-        title : '姓名'
+        title : '姓名',
+        required : true
     }, {
         field : 'mobile',
-        title : '手机号'
+        title : '手机号',
+        required : true
     }, {
         field : 'level',
-        title : '级别'
+        title : '级别',
+        required : true
     }, {
         field : 'remark',
-        title : '服务对象'
+        title : '服务对象',
+        required : true,
+        type : 'checkbox',
+        items :[
+            {   // key是构建的checkbox的value属性，也就意味着是实际勾选后传过去的值
+                key : 'meidao',
+                // value是checkbox后面跟的label显示的内容，并非传到后台的内容
+                value : '美导'
+            }, {
+                key : 'teacher',
+                value : '讲师'
+            },{
+                key : 'expert',
+                value : '专家'
+            }
+        ]
     }, {
         field : 'status',
-        title : '状态'
+        title : '头像',
+        type : 'img',
+        single : true
     }, {
         field : 'remark',
         title : '备注'

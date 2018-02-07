@@ -5,29 +5,48 @@ $(function() {
 
     var fields = [{
         field : 'keyword',
-        title : '关键字'
+        title : '关键字',
+        required : true
     }, {
         field : 'type',
-        title : '类型'
-    }, {
-        field : 'updater',
-        title : '更新人'
-    },{
-        field : 'updateTime',
-        title : '更新时间',
-        formatter : dateTimeFormat
+        title : '类型',
+        type : 'select',
+        required : true
     },{
         field : 'remark',
         title : '备注'
     }];
 
-    buildDetail({
+    var options = {
         fields: fields,
-        code: {
-            userId: userId
-        },
         detailCode: '805121',
-        view: view
-    });
+        code: {
+            kind: "C",
+            companyCode:OSS.companyCode,
+            userId: userId
+        }
+    };
+    options.buttons = [{
+        title: '确认',
+        handler: function() {
+            if ($('#jsForm').valid()) {
+                var data = {};
+                data['userId'] = userId;
+                data["remark"] = $("#remark").val();
+                reqApi({
+                    code: "805195",
+                    json: data
+                }).done(function() {
+                    sucDetail();
+                });
+            }
+        }
+    }, {
+        title: '返回',
+        handler: function() {
+            goBack();
+        }
+    }];
+    buildDetail(options);
 
 });

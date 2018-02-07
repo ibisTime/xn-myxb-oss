@@ -16,17 +16,19 @@ $(function() {
         field : 'remark',
         title : '店铺'
     }, {
-        field : 'teacher',
+        field : 'remark',
         title : '讲师'
     }, {
         field : 'remark',
-        title : '预约时间'
+        title : '预约时间',
+        formatter : dateTimeFormat
     }, {
         field : 'remark',
         title : '预约天数'
     },{
         field : 'remark',
-        title : '排班时间'
+        title : '排班时间',
+        formatter : dateTimeFormat
     }, {
         field : 'remark',
         title : '排班天数'

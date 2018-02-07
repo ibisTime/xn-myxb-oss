@@ -5,20 +5,35 @@ $(function() {
 
     var fields = [{
         field : 'name',
-        title : '产品名称'
+        title : '名称',
+        required : true
+    },{
+        field : 'name',
+        title : '广告语',
+        required : true
     }, {
         field : 'url',
-        title : '所属品牌'
-    }, {
-        field : 'orderNo',
-        title : '是否推荐'
+        title : '所属品牌',
+        required : true,
+        type : 'select'
     }, {
         field : 'status',
-        title : '状态'
-    }, {
-        field : 'orderNo',
-        title : '次序'
-    }, {
+        title : '价格',
+        required : true
+    },{
+        field : 'status',
+        title : '缩略图（单）',
+        type : 'img',
+        single : true
+    },{
+        field : 'status',
+        title : '展示图（多）',
+        type : 'img'
+    },{
+        field : 'details',
+        title : '详情',
+        required : true
+    },  {
         field : 'remark',
         title : '备注'
     }];

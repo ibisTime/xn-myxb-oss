@@ -2,6 +2,7 @@ $(function() {
     // 品牌顾问-订单管理
     var userId = getQueryString('userId');
     var view = !!getQueryString('v');
+    var check = !!getQueryString('check');
 
     var fields = [{
         field : 'code',
@@ -10,7 +11,7 @@ $(function() {
         field : 'url',
         title : '下单用户'
     }, {
-        field : 'orderNo',
+        field : 'name',
         title : '产品名称'
     }, {
         field : 'price',
@@ -31,7 +32,8 @@ $(function() {
         title : '收件人手机'
     }, {
         field : 'remark',
-        title : '备注'
+        title : '备注',
+        readonly : check? false : true
     }];
 
     buildDetail({

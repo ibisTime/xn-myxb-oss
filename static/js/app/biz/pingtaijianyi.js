@@ -20,7 +20,7 @@ $(function() {
 		title : '评论时间',
 		formatter : dateTimeFormat
 	}];
-
+// 采纳
 	buildList({
 		columns: columns,
 		pageCode: '805000',

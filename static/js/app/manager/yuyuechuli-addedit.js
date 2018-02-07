@@ -20,7 +20,8 @@ $(function() {
         title : '美导'
     }, {
         field : 'remark',
-        title : '预约时间'
+        title : '预约时间',
+        formatter : dateTimeFormat
     }, {
         field : 'remark',
         title : '预约天数'
