@@ -9,7 +9,7 @@ $(function() {
 		title : '姓名',
 		search: true
 	}, {
-		field : 'url',
+		field : 'mobile',
 		title : '手机号'
 	}, {
 		field : 'orderNo',
@@ -18,7 +18,7 @@ $(function() {
 		field : 'remark',
 		title : '店铺'
 	}, {
-		field : 'remark',
+		field : 'level',
 		title : '等级'
 	}, {
 		field : 'remark',
@@ -27,7 +27,7 @@ $(function() {
 		field : 'remark',
 		title : '团队顾问'
 	}, {
-		field : 'remark',
+		field : 'status',
 		title : '状态',
         search: true,
         type: 'select'

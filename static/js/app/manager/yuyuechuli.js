@@ -5,14 +5,14 @@ $(function() {
 		title : '',
 		checkbox : true
 	}, {
-		field : 'name',
+		field : 'code',
 		title : '编号'
 	}, {
 		field : 'url',
 		title : '预约人',
         search: true
 	}, {
-		field : 'orderNo',
+		field : 'mobile',
 		title : '预约人手机号'
 	}, {
 		field : 'remark',
@@ -27,7 +27,7 @@ $(function() {
 		field : 'remark',
 		title : '预约天数'
 	}, {
-		field : 'remark',
+		field : 'status',
 		title : '状态',
         search: true,
         type: 'select'

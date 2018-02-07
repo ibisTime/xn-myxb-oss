@@ -5,7 +5,7 @@ $(function() {
 		title : '',
 		checkbox : true
 	}, {
-		field : 'name',
+		field : 'keyword',
 		title : '关键字',
 		search: true
 	}, {
@@ -18,11 +18,12 @@ $(function() {
 		field : 'remark',
 		title : '反应'
 	}, {
-		field : 'remark',
+		field : 'updater',
 		title : '更新人'
 	}, {
-		field : 'remark',
-		title : '更新时间'
+		field : 'updateTime',
+		title : '更新时间',
+		formatter : dateTimeFormat
 	}, {
 		field : 'remark',
 		title : '备注'

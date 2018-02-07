@@ -5,7 +5,7 @@ $(function() {
 		title : '',
 		checkbox : true
 	}, {
-		field : 'name',
+		field : 'code',
 		title : '订单编号',
 		search: true
 	}, {
@@ -17,14 +17,16 @@ $(function() {
 		field : 'orderNo',
 		title : '产品名称'
 	}, {
-		field : 'remark',
-		title : '订单价格'
+		field : 'price',
+		title : '订单价格',
+		formatter : moneyFormat
 	}, {
 		field : 'remark',
 		title : '下单时间',
-        search: true
+        search: true,
+		formatter : dateTimeFormat
 	},  {
-		field : 'remark',
+		field : 'status',
 		title : '状态',
 		search: true,
 		type: 'select'
@@ -32,7 +34,7 @@ $(function() {
 		field : 'remark',
 		title : '收件人'
 	},  {
-		field : 'remark',
+		field : 'mobile',
 		title : '收件人手机'
 	}, {
 		field : 'remark',

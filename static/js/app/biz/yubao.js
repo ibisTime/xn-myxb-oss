@@ -5,10 +5,10 @@ $(function() {
 		title : '',
 		checkbox : true
 	}, {
-		field : 'name',
+		field : 'title',
 		title : '标题'
 	}, {
-		field : 'url',
+		field : 'status',
 		title : '状态',
 		search: true,
 		type: 'select'

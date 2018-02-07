@@ -8,7 +8,7 @@ $(function() {
 		field : 'name',
 		title : '内容'
 	}, {
-		field : 'url',
+		field : 'status',
 		title : '状态',
         search: true,
 		type:'select'
@@ -20,7 +20,8 @@ $(function() {
 		title : '评论对象'
 	},{
 		field : 'remark',
-		title : '评论时间'
+		title : '评论时间',
+		formatter : dateTimeFormat
 	}];
 
 	buildList({

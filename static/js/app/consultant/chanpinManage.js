@@ -19,12 +19,12 @@ $(function() {
         search: true,
         type: 'select'
 	}, {
-		field : 'remark',
+		field : 'status',
 		title : '状态',
 		search: true,
 		type: 'select'
 	}, {
-		field : 'remark',
+		field : 'orderNo',
 		title : '次序'
 	}, {
 		field : 'remark',

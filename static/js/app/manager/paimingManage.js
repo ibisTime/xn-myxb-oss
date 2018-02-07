@@ -10,7 +10,7 @@ $(function() {
 		search: true,
         type: 'select'
 	}, {
-		field : 'url',
+		field : 'expert',
 		title : '专家',
         search: true
 	}, {

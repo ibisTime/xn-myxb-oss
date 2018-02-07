@@ -9,16 +9,16 @@ $(function() {
 		title : '姓名',
 		search: true
 	}, {
-		field : 'url',
+		field : 'mobile',
 		title : '手机号'
 	}, {
-		field : 'orderNo',
+		field : 'level',
 		title : '级别'
 	}, {
 		field : 'remark',
 		title : '服务对象'
 	}, {
-		field : 'remark',
+		field : 'status',
 		title : '状态',
 		search: true,
 		type: 'select'

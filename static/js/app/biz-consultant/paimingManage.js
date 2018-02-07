@@ -18,7 +18,8 @@ $(function() {
 		title : '排名'
 	}, {
 		field : 'remark',
-		title : '业绩额'
+		title : '业绩额',
+		formatter : moneyFormat
 	}];
 
 	buildList({

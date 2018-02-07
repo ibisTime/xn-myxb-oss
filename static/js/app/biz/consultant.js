@@ -9,7 +9,7 @@ $(function() {
 		title : '姓名',
 		search: true
 	}, {
-		field : 'url',
+		field : 'mobile',
 		title : '手机号'
 	}, {
 		field : 'orderNo',
@@ -22,7 +22,7 @@ $(function() {
         search: true,
         type: 'select'
 	}, {
-		field : 'remark',
+		field : 'status',
 		title : '状态',
 		search: true,
 		type: 'select'

@@ -9,10 +9,10 @@ $(function() {
 		title : '姓名',
 		search: true
 	}, {
-		field : 'url',
+		field : 'mobile',
 		title : '手机号'
 	}, {
-		field : 'orderNo',
+		field : 'role',
 		title : '角色',
 		search: true,
 		type: 'select'

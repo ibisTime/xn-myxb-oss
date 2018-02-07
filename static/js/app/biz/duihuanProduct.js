@@ -23,7 +23,7 @@ $(function() {
 		field : 'orderNo',
 		title : '次序'
 	}, {
-		field : 'orderNo',
+		field : 'status',
 		title : '状态',
         search: true,
         type: 'select'

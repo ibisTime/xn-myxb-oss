@@ -9,7 +9,7 @@ $(function() {
 		title : '姓名',
 		search: true
 	}, {
-		field : 'url',
+		field : 'mobile',
 		title : '手机号'
 	}, {
 		field : 'remark',

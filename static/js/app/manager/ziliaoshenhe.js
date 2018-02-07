@@ -9,16 +9,16 @@ $(function() {
 		title : '姓名',
 		search: true
 	}, {
-		field : 'url',
+		field : 'mobile',
 		title : '手机号'
 	}, {
 		field : 'orderNo',
 		title : '推荐人'
 	}, {
-		field : 'remark',
+		field : 'manager',
 		title : '经纪人'
 	}, {
-		field : 'remark',
+		field : 'level',
 		title : '等级'
 	}, {
 		field : 'remark',
@@ -33,7 +33,7 @@ $(function() {
 		field : 'remark',
 		title : '是否推荐'
 	}, {
-		field : 'remark',
+		field : 'orderNo',
 		title : '序号'
 	}, {
 		field : 'remark',

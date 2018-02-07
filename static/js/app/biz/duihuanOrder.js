@@ -5,7 +5,7 @@ $(function() {
 		title : '',
 		checkbox : true
 	}, {
-		field : 'name',
+		field : 'code',
 		title : '订单编号',
 		search: true
 	}, {
@@ -22,9 +22,10 @@ $(function() {
 	}, {
 		field : 'orderNo',
 		title : '下单时间',
-		search: true
+		search: true,
+		formatter: dateTimeFormat
 	}, {
-		field : 'orderNo',
+		field : 'status',
 		title : '状态',
         search: true,
         type: 'select'
@@ -32,7 +33,7 @@ $(function() {
         field : 'orderNo',
         title : '收件人'
     }, {
-        field : 'orderNo',
+        field : 'mobile',
         title : '收件人手机'
     }, {
 		field : 'remark',

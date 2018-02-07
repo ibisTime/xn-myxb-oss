@@ -12,7 +12,7 @@ $(function() {
 		field : 'name',
 		title : '联系人姓名'
 	}, {
-		field : 'url',
+		field : 'mobile',
 		title : '联系人手机号'
 	}, {
 		field : 'orderNo',
@@ -23,12 +23,12 @@ $(function() {
         search: true,
         type: 'select'
 	}, {
-		field : 'remark',
+		field : 'status',
 		title : '状态',
 		search: true,
 		type: 'select'
 	}, {
-		field : 'remark',
+		field : 'orderNo',
 		title : '次序'
 	}, {
 		field : 'remark',
