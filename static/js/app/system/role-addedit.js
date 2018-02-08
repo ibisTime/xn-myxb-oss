@@ -34,5 +34,5 @@ $(function() {
 		addCode: '805023',
 		editCode: '805025'
 	});
-	
+    hideLoading();
 });

@@ -59,4 +59,5 @@ $(function() {
         detailCode: '804042',
         view: view,
     });
+    hideLoading();
 });

@@ -32,6 +32,12 @@ $(function() {
 		field : 'orderNo',
 		title : '菜单顺序'
 	}, {
+        field: 'kind',
+        title: '可见用户类型',
+        type : 'select',
+        data: {'L': '讲师', 'S': '专家','T' :'美导'},
+        search: true
+    },{
 		field : 'remark',
 		title : '备注'
 	}];

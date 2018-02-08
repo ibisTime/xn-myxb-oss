@@ -11,10 +11,15 @@ OSS.systemName = '美业销帮管理平台';
 OSS.companyName = '美业销帮';
 // menuCode
 OSS.menuRoot = 'HYSM201700000000000000';
+// // picUrl
+// OSS.picBaseUrl = sessionStorage.getItem('qiniuUrl');
+// // picShow
+// OSS.picShow = '?imageMogr2/auto-orient/interlace/1';
+
 // picUrl
-OSS.picBaseUrl = sessionStorage.getItem('qiniuUrl');
+OSS.picBaseUrl = 'http://ormcdjjs0.bkt.clouddn.com';
 // picShow
-OSS.picShow = '?imageMogr2/auto-orient/interlace/1';
+OSS.picShow = '?imageMogr2/auto-orient/thumbnail/!100x100r';
 //系统登录有效时间
 OSS.userValidTime = 30;
 //系统userid

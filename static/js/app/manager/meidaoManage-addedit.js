@@ -96,54 +96,5 @@ $(function() {
             }
         }]
     });
-    buildDetail({
-        fields: fields,
-        buttons: [{
-            title: '通过',
-            handler: function() {
-
-                if ($('#remark').val() == "") {
-                    toastr.error("审核意见不能为空");
-                } else {
-                    var data = $('#popForm').serializeObject();
-                    data.codeList = dataCode;
-                    data.payResult = "1";
-                    data.payUser = getUserName();
-                    reqApi({
-                        code: '802701',
-                        json: data
-                    }).done(function(data) {
-                        sucList();
-                        dw.close().remove();
-                    });
-                }
-
-            }
-        }, {
-            title: '不通过',
-            handler: function() {
-                if ($('#remark').val() == "") {
-                    toastr.error("审核意见不能为空");
-                } else {
-                    var data = [];
-                    data.codeList = dataCode;
-                    data.payResult = "1";
-                    data.payUser = getUserName();
-                    reqApi({
-                        code: '802701',
-                        json: data
-                    }).done(function(data) {
-                        sucList();
-                        dw.close().remove();
-                    });
-                }
-            }
-        }, {
-            title: '取消',
-            handler: function() {
-                dw.close().remove();
-            }
-        }]
-    });
 
 });

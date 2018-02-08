@@ -73,4 +73,5 @@ $(function() {
         }
         window.location.href = 'notice_addedit.html?id=' + selRecords[0].id + "&code=" + selRecords[0].id;
     });
+
 })

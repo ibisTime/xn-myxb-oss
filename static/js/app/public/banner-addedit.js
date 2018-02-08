@@ -88,5 +88,5 @@ $(function() {
         editCode: "805802",
         detailCode: '805807'
     });
-
+hideLoading();
 });

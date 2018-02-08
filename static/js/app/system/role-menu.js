@@ -5,9 +5,9 @@ $(function() {
 	//下拉菜单
 	$.when(reqApi({ // 所有菜单
 		code: '805001',
-		json: {
-			kind: '1'
-		}
+		// json: {
+		// 	kind: '1'
+		// }
 	}), reqApi({ // 获得菜单
 		code: '805026',
 		json: {
