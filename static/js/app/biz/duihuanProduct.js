@@ -34,7 +34,50 @@ $(function() {
 
 	buildList({
 		columns: columns,
-		pageCode: '805000',
-		deleteCode: '805004'
+		pageCode: '805285',
+        addCode: '805280',
+        editCode: '805281'
 	});
+
+    // 上架
+    $('#upBtn').click(function() {
+        var selRecords = $('#tableList').bootstrapTable('getSelections');
+        if (selRecords.length <= 0) {
+            toastr.info("请选择记录");
+            return;
+        }
+        confirm('确定上架？').then(function () {
+            reqApi({
+                code: 805283,
+                json: {
+                    code: selRecords[0].code,
+                    orderNo: selRecords[0].orderNo,
+                    updater : getUserName()
+                }
+            }).then(function(){
+                sucList();
+            });
+        })
+
+    });
+    // 下架
+    $('#downBtn').click(function() {
+        var selRecords = $('#tableList').bootstrapTable('getSelections');
+        if (selRecords.length <= 0) {
+            toastr.info("请选择记录");
+            return;
+        }
+        confirm('确定下架？').then(function () {
+            reqApi({
+                code: 805284,
+                json: {
+                    code: selRecords[0].code,
+                    updater : getUserName()
+                }
+            }).then(function(){
+                sucList();
+            });
+        })
+
+    });
 });

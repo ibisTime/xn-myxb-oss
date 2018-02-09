@@ -12,9 +12,17 @@ $(function() {
 		field : 'url',
 		title : '所属品牌',
         search: true,
-        type: 'select'
+        type: 'select',
+        pageCode: '805257',
+        keyName: 'code',
+        valueName: 'name',
+        // formatter: function (v,data) {
+        //     if(data.refereeUser){
+        //         return data.refereeUser.mobile;
+        //     }
+        // }
 	}, {
-		field : 'orderNo',
+		field : 'location',
 		title : '是否推荐',
         search: true,
         type: 'select'
@@ -33,7 +41,50 @@ $(function() {
 
 	buildList({
 		columns: columns,
-		pageCode: '805000',
+		pageCode: '805266',
 		deleteCode: '805004'
 	});
+
+    // 上架
+    $('#upBtn').click(function() {
+        var selRecords = $('#tableList').bootstrapTable('getSelections');
+        if (selRecords.length <= 0) {
+            toastr.info("请选择记录");
+            return;
+        }
+        confirm('确定上架？').then(function () {
+            reqApi({
+                code: 805263,
+                json: {
+                    code: selRecords[0].code,
+                    location : selRecords[0].location,
+                    orderNo: selRecords[0].orderNo,
+                    updater : getUserName()
+                }
+            }).then(function(){
+                sucList();
+            });
+        })
+
+    });
+    // 下架
+    $('#downBtn').click(function() {
+        var selRecords = $('#tableList').bootstrapTable('getSelections');
+        if (selRecords.length <= 0) {
+            toastr.info("请选择记录");
+            return;
+        }
+        confirm('确定下架？').then(function () {
+            reqApi({
+                code: 805264,
+                json: {
+                    code: selRecords[0].code,
+                    updater : getUserName()
+                }
+            }).then(function(){
+                sucList();
+            });
+        })
+
+    });
 });

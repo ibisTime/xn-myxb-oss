@@ -8,7 +8,7 @@ $(function() {
         title : '品牌名称',
         required : true
     },{
-        field : 'name',
+        field : 'contacts',
         title : '联系人姓名',
         required : true
     }, {

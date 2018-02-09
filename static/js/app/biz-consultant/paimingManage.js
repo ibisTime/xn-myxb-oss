@@ -1,5 +1,6 @@
 $(function() {
-	// 业务管理-品牌管理-排名管理
+    console.log('666');
+    // 业务管理-品牌管理-排名管理
 	var columns = [{
 		field : '',
 		title : '',
@@ -21,19 +22,20 @@ $(function() {
 		title : '业绩额',
 		formatter : moneyFormat
 	}];
-	 // 调整
+
+	buildList({
+		columns: columns,
+		pageCode: '805000',
+		deleteCode: '805004'
+	});
+    // 调整
     $('#adjustBtn').click(function() {
         var selRecords = $('#tableList').bootstrapTable('getSelections');
         if (selRecords.length <= 0) {
             toastr.info("请选择记录");
             return;
         }
-        window.location.href = "../biz-consultant/paimingManage_addeddit.html?accountCode=" + selRecords[0].accountNumber;
+        window.location.href = "../biz-consultant/paimingManage_addedit.html?accountCode=" + selRecords[0].accountNumber;
 
     });
-	buildList({
-		columns: columns,
-		pageCode: '805000',
-		deleteCode: '805004'
-	});
 });

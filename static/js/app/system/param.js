@@ -12,14 +12,19 @@ $(function() {
         },{
             field: 'cvalue',
             title: '参数值',
-        }
-    ];
+            // search: true,
+            // type: 'select',
+            // listCode: '805915',
+            // params: {
+            //     limit : 10,
+            //     start : 1
+            // },
+            // keyName: 'cvalue',
+            // valueName: 'cvalue'
+        }];
     buildList({
         router: 'param',
         columns: columns,
-        searchParams:{
-            type:"QINIU"
-        },
         pageCode: '805915'
     });
 });

@@ -21,6 +21,14 @@ $(function() {
 		formatter : dateTimeFormat
 	}];
 // 采纳
+    $('#cainaBtn').click(function() {
+        var selRecords = $('#tableList').bootstrapTable('getSelections');
+        if (selRecords.length <= 0) {
+            toastr.info("请选择记录");
+            return;
+        }
+        window.location.href = "../biz-pingtaijianyi_addedit.html?caina=1&code="+selRecords[0].code;
+    });
 	buildList({
 		columns: columns,
 		pageCode: '805000',

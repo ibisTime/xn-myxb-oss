@@ -8,7 +8,7 @@ $(function() {
         title : '名称',
         required : true
     },{
-        field : 'name',
+        field : 'slogan',
         title : '广告语',
         required : true
     }, {
@@ -17,20 +17,20 @@ $(function() {
         required : true,
         type : 'select'
     }, {
-        field : 'status',
+        field : 'price',
         title : '价格',
         required : true
     },{
-        field : 'status',
+        field : 'pic',
         title : '缩略图（单）',
         type : 'img',
         single : true
     },{
-        field : 'status',
+        field : 'advPic',
         title : '展示图（多）',
         type : 'img'
     },{
-        field : 'details',
+        field : 'description',
         title : '详情',
         required : true
     },  {

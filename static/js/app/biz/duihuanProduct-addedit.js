@@ -8,30 +8,30 @@ $(function() {
         title : '名称',
         required : true
     }, {
-        field : 'name',
+        field : 'slogan',
         title : '广告语',
         required : true
     }, {
-        field : 'url',
+        field : 'price',
         title : '积分',
         required : true
     }, {
-        field : 'orderNo',
+        field : 'quantity',
         title : '库存',
         required : true
     }, {
-        field : 'orderNo',
+        field : 'advPic',
         title : '广告图（单）',
         type : 'img',
         required : true,
         single : true
     }, {
-        field : 'orderNo',
+        field : 'pic',
         title : '展示图（多）',
         type : 'img',
         required : true
     }, {
-        field : 'remark',
+        field : 'faceKind',
         title : '查看对象',
         required : true,
         type : 'checkbox',
@@ -52,7 +52,7 @@ $(function() {
             }
         ]
     }, {
-        field : 'details',
+        field : 'description',
         title : '详情',
         required : true
     }, {
@@ -66,6 +66,7 @@ $(function() {
             userId: userId
         },
         detailCode: '805121',
+        addCode:'805280',
         view: view
     });
 

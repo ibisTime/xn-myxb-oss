@@ -9,7 +9,7 @@ $(function() {
 		title : '订单编号',
 		search: true
 	}, {
-		field : 'url',
+		field : 'applyUser',
 		title : '下单用户',
         search: true,
         type: 'select'
@@ -17,10 +17,10 @@ $(function() {
 		field : 'orderNo',
 		title : '商品名称'
 	}, {
-		field : 'orderNo',
+		field : 'price',
 		title : '积分价格'
 	}, {
-		field : 'orderNo',
+		field : 'applyDatetime',
 		title : '下单时间',
 		search: true,
 		formatter: dateTimeFormat
@@ -40,9 +40,29 @@ $(function() {
 		title : '备注'
 	}];
 
+
 	buildList({
 		columns: columns,
-		pageCode: '805000',
-		deleteCode: '805004'
+		pageCode: '805293'
 	});
+    // 取消
+    $('#cancelBtn').click(function() {
+        var selRecords = $('#tableList').bootstrapTable('getSelections');
+        if (selRecords.length <= 0) {
+            toastr.info("请选择记录");
+            return;
+        }
+        confirm('确定取消？').then(function () {
+            reqApi({
+                code: 805292,
+                json: {
+                    code: selRecords[0].code,
+                    updater : getUserName()
+                }
+            }).then(function(){
+                sucList();
+            });
+        })
+
+    });
 });

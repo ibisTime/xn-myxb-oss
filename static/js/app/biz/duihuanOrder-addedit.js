@@ -7,25 +7,25 @@ $(function() {
         field : 'code',
         title : '订单编号'
     }, {
-        field : 'url',
+        field : 'applyUser',
         title : '下单用户'
     }, {
-        field : 'orderNo',
+        field : 'productName',
         title : '商品名称'
     }, {
-        field : 'orderNo',
+        field : 'amount',
         title : '积分价格'
     }, {
-        field : 'orderNo',
+        field : 'applyDatetime',
         title : '下单时间'
     }, {
         field : 'status',
         title : '状态'
     },{
-        field : 'orderNo',
+        field : 'receiver',
         title : '收件人'
     }, {
-        field : 'mobile',
+        field : 'reMobile',
         title : '收件人手机'
     }, {
         field : 'remark',
@@ -34,10 +34,7 @@ $(function() {
 
     buildDetail({
         fields: fields,
-        code: {
-            userId: userId
-        },
-        detailCode: '805121',
+        detailCode: '805295',
         view: view
     });
 

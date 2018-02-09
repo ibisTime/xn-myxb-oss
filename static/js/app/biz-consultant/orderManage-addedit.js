@@ -8,7 +8,7 @@ $(function() {
         field : 'code',
         title : '订单编号'
     }, {
-        field : 'url',
+        field : 'applyUser',
         title : '下单用户'
     }, {
         field : 'name',
@@ -18,17 +18,17 @@ $(function() {
         title : '订单价格',
         formatter : moneyFormat
     }, {
-        field : 'remark',
+        field : 'applyDatetime',
         title : '下单时间',
         formatter : dateTimeFormat
     },  {
         field : 'status',
         title : '状态'
     },  {
-        field : 'remark',
+        field : 'receiver',
         title : '收件人'
     },  {
-        field : 'mobile',
+        field : 'reMobile',
         title : '收件人手机'
     }, {
         field : 'remark',
@@ -36,13 +36,52 @@ $(function() {
         readonly : check? false : true
     }];
 
-    buildDetail({
+    var buttons = [{
+        title: '通过',
+        handler: function() {
+
+            if ($('#jsForm').valid()) {
+                var data = $('#jsForm').serializeObject();
+                data.result = "1";
+                data.approver = getUserName();
+                reqApi({
+                    code: '805271',
+                    json: data
+                }).done(function() {
+                    sucDetail();
+                });
+            }
+
+        }
+    }, {
+        title: '不通过',
+        handler: function() {
+            if ($('#jsForm').valid()) {
+                var data = $('#jsForm').serializeObject();
+                data.result = "0";
+                data.approver = getUserName();
+                reqApi({
+                    code: '805271',
+                    json: data
+                }).done(function() {
+                    sucDetail();
+                });
+            }
+        }
+    }, {
+        title: '返回',
+        handler: function() {
+            goBack();
+        }
+    }];
+    var options = {
         fields: fields,
-        code: {
-            userId: userId
-        },
-        detailCode: '805121',
-        view: view
-    });
+        code: code,
+        detailCode: '805275',
+        view: true,
+        buttons: buttons
+    };
+
+    buildDetail(options);
 
 });

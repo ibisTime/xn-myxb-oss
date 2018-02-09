@@ -1035,6 +1035,7 @@ function buildList(options) {
     });
 
     chosen();
+    // hideLoading();
 }
 
 function selectImage(file, name) {
@@ -1961,6 +1962,7 @@ function buildDetail(options) {
     }
 
     chosen();
+    hideLoading();
 }
 
 $(document).ajaxStart(function() {
