@@ -16,12 +16,24 @@ $(function() {
 		title : '级别'
 	}, {
 		field : 'remark',
-		title : '服务对象'
+		title : '服务对象',
+        pageCode: '805906',
+		params : {
+			parentKey: 'user_kind'
+		},
+        keyName: 'dkey',
+        valueName: 'dvalue'
 	}, {
 		field : 'status',
 		title : '状态',
 		search: true,
-		type: 'select'
+		type: 'select',
+        pageCode: '805906',
+        params : {
+            parentKey: 'user_status'
+        },
+        keyName: 'dkey',
+        valueName: 'dvalue'
 	}, {
 		field : 'remark',
 		title : '备注'

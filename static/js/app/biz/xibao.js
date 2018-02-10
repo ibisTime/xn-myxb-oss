@@ -22,7 +22,7 @@ $(function() {
 
 	buildList({
 		columns: columns,
-		pageCode: '805000',
+		pageCode: '805436',
 		deleteCode: '805004'
 	});
 });

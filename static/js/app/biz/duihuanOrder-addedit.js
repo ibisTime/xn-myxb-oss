@@ -1,6 +1,6 @@
 $(function() {
     // 业务管理-积分管理-兑换订单处理
-    var userId = getQueryString('userId');
+    var code = getQueryString('code');
     var view = !!getQueryString('v');
 
     var fields = [{
@@ -34,6 +34,7 @@ $(function() {
 
     buildDetail({
         fields: fields,
+        code:code,
         detailCode: '805295',
         view: view
     });

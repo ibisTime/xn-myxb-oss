@@ -1,24 +1,24 @@
 $(function() {
     // 业务管理-评论管理-关键字设置
-    var userId = getQueryString('userId');
+    var code = getQueryString('code');
     var view = !!getQueryString('v');
 
     var fields = [{
-        field : 'keyword',
+        field : 'word',
         title : '关键字',
         required : true
     }, {
-        field : 'url',
+        field : 'weight',
         title : '权重',
         type : 'select',
         required : true
     }, {
-        field : 'orderNo',
+        field : 'level',
         title : '作用等级',
         type : 'select',
         required : true
     }, {
-        field : 'remark',
+        field : 'reaction',
         title : '反应',
         type : 'select',
         required : true
@@ -31,33 +31,10 @@ $(function() {
     var options = {
         fields: fields,
         detailCode: '805121',
-        code: {
-            kind: "C",
-            companyCode:OSS.companyCode,
-            userId: userId
-        }
+        addCode:'805410',
+        editCode:'805412',
+        code: code
     };
-    options.buttons = [{
-        title: '确认',
-        handler: function() {
-            if ($('#jsForm').valid()) {
-                var data = {};
-                data['userId'] = userId;
-                data["remark"] = $("#remark").val();
-                reqApi({
-                    code: "805195",
-                    json: data
-                }).done(function() {
-                    sucDetail();
-                });
-            }
-        }
-    }, {
-        title: '返回',
-        handler: function() {
-            goBack();
-        }
-    }];
     buildDetail(options);
 
 });

@@ -28,12 +28,13 @@ $(function() {
 		field : 'status',
 		title : '状态',
         search: true,
-        type: 'select'
+        type: 'select',
+		data :{'0':'待审核','1':'无库存已取消','2':'待发货','3':'待评价','4':'已完成'}
 	},{
-        field : 'orderNo',
+        field : 'receiver',
         title : '收件人'
     }, {
-        field : 'mobile',
+        field : 'reMobile',
         title : '收件人手机'
     }, {
 		field : 'remark',
@@ -65,4 +66,5 @@ $(function() {
         })
 
     });
+    // 发货
 });

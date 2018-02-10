@@ -544,7 +544,7 @@ function QiniuJsSDK() {
      * @return {object} uploader
      */
     this.uploader = function(op) {
-
+        console.log('456');
         /********** inner function define start **********/
 
         // according the different condition to reset chunk size

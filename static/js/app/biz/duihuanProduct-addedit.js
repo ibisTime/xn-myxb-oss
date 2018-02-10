@@ -1,6 +1,6 @@
 $(function() {
     // 业务管理-积分管理-兑换商品管理
-    var userId = getQueryString('userId');
+    var code = getQueryString('code');
     var view = !!getQueryString('v');
 
     var fields = [{
@@ -21,13 +21,13 @@ $(function() {
         required : true
     }, {
         field : 'advPic',
-        title : '广告图（单）',
+        title : '广告图',
         type : 'img',
         required : true,
         single : true
     }, {
         field : 'pic',
-        title : '展示图（多）',
+        title : '展示图',
         type : 'img',
         required : true
     }, {
@@ -37,17 +37,21 @@ $(function() {
         type : 'checkbox',
         items :[
             {   // key是构建的checkbox的value属性，也就意味着是实际勾选后传过去的值
-                key : 'meidao',
+                key : 'T',
+                // key : '1',
                 // value是checkbox后面跟的label显示的内容，并非传到后台的内容
                 value : '美导'
             }, {
-                key : 'teacher',
+                key : 'L',
+                // key : '2',
                 value : '讲师'
             },{
-                key : 'expert',
+                key : 'S',
+                // key : '3',
                 value : '专家'
             },{
-                key : 'meirongyuan',
+                key : 'C',
+                // key : '4',
                 value : '美容院'
             }
         ]
@@ -62,12 +66,16 @@ $(function() {
 
     buildDetail({
         fields: fields,
-        code: {
-            userId: userId
-        },
-        detailCode: '805121',
-        addCode:'805280',
-        view: view
+        code: code,
+        detailCode: '805286',
+        addCode: '805280',
+        editCode: '805282',
+        view: view,
+        beforeSubmit:function (data) {
+            data.faceKind = data.faceKind.join(',');
+            console.log(data);
+            return data;
+        }
     });
 
 });

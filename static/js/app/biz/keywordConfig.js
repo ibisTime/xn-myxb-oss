@@ -5,17 +5,17 @@ $(function() {
 		title : '',
 		checkbox : true
 	}, {
-		field : 'keyword',
+		field : 'word',
 		title : '关键字',
 		search: true
 	}, {
-		field : 'url',
+		field : 'weight',
 		title : '权重'
 	}, {
-		field : 'orderNo',
+		field : 'level',
 		title : '作用等级'
 	}, {
-		field : 'remark',
+		field : 'reaction',
 		title : '反应'
 	}, {
 		field : 'updater',
@@ -31,7 +31,25 @@ $(function() {
 
 	buildList({
 		columns: columns,
-		pageCode: '805000',
-		deleteCode: '805004'
+		pageCode: '805413'
 	});
+    // 删除
+    $('#deleteBtn').click(function() {
+        var selRecords = $('#tableList').bootstrapTable('getSelections');
+        if (selRecords.length <= 0) {
+            toastr.info("请选择记录");
+            return;
+        }
+        confirm('确定删除？').then(function () {
+            reqApi({
+                code: 805411,
+                json: {
+                    code: selRecords[0].code
+                }
+            }).then(function(){
+                sucList();
+            });
+        })
+
+    });
 });

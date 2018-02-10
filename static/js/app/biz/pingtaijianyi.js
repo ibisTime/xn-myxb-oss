@@ -31,7 +31,7 @@ $(function() {
     });
 	buildList({
 		columns: columns,
-		pageCode: '805000',
+		pageCode: '805402',
 		deleteCode: '805004'
 	});
 });

@@ -17,7 +17,7 @@ $(function() {
 		field : 'productName',
 		title : '产品名称'
 	}, {
-		field : 'price',
+		field : 'amount',
 		title : '订单价格',
 		formatter : moneyFormat
 	}, {
@@ -29,7 +29,8 @@ $(function() {
 		field : 'status',
 		title : '状态',
 		search: true,
-		type: 'select'
+		type: 'select',
+		data :{'0':'待审核','1':'审核未通过','2':'待发货','3':'待评价','4':'已完成'}
 	},  {
 		field : 'receiver',
 		title : '收件人'
@@ -37,7 +38,7 @@ $(function() {
 		field : 'reMobile',
 		title : '收件人手机'
 	}, {
-		field : 'remark',
+		field : 'approveNote',
 		title : '备注'
 	}];
 
@@ -53,7 +54,8 @@ $(function() {
             toastr.info("请选择记录");
             return;
         }
-        window.location.href = "../biz-consultant/orderManage_addeddit.html?accountCode=" + selRecords[0].accountNumber + "&check=1";
+        window.location.href = "../biz-consultant/orderManage_addedit.html?code=" + selRecords[0].code + "&check=1";
 
     });
+    // 发货
 });

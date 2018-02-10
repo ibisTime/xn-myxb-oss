@@ -1,20 +1,21 @@
 $(function() {
     // 业务管理-品牌管理-订单管理
-    var userId = getQueryString('userId');
+    var code = getQueryString('code');
     var view = !!getQueryString('v');
     var check = !!getQueryString('check');
 
     var fields = [{
-        field : 'code',
+        field : 'code1',
+        '_keys': ['code'],
         title : '订单编号'
     }, {
         field : 'applyUser',
         title : '下单用户'
     }, {
-        field : 'name',
+        field : 'productName',
         title : '产品名称'
     }, {
-        field : 'price',
+        field : 'amount',
         title : '订单价格',
         formatter : moneyFormat
     }, {
@@ -23,7 +24,9 @@ $(function() {
         formatter : dateTimeFormat
     },  {
         field : 'status',
-        title : '状态'
+        title : '状态',
+        data : {'0':'待审核','1':'审核未通过','2':'待发货','3':'待评价','4':'已完成'},
+        type: 'select'
     },  {
         field : 'receiver',
         title : '收件人'
@@ -31,11 +34,11 @@ $(function() {
         field : 'reMobile',
         title : '收件人手机'
     }, {
-        field : 'remark',
+        field : 'approveNote',
         title : '备注',
         readonly : check? false : true
     }];
-
+if(check){
     var buttons = [{
         title: '通过',
         handler: function() {
@@ -74,12 +77,14 @@ $(function() {
             goBack();
         }
     }];
+}
+
     var options = {
         fields: fields,
         code: code,
         detailCode: '805275',
         view: true,
-        buttons: buttons
+        buttons: check?buttons:''
     };
 
     buildDetail(options);

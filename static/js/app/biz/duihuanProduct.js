@@ -9,13 +9,13 @@ $(function() {
 		title : '名称',
 		search: true
 	}, {
-		field : 'url',
+		field : 'price',
 		title : '积分'
 	}, {
-		field : 'orderNo',
+		field : 'quantity',
 		title : '库存'
 	}, {
-		field : 'orderNo',
+		field : 'faceKind',
 		title : '查看对象',
         search: true,
         type: 'select'
@@ -26,7 +26,9 @@ $(function() {
 		field : 'status',
 		title : '状态',
         search: true,
-        type: 'select'
+        type: 'select',
+        data : {'0':'未上架','1':'已上架'}
+
 	}, {
 		field : 'remark',
 		title : '备注'
@@ -34,9 +36,7 @@ $(function() {
 
 	buildList({
 		columns: columns,
-		pageCode: '805285',
-        addCode: '805280',
-        editCode: '805281'
+		pageCode: '805285'
 	});
 
     // 上架
@@ -46,18 +46,23 @@ $(function() {
             toastr.info("请选择记录");
             return;
         }
-        confirm('确定上架？').then(function () {
-            reqApi({
-                code: 805283,
-                json: {
-                    code: selRecords[0].code,
-                    orderNo: selRecords[0].orderNo,
-                    updater : getUserName()
-                }
-            }).then(function(){
-                sucList();
-            });
-        })
+        if(selRecords[0].status == '0') {
+            confirm('确定上架？').then(function () {
+                reqApi({
+                    code: 805283,
+                    json: {
+                        code: selRecords[0].code,
+                        orderNo: selRecords[0].orderNo,
+                        updater : getUserName()
+                    }
+                }).then(function(){
+                    sucList();
+                });
+            })
+        } else {
+            toastr.info('已经是上架的状态了')
+        }
+
 
     });
     // 下架
@@ -67,17 +72,22 @@ $(function() {
             toastr.info("请选择记录");
             return;
         }
-        confirm('确定下架？').then(function () {
-            reqApi({
-                code: 805284,
-                json: {
-                    code: selRecords[0].code,
-                    updater : getUserName()
-                }
-            }).then(function(){
-                sucList();
-            });
-        })
+        if(selRecords[0].status == '1') {
+            confirm('确定下架？').then(function () {
+                reqApi({
+                    code: 805284,
+                    json: {
+                        code: selRecords[0].code,
+                        updater : getUserName()
+                    }
+                }).then(function(){
+                    sucList();
+                });
+            })
+        } else {
+            toastr.info('已经是下架的状态了');
+        }
+
 
     });
 });

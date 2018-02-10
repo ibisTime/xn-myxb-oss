@@ -2163,8 +2163,8 @@ function uploadInit() {
                 }
             },
             'Error': function(up, err, errTip) {
+                alert("目前只支持图片格式：jpg,jpeg,gif,png");
                 //上传出错时,处理相关的事情
-                //printLog('on Error');
             },
             'UploadComplete': function() {
                 //队列文件处理完毕后,处理相关的事情

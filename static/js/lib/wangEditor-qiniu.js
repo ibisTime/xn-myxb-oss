@@ -1364,7 +1364,6 @@
             logger.debug("invoke uploader.init()");
 
             logger.debug("init uploader end");
-
             return uploader;
         };
 
