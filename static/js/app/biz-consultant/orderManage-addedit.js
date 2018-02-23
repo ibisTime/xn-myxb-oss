@@ -3,14 +3,20 @@ $(function() {
     var code = getQueryString('code');
     var view = !!getQueryString('v');
     var check = !!getQueryString('check');
-
+    var fahuo = !!getQueryString('fahuo');
+    var data1;
     var fields = [{
         field : 'code1',
         '_keys': ['code'],
         title : '订单编号'
     }, {
         field : 'applyUser',
-        title : '下单用户'
+        title : '下单用户',
+        search: true,
+        type: 'select',
+        listCode: '805121',
+        keyName: 'userId',
+        valueName: 'nickname'
     }, {
         field : 'productName',
         title : '产品名称'
@@ -38,55 +44,96 @@ $(function() {
         title : '备注',
         readonly : check? false : true
     }];
-if(check){
-    var buttons = [{
-        title: '通过',
-        handler: function() {
 
-            if ($('#jsForm').valid()) {
-                var data = $('#jsForm').serializeObject();
-                data.result = "1";
-                data.approver = getUserName();
-                reqApi({
-                    code: '805271',
-                    json: data
-                }).done(function() {
-                    sucDetail();
-                });
-            }
-
-        }
+    var columns = [ {
+        field : 'deliverer',
+        title : '发货人',
+        required : true
     }, {
-        title: '不通过',
-        handler: function() {
-            if ($('#jsForm').valid()) {
-                var data = $('#jsForm').serializeObject();
-                data.result = "0";
-                data.approver = getUserName();
-                reqApi({
-                    code: '805271',
-                    json: data
-                }).done(function() {
-                    sucDetail();
-                });
-            }
-        }
+        field : 'logisticsCode',
+        title : '物流单号',
+        required : true
     }, {
-        title: '返回',
-        handler: function() {
-            goBack();
-        }
+        field : 'logisticsCompany',
+        title : '物流公司',
+        required : true
+    }, {
+        field : 'pdf',
+        title : '物流单',
+        // required : true,
+        type : 'img',
+        single : true
     }];
-}
 
-    var options = {
-        fields: fields,
-        code: code,
-        detailCode: '805275',
-        view: true,
-        buttons: check?buttons:''
-    };
+    if(fahuo) {
+        buildDetail({
+            fields: columns,
+            code:code,
+            beforeSubmit : function (data) {
+                data1 = data;
+            },
+            addCode : '805291',
+            detailCode: '805275',
+            view: view
+        });
+        $('#subBtn').click(function () {
+            reqApi({
+                code: '805272',
+                json: data1,
+            }).then(function() {
+                sucDetail();
+            });
+        })
+    }else {
+        if (check) {
+            var buttons = [{
+                title: '通过',
+                handler: function () {
 
-    buildDetail(options);
+                    if ($('#jsForm').valid()) {
+                        var data = $('#jsForm').serializeObject();
+                        data.result = "1";
+                        data.approver = getUserName();
+                        reqApi({
+                            code: '805271',
+                            json: data
+                        }).done(function () {
+                            sucDetail();
+                        });
+                    }
 
+                }
+            }, {
+                title: '不通过',
+                handler: function () {
+                    if ($('#jsForm').valid()) {
+                        var data = $('#jsForm').serializeObject();
+                        data.result = "0";
+                        data.approver = getUserName();
+                        reqApi({
+                            code: '805271',
+                            json: data
+                        }).done(function () {
+                            sucDetail();
+                        });
+                    }
+                }
+            }, {
+                title: '返回',
+                handler: function () {
+                    goBack();
+                }
+            }];
+        }
+
+        var options = {
+            fields: fields,
+            code: code,
+            detailCode: '805275',
+            view: true,
+            buttons: check ? buttons : ''
+        };
+
+        buildDetail(options);
+    }
 });

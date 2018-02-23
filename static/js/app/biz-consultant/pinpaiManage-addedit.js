@@ -3,7 +3,9 @@ $(function() {
     var code = getQueryString('code');
     var view = !!getQueryString('v');
     var add = !!getQueryString('add');
-
+    var detail = getQueryString('detail');
+    // console.log(add);
+    // console.log("detail"+detail);
     var fields = [{
         field : 'name',
         title : '品牌名称',
@@ -21,8 +23,7 @@ $(function() {
         field : 'slogan',
         title : '广告语',
         required : true
-    },
-        {
+    }, {
         field : 'advPic',
         title : '广告图',
         required : true,
@@ -31,20 +32,21 @@ $(function() {
     }, {
         field : 'location',
         title : '是否推荐',
-        // readonly : true,
         data : {'0':'否','1':'是'},
         type : !view? 'hidden' : 'select'
     }, {
         field : 'status',
         title : '状态',
         // readonly : true,
-        data : {'0':'未上架','1':'已上架'},
+        data : {'1':'未上架','2':'已上架','3':'已下架'},
         type : !view? 'hidden' : 'select'
-    }, {
-        field : 'orderNo',
-        title : '次序',
-        required : true
-    }, {
+    },
+    //     {
+    //     field : 'orderNo',
+    //     title : '次序',
+    //     required : true
+    // },
+        {
         field : 'remark',
         title : '备注'
     }];
@@ -76,31 +78,32 @@ $(function() {
         field : 'remark',
         title : '备注'
     }];
-    if(add) {
-        buildDetail({
-            fields: columns,
-            code: {
-                code : code,
-                consultant:sessionStorage.getItem('loginKind') == 'A'?getUserId():''
-            },
-            detailCode: '805257',
-            addCode:'805250',
-            editCode:'805252',
-            view: view
-        });
-    }else {
-        buildDetail({
-            fields: fields,
-            code: {
-                code:code,
-                consultant:sessionStorage.getItem('loginKind') == 'A'?getUserId():''
-            },
-            detailCode: '805257',
-            addCode:'805250',
-            editCode:'805252',
-            view: view
-        });
-    }
+
+        if(add) {
+            buildDetail({
+                fields: columns,
+                code: {
+                    code : code,
+                    consultant:sessionStorage.getItem('loginKind') == 'A'?getUserId():''
+                },
+                detailCode: '805257',
+                addCode:'805250',
+                editCode:'805252',
+                view: view
+            });
+        }else {
+            buildDetail({
+                fields: fields,
+                code: {
+                    code:code,
+                    // consultant:sessionStorage.getItem('loginKind') == 'A'?getUserId():''
+                },
+                detailCode: '805257',
+                addCode:'805250',
+                editCode:'805252',
+                view: view
+            });
+        }
 
 
 });

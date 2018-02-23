@@ -14,7 +14,9 @@ $(function() {
     }, {
         field : 'price',
         title : '积分',
-        required : true
+        required : true,
+        formatter : view?'':moneyFormat,
+        number : true
     }, {
         field : 'quantity',
         title : '库存',
@@ -72,8 +74,10 @@ $(function() {
         editCode: '805282',
         view: view,
         beforeSubmit:function (data) {
-            data.faceKind = data.faceKind.join(',');
-            console.log(data);
+            if(data.faceKind.length>1) {
+                data.faceKind = data.faceKind.join(',');
+            }
+            data.price *= 1000;
             return data;
         }
     });

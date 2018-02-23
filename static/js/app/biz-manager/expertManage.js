@@ -54,7 +54,11 @@ $(function() {
     });
 	buildList({
 		columns: columns,
-		pageCode: '805000',
+        searchParams: {
+            companyCode : OSS.company,
+            kind : 'S'
+        },
+        pageCode: '805120',
 		deleteCode: '805004'
 	});
 });

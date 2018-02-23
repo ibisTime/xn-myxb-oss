@@ -5,36 +5,57 @@ $(function() {
 		title : '',
 		checkbox : true
 	}, {
-		field : 'name',
+		field : 'realName',
 		title : '姓名',
 		search: true
 	}, {
 		field : 'mobile',
 		title : '手机号'
 	}, {
-		field : 'role',
-		title : '角色',
-		search: true,
-		type: 'select'
+        field: 'type',
+        title: '角色',
+        type: 'select',
+        listCode: '805906',
+        params: {
+            parentKey : 'user_kind'
+        },
+        keyName: 'dkey',
+        valueName: 'dvalue',
+        search: true
 	}, {
-		field : 'orderNo',
-		title : '积分余额'
+		field : 'amount',
+		title : '积分余额',
+        formatter : moneyFormat
 	}, {
 		field : 'remark',
 		title : '备注'
 	}];
-// 加积分
+
+    buildList({
+        columns: columns,
+        // pageCode: '805120',
+        pageCode: '805350',
+        searchParams: {
+            type: 'CLST',
+            companyCode: OSS.company
+        }
+    });
+    // 加积分
     $('#addJifenBtn').click(function() {
         var selRecords = $('#tableList').bootstrapTable('getSelections');
         if (selRecords.length <= 0) {
             toastr.info("请选择记录");
             return;
         }
-        window.location.href = "../biz/addJifen-addJifen.html?accountCode=" + selRecords[0].accountNumber;
+        window.location.href = "../biz/addJifen_addJifen.html?userId=" + selRecords[0].userId;
     });
-	buildList({
-		columns: columns,
-		pageCode: '805000',
-		deleteCode: '805004'
-	});
+    // 详情
+    $('#detailBtn').click(function() {
+        var selRecords = $('#tableList').bootstrapTable('getSelections');
+        if (selRecords.length <= 0) {
+            toastr.info("请选择记录");
+            return;
+        }
+        window.location.href = "../biz/addJifen_addedit.html?v=true&accountNumber=" + selRecords[0].accountNumber;
+    });
 });

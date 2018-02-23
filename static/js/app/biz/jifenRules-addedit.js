@@ -1,33 +1,30 @@
 $(function() {
     // 业务管理-积分管理-积分规则
-    var userId = getQueryString('userId');
+    var id = getQueryString('id');
     var view = !!getQueryString('v');
 
     var fields = [{
-        field : 'name',
+        field : 'ckey',
+        title : '规则分类',
+        readonly : true
+    }, {
+        field : 'remark',
         title : '规则名称',
         required : true
     }, {
-        field : 'url',
-        title : '规则分类',
-        type : 'select',
-        required : true
-    }, {
-        field : 'orderNo',
+        field : 'cvalue',
         title : '数值',
-        required : true
-    }, {
-        field : 'remark',
-        title : '备注'
+        required : true,
+        number : true
     }];
 
     buildDetail({
         fields: fields,
         code: {
-            userId: userId
+            id: id
         },
-        detailCode: '805121',
-        view: view
+        detailCode: '805916',
+        editCode : '805911'
     });
 
 });

@@ -1,5 +1,5 @@
 $(function() {
-    // 品牌顾问-排名管理-调整
+    // 业务管理-品牌管理-排名管理-调整
     var userId = getQueryString('userId');
     var view = !!getQueryString('v');
 

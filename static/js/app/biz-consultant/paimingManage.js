@@ -1,5 +1,4 @@
 $(function() {
-    console.log('666');
     // 业务管理-品牌管理-排名管理
 	var columns = [{
 		field : '',
@@ -25,7 +24,10 @@ $(function() {
 
 	buildList({
 		columns: columns,
-		pageCode: '805000',
+		searchParams : {
+			type:'0'
+		},
+		pageCode: '805259',
 		deleteCode: '805004'
 	});
     // 调整

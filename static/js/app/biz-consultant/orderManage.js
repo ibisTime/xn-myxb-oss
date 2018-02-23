@@ -24,6 +24,7 @@ $(function() {
 		field : 'applyDatetime',
 		title : '下单时间',
         search: true,
+		type : 'date',
 		formatter : dateTimeFormat
 	},  {
 		field : 'status',
@@ -50,12 +51,27 @@ $(function() {
     // 审核
     $('#checkBtn').click(function() {
         var selRecords = $('#tableList').bootstrapTable('getSelections');
+        if (selRecords.length >0) {
+
+            window.location.href = "../biz-consultant/orderManage_addedit.html?code=" + selRecords[0].code + "&check=1";
+
+        }
+
+    });
+    // 发货
+    $('#fahuoBtn').click(function() {
+        var selRecords = $('#tableList').bootstrapTable('getSelections');
         if (selRecords.length <= 0) {
             toastr.info("请选择记录");
             return;
         }
-        window.location.href = "../biz-consultant/orderManage_addedit.html?code=" + selRecords[0].code + "&check=1";
+        if(selRecords[0].status == '2') {
+        	// 发货
+            window.location.href = "../biz-consultant/orderManage_addedit.html?fahuo=true&code=" + selRecords[0].code;
+
+        }else {
+        	toastr.info('该订单不是待发货状态')
+		}
 
     });
-    // 发货
 });

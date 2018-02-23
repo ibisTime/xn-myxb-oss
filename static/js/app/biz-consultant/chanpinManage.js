@@ -32,7 +32,7 @@ $(function() {
 		title : '状态',
 		search: true,
 		type: 'select',
-        data:{'0':'未上架','1':'已上架'}
+        data : {'1':'未上架','2':'已上架','3':'已下架'}
 	},
      //    {
 	// 	field : 'orderNo',
@@ -56,7 +56,8 @@ $(function() {
             toastr.info("请选择记录");
             return;
         }
-        if(selRecords[0].status == '0') {
+        console.log(selRecords[0].status);
+        if(selRecords[0].status == '1' || selRecords[0].status == '3') {
             confirm('确定上架？').then(function () {
                 var dw = dialog({
                     content: '<form class="pop-form" id="popForm" novalidate="novalidate">' +
@@ -74,18 +75,23 @@ $(function() {
                         required: true,
                         number: true,
                         min: '0'
+                    },{
+                        field : 'location1',
+                        title : '是否推荐',
+                        required: true,
+                        type: 'select',
+                        data : {'0':'否','1':'是'}
                     }],
                     buttons: [{
                         title: '确定',
                         handler: function () {
                             if ($('#popForm').valid()) {
                                 var data = $('#popForm').serializeObject();
-                                console.log(data);
                                 reqApi({
                                     code: '805263',
                                     json: {
                                         code: selRecords[0].code,
-                                        location: '1',
+                                        location : data.location1,
                                         updater: getUserName(),
                                         orderNo: data.orderNo
                                     }
@@ -122,7 +128,7 @@ $(function() {
             {
                 toastr.info('已经是上架的状态了')
             }
-    })
+    });
     // 下架
     $('#downBtn').click(function() {
         var selRecords = $('#tableList').bootstrapTable('getSelections');
@@ -130,7 +136,7 @@ $(function() {
             toastr.info("请选择记录");
             return;
         }
-        if(selRecords[0].status == '1') {
+        if(selRecords[0].status == '2') {
             confirm('确定下架？').then(function () {
                 reqApi({
                     code: 805264,
@@ -147,5 +153,14 @@ $(function() {
         }
 
 
+    });
+    // 查看评论
+    $('#chakanpinglunBtn').click(function() {
+        var selRecords = $('#tableList').bootstrapTable('getSelections');
+        if (selRecords.length <= 0) {
+            toastr.info("请选择记录");
+            return;
+        }
+        window.location.href = './chanpinManage_pinglun.html?code='+selRecords[0].code;
     });
 });

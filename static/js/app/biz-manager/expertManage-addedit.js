@@ -38,7 +38,7 @@ $(function() {
         field : 'remark',
         title : '备注'
     }];
-
+if(check=1) {
     buildDetail({
         fields: fields,
         buttons: [{
@@ -88,5 +88,16 @@ $(function() {
             }
         }]
     });
+}else {
+    buildDetail({
+        fields: fields,
+        code: {
+            userId: userId
+        },
+        detailCode: '805121',
+        view: view
+    });
+}
+
 
 });

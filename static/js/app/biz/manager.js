@@ -5,7 +5,7 @@ $(function() {
 		title : '',
 		checkbox : true
 	}, {
-		field : 'name',
+		field : 'nickname',
 		title : '姓名',
 		search: true
 	}, {
@@ -15,14 +15,21 @@ $(function() {
 		field : 'level',
 		title : '级别'
 	}, {
-		field : 'remark',
+		field : 'serviceKind',
 		title : '服务对象',
         pageCode: '805906',
 		params : {
 			parentKey: 'user_kind'
 		},
         keyName: 'dkey',
-        valueName: 'dvalue'
+        valueName: 'dvalue',
+        formatter: function (v, data) {
+            return data.serviceKind.replace(/T/, "美导")
+                .replace(/L/, "讲师")
+                .replace(/S/, "专家")
+                .replace(/A/, "品牌顾问")
+                .replace(/M/, "经纪人")
+        }
 	}, {
 		field : 'status',
 		title : '状态',
@@ -33,7 +40,8 @@ $(function() {
             parentKey: 'user_status'
         },
         keyName: 'dkey',
-        valueName: 'dvalue'
+        valueName: 'dvalue',
+		data : {'0':'正常', '1':'程序锁定','2':'人工锁定','3':'待审核','4':'审核不通过'}
 	}, {
 		field : 'remark',
 		title : '备注'
@@ -41,7 +49,11 @@ $(function() {
 
 	buildList({
 		columns: columns,
-		pageCode: '805000',
+        searchParams: {
+            companyCode : OSS.company,
+			kind : 'M'
+        },
+		pageCode: '805120',
 		deleteCode: '805004'
 	});
 });

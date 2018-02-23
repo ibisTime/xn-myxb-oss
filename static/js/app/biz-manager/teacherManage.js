@@ -5,7 +5,7 @@ $(function() {
 		title : '',
 		checkbox : true
 	}, {
-		field : 'name',
+		field : 'nickname',
 		title : '姓名',
 		search: true
 	}, {
@@ -29,10 +29,10 @@ $(function() {
         search: true,
         type: 'select'
 	}, {
-		field : 'remark',
+		field : 'speciality',
 		title : '专长领域'
 	}, {
-		field : 'remark',
+		field : 'style',
 		title : '授课风格'
 	}, {
 		field : 'remark',
@@ -57,7 +57,11 @@ $(function() {
     });
 	buildList({
 		columns: columns,
-		pageCode: '805000',
+        searchParams: {
+            companyCode : OSS.company,
+            kind : 'L'
+        },
+        pageCode: '805120',
 		deleteCode: '805004'
 	});
 });

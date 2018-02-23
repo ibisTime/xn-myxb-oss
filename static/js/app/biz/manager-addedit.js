@@ -4,19 +4,38 @@ $(function() {
     var view = !!getQueryString('v');
 
     var fields = [{
+        field: 'kind',
+        type: 'hidden',
+        value: 'M'
+    }, {
         field : 'name',
         title : '姓名',
         required : true
     }, {
+        field : 'gender',
+        title : '性别',
+        required : true,
+        type: 'select',
+        data: {'1': '男', '0': '女'}
+    }, {
+        field : 'loginName',
+        title : '登录名',
+        required : true
+    },{
+        field : 'realName',
+        title : '真实姓名',
+        required : true
+    }, {
         field : 'mobile',
         title : '手机号',
-        required : true
+        required : true,
+        mobile : true
     }, {
         field : 'level',
         title : '级别',
         required : true
     }, {
-        field : 'remark',
+        field : 'serviceKind',
         title : '服务对象',
         required : true,
         type : 'checkbox',
@@ -34,11 +53,15 @@ $(function() {
             }
         ]
     }, {
-        field : 'status',
+        field : 'photo',
         title : '头像',
         type : 'img',
         single : true
     }, {
+        field : 'introduce',
+        title : '介绍',
+        required : true
+    },{
         field : 'remark',
         title : '备注'
     }];
@@ -48,8 +71,13 @@ $(function() {
         code: {
             userId: userId
         },
+        addCode : '805042',
         detailCode: '805121',
-        view: view
+        view: view,
+        beforeSubmit : function (data) {
+            data.serviceKind = data.serviceKind.toString();
+            return data;
+        }
     });
 
 });

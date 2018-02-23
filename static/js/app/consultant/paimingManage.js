@@ -1,5 +1,5 @@
 $(function() {
-	// 品牌顾问-排名管理
+    // 业务管理-品牌管理-排名管理
 	var columns = [{
 		field : '',
 		title : '',
@@ -24,7 +24,20 @@ $(function() {
 
 	buildList({
 		columns: columns,
-		pageCode: '805000',
+		searchParams : {
+			type:'0'
+		},
+		pageCode: '805259',
 		deleteCode: '805004'
 	});
+    // 调整
+    $('#adjustBtn').click(function() {
+        var selRecords = $('#tableList').bootstrapTable('getSelections');
+        if (selRecords.length <= 0) {
+            toastr.info("请选择记录");
+            return;
+        }
+        window.location.href = "../biz-consultant/paimingManage_addedit.html?accountCode=" + selRecords[0].accountNumber;
+
+    });
 });

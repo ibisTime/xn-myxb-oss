@@ -2,8 +2,9 @@ $(function() {
     // 业务管理-品牌管理-产品管理
     var code = getQueryString('code');
     var view = !!getQueryString('v');
+    var detail = !!getQueryString('detail');
 
-    var fields = [{
+    var columns = [{
         field : 'name',
         title : '名称',
         required : true
@@ -16,13 +17,8 @@ $(function() {
         title : '所属品牌',
         required : true,
         type : 'select',
-        listCode: '805256',
-        params :{
-            limit:10,
-            start:1
-        },
+        listCode: '805258',
         keyName : 'code',
-        searchName :'code',
         valueName: 'name'
     }, {
         field : 'price',
@@ -47,7 +43,7 @@ $(function() {
     }];
 
     buildDetail({
-        fields: fields,
+        fields: columns,
         code: code,
         addCode:'805260',
         detailCode: '805267',

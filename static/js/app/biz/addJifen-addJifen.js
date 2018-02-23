@@ -3,18 +3,10 @@ $(function() {
     var userId = getQueryString('userId');
     var view = !!getQueryString('v');
 
-    var fields = [{
-        field : 'name',
-        title : '姓名',
-        type : 'select',
-        required : true
-    }, {
-        field : 'mobile',
+    var fields = [ {
+        field : 'amount',
         title : '增加积分数',
         required : true
-    }, {
-        field : 'remark',
-        title : '备注'
     }];
 
     var options = {
@@ -30,11 +22,13 @@ $(function() {
         title: '确认',
         handler: function() {
             if ($('#jsForm').valid()) {
-                var data = {};
-                data['userId'] = userId;
-                data["remark"] = $("#remark").val();
+                var data = $('#jsForm').serializeObject();
+                data['toUserId'] = userId;
+                data["currency"] = 'JF';
+                data["amount"] *= 1000;
+                // data["fromUserId"] = getUserName();
                 reqApi({
-                    code: "805195",
+                    code: "805340",
                     json: data
                 }).done(function() {
                     sucDetail();

@@ -33,7 +33,7 @@ $(function(){
 		columns: columns,
 		pageCode: '805120',
 		searchParams: {
-			kind: 'P',
+			// kind: 'P',
 			companyCode: OSS.company
 		}
 	});

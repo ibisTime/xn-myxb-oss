@@ -5,22 +5,32 @@ $(function() {
 		title : '',
 		checkbox : true
 	}, {
-		field : 'name',
+		field : 'remark',
 		title : '规则名称'
 	}, {
-		field : 'url',
+		field : 'ckey',
 		title : '规则分类'
 	}, {
-		field : 'orderNo',
+		field : 'cvalue',
 		title : '数值'
-	}, {
-		field : 'remark',
-		title : '备注'
 	}];
 
-	buildList({
-		columns: columns,
-		pageCode: '805000',
-		deleteCode: '805004'
-	});
+    buildList({
+        columns: columns,
+        searchParams:{
+            companyCode:OSS.company,
+            type : 'TJPL_JJF'
+
+        },
+        pageCode: '805915'
+    });
+    // 修改
+	$('#editBtn').click(function () {
+        var selRecords = $('#tableList').bootstrapTable('getSelections');
+        if (selRecords.length <= 0) {
+            toastr.info("请选择记录");
+            return;
+        }
+		window.location.href = './jifenRules_addedit.html?&id='+selRecords[0].id;
+    })
 });
