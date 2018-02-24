@@ -64,17 +64,12 @@ $(function() {
             return;
         }
 
-        if(selRecords[0].status == 2){
-            toastr.info("已注销");
-            return;
-        }
-
-        confirm("确定注销？").then(function() {
+        confirm("确定注销/激活？").then(function() {
             reqApi({
                 code: '805091',
                 json: {
                     userId: selRecords[0].userId,
-                    toStatus: '2',
+                    // toStatus: '2',
                     remark: selRecords[0].remark
                 }
             }).then(function() {

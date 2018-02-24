@@ -10,7 +10,8 @@ $(function() {
     },{
         field : 'loginName',
         title : '登录名',
-        readonly : true
+        readonly : view?true:false,
+        required : true
     }, {
         field : 'nickname',
         title : '昵称',

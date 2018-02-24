@@ -70,10 +70,6 @@ $(function() {
 	// 审核
 	$('#checkBtn').click(function() {
         var selRecords = $('#tableList').bootstrapTable('getSelections');
-        if (selRecords.length <= 0) {
-            toastr.info("请选择记录");
-            return;
-        }
         window.location.href = "../biz-manager/meidaoManage_addedit.html?accountCode=" + selRecords[0].accountNumber + "&check=1";
     });
 	// 分配经纪人
@@ -93,17 +89,12 @@ $(function() {
             return;
         }
 
-        if(selRecords[0].status == 2){
-            toastr.info("已注销");
-            return;
-        }
 
-        confirm("确定注销？").then(function() {
+        confirm("确定注销/激活？").then(function() {
             reqApi({
                 code: '805091',
                 json: {
                     userId: selRecords[0].userId,
-                    toStatus: '2',
                     remark: selRecords[0].remark
                 }
             }).then(function() {

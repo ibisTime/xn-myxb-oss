@@ -38,7 +38,6 @@ $(function() {
     },  {
         field: 'kind',
         title: '可见用户类型',
-        required: true,
         listCode: '805906',
         params: {
             parentKey : 'menu_kind'

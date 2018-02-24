@@ -30,7 +30,6 @@ $(function() {
 
     buildList({
         columns: columns,
-        // pageCode: '805120',
         pageCode: '805350',
         searchParams: {
             type: 'CLST',

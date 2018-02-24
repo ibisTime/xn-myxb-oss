@@ -972,7 +972,7 @@ function buildList(options) {
         tableEl = $('#' + options.tableId);
     }
     tableEl.on('load-success.bs.table', function () {
-    	// hideLoading();
+    	hideLoading();
         updateTableInfo('tableList');
     });
     tableEl.on('page-change.bs.table', function () {
