@@ -1,23 +1,16 @@
 $(function() {
     // 业务管理-美导管理-美导管理
-    var userId = getQueryString('userId');
+    var code = getQueryString('code');
     var view = !!getQueryString('v');
     var check = !!getQueryString('check');
-    // console.log(check);
     var fields = [{
         field: 'kind',
         type: 'hidden',
         value: 'T'
-    },
-    //     {
-    //     field : 'name',
-    //     title : '姓名',
-    //     required : true
-    // },
-        {
+    }, {
         field : 'loginName',
         title : '登录名',
-        required : true
+        readonly : true
     },{
         field : 'realName',
         title : '真实姓名',
@@ -27,27 +20,12 @@ $(function() {
         title : '手机号',
         required : true,
         mobile : true
-    },
-    //     {
-    //     field : 'orderNo',
-    //     title : '推荐人手机号',
-    //     required : true,
-    //     mobile : true
-    // },
-    //     {
-    //     field : 'remark',
-    //     title : '等级',
-    //     type : 'select',
-    //     required : true
-    // },
-        {
+    }, {
         field : 'speciality',
-        title : '专长领域',
-        // required : true
+        title : '专长领域'
     }, {
         field : 'style',
-        title : '授课风格',
-        // required : true
+        title : '授课风格'
     },{
         field : 'photo',
         title : '头像',
@@ -68,20 +46,57 @@ $(function() {
         title : '备注',
         readonly : check ? false : view
     },{
-            field : 'handler',
-            title : '经纪人',
-            type : 'select',
-            listCode: '805120',
-            params: {
-                companyCode : OSS.company,
-                kind : 'M',
-                start : 1,
-                limit : 10
-            },
-            keyName: 'userId',
-            valueName: 'nickname',
-            // readonly: false
-        }];
+        field : 'handler',
+        title : '经纪人',
+        type : 'select',
+        pageCode: '805121',
+        keyName: 'userId',
+        valueName: 'nickname',
+        hidden :view?false:true
+    }];
+    var columns = [{
+        field: 'kind',
+        type: 'hidden',
+        value: 'T'
+    },{
+        field : 'loginName',
+        title : '登录名',
+        required : true
+    },{
+        field : 'realName',
+        title : '真实姓名',
+        required : true
+    }, {
+        field : 'mobile',
+        title : '手机号',
+        required : true,
+        mobile : true
+    },{
+        field : 'speciality',
+        title : '专长领域'
+    }, {
+        field : 'style',
+        title : '授课风格'// required : true
+    },{
+        field : 'photo',
+        title : '头像',
+        type : 'img',
+        single : true
+    }, {
+        field : 'gender',
+        title : '性别',
+        type : 'select',
+        data: {'1': '男', '0': '女'},
+        required : true
+    }, {
+        field : 'introduce',
+        title : '个人简介',
+        required : true
+    }, {
+        field : 'remark',
+        title : '备注',
+        readonly : check ? false : view
+    }];
 // if(check== true) {
 //     console.log('2');
 //     buildDetail({
@@ -135,16 +150,34 @@ $(function() {
 //     });
 // }else {
 //     console.log('1');
-    buildDetail({
-        fields: fields,
-        code: {
-            userId: userId
-        },
-        addCode : '805042',
-        editCode : '805081',
-        detailCode: '805121',
-        view: view
-    });
+    if(view) {
+        buildDetail({
+            fields: fields,
+            code: {
+                userId: code
+            },
+            addCode : '805042',
+            editCode : '805081',
+            detailCode: '805121',
+            view: view
+        });
+    }else{
+        buildDetail({
+            fields: columns,
+            code : {
+                userId : code
+            },
+            beforeSubmit : function (data) {
+                data.userId = code;
+                return data;
+            },
+            addCode : '805042',
+            editCode : '805081',
+            detailCode: '805121',
+            view: view
+        });
+    }
+
 // }
 
 

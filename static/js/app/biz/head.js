@@ -5,29 +5,36 @@ $(function() {
 		title : '',
 		checkbox : true
 	}, {
-		field : 'name',
-		title : '图片'
-	}, {
 		field : 'url',
-		title : '针对角色',
-        search: true,
-        type: 'select'
+		title : '图片',
+
 	}, {
-		field : 'orderNo',
+		field : 'kind',
+		title : '针对角色',
+        formatter: function (v, data) {
+            return data.kind.replace(/0/, "美导")
+                .replace(/1/, "讲师")
+                .replace(/2/, "专家")
+        }
+	}, {
+		field : 'level',
 		title : '针对等级',
 		search: true,
-		type: 'select'
-	}, {
-		field : 'orderNo',
-		title : '次序'
-	}, {
+		type: 'select',
+        listCode: '805906',
+        params :{
+            parentKey : 'level'
+        },
+        keyName : 'dkey',
+        valueName: 'dvalue'
+	},  {
 		field : 'remark',
 		title : '备注'
 	}];
 
 	buildList({
 		columns: columns,
-		pageCode: '805000',
-		deleteCode: '805004'
+		pageCode: '805443',
+		deleteCode: '805441'
 	});
 });

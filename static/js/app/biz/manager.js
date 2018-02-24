@@ -5,7 +5,7 @@ $(function() {
 		title : '',
 		checkbox : true
 	}, {
-		field : 'nickname',
+		field : 'realName',
 		title : '姓名',
 		search: true
 	}, {
@@ -56,4 +56,31 @@ $(function() {
 		pageCode: '805120',
 		deleteCode: '805004'
 	});
+    //注销
+    $('#zhuxiaoBtn').click(function() {
+        var selRecords = $('#tableList').bootstrapTable('getSelections');
+        if(selRecords.length <= 0){
+            toastr.info("请选择记录");
+            return;
+        }
+
+        if(selRecords[0].status == 2){
+            toastr.info("已注销");
+            return;
+        }
+
+        confirm("确定注销？").then(function() {
+            reqApi({
+                code: '805091',
+                json: {
+                    userId: selRecords[0].userId,
+                    toStatus: '2',
+                    remark: selRecords[0].remark
+                }
+            }).then(function() {
+                sucList();
+            });
+
+        },function() {})
+    });
 });

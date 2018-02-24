@@ -839,7 +839,7 @@ function buildList(options) {
                 codeParams += '&' + i + '=' + selRecords[0][i];
             });
         }
-        window.location.href = options.router + "_addedit.html?code=" + (selRecords[0].code || selRecords[0].id) + urlParamsStr + codeParams;
+        window.location.href = options.router + "_addedit.html?code=" + (selRecords[0].code || selRecords[0].id || selRecords[0].userId) + urlParamsStr + codeParams;
     });
 
     $('#deleteBtn').click(function() {
@@ -972,7 +972,7 @@ function buildList(options) {
         tableEl = $('#' + options.tableId);
     }
     tableEl.on('load-success.bs.table', function () {
-    	hideLoading();
+    	// hideLoading();
         updateTableInfo('tableList');
     });
     tableEl.on('page-change.bs.table', function () {

@@ -9,9 +9,6 @@ $(function() {
 		title : '姓名',
 		search: true
 	}, {
-		field : 'mobile',
-		title : '手机号'
-	}, {
         field: 'type',
         title: '角色',
         type: 'select',

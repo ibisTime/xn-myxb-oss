@@ -28,11 +28,13 @@ $(function() {
         field : 'pic',
         title : '缩略图',
         type : 'img',
-        single : true
+        single : true,
+        required : true
     },{
         field : 'advPic',
         title : '展示图',
-        type : 'img'
+        type : 'img',
+        required : true
     },{
         field : 'description',
         title : '详情',

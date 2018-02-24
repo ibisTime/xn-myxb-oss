@@ -9,17 +9,10 @@ $(function() {
 		title : '订单编号',
 		search: true
 	}, {
-		field : 'applyUser',
+		field : 'realName',
 		title : '下单用户',
         search: true,
-        type: 'select',
-        listCode: '805120',
-        params : {
-		    limit : 10,
-            start : 1
-        },
-        keyName: 'userId',
-        valueName: 'nickname'
+        type: 'select'
 	}, {
 		field : 'productName',
 		title : '商品名称'

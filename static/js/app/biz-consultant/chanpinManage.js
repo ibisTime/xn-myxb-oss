@@ -13,11 +13,7 @@ $(function() {
 		title : '所属品牌',
         search: true,
         type: 'select',
-        listCode: '805256',
-        params :{
-		    limit:10,
-            start:1
-        },
+        listCode: '805258',
         keyName : 'code',
         searchName :'code',
         valueName: 'name'
@@ -33,12 +29,7 @@ $(function() {
 		search: true,
 		type: 'select',
         data : {'1':'未上架','2':'已上架','3':'已下架'}
-	},
-     //    {
-	// 	field : 'orderNo',
-	// 	title : '次序'
-	// },
-        {
+	}, {
 		field : 'remark',
 		title : '备注'
 	}];
@@ -161,6 +152,6 @@ $(function() {
             toastr.info("请选择记录");
             return;
         }
-        window.location.href = './chanpinManage_pinglun.html?code='+selRecords[0].code;
+        window.location.href = './meidaoManage_pinglun.html?code='+selRecords[0].code;
     });
 });

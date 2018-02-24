@@ -5,10 +5,7 @@ $(function() {
     var fields = [{
         field : 'realName',
         title : '姓名'
-    }, {
-        field : 'mobile',
-        title : '手机号'
-    }, {
+    },{
         field: 'type',
         title: '角色',
         type: 'select',

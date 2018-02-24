@@ -1,15 +1,19 @@
 $(function() {
     // 业务管理-经纪人管理
-    var userId = getQueryString('userId');
+    var code = getQueryString('code');
     var view = !!getQueryString('v');
 
     var fields = [{
         field: 'kind',
         type: 'hidden',
         value: 'M'
+    },{
+        field : 'loginName',
+        title : '登录名',
+        readonly : true
     }, {
-        field : 'name',
-        title : '姓名',
+        field : 'nickname',
+        title : '昵称',
         required : true
     }, {
         field : 'gender',
@@ -18,10 +22,6 @@ $(function() {
         type: 'select',
         data: {'1': '男', '0': '女'}
     }, {
-        field : 'loginName',
-        title : '登录名',
-        required : true
-    },{
         field : 'realName',
         title : '真实姓名',
         required : true
@@ -30,10 +30,6 @@ $(function() {
         title : '手机号',
         required : true,
         mobile : true
-    }, {
-        field : 'level',
-        title : '级别',
-        required : true
     }, {
         field : 'serviceKind',
         title : '服务对象',
@@ -69,13 +65,15 @@ $(function() {
     buildDetail({
         fields: fields,
         code: {
-            userId: userId
+            userId: code
         },
         addCode : '805042',
+        editCode : '805095',
         detailCode: '805121',
         view: view,
         beforeSubmit : function (data) {
             data.serviceKind = data.serviceKind.toString();
+            data.userId = code;
             return data;
         }
     });

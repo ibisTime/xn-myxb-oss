@@ -5,7 +5,7 @@ $(function() {
 		title : '',
 		checkbox : true
 	}, {
-		field : 'nickname',
+		field : 'loginName',
 		title : '姓名',
 		search: true
 	}, {
@@ -13,16 +13,26 @@ $(function() {
 		title : '手机号'
 	}, {
 		field : 'orderNo',
-		title : '推荐人'
+		title : '推荐人',
+        formatter : function (v,data) {
+            return data.refereeUser?data.refereeUser.realName:'-';
+        }
 	}, {
-		field : 'remark',
-		title : '经纪人'
+		field : 'handler',
+		title : '经纪人',
+        type : 'select',
+        listCode: '805120',
+        params: {
+            companyCode : OSS.company,
+            kind : 'M',
+            start : 1,
+            limit : 10
+        },
+        keyName: 'userId',
+        valueName: 'nickname'
 	}, {
 		field : 'level',
 		title : '等级'
-	}, {
-		field : 'remark',
-		title : '积分余额'
 	}, {
 		field : 'status',
 		title : '状态',
@@ -66,25 +76,7 @@ $(function() {
         }
         window.location.href = "../biz-manager/meidaoManage_addedit.html?accountCode=" + selRecords[0].accountNumber + "&check=1";
     });
-    // 详情
-    $('#detailBtn').click(function() {
-        var selRecords = $('#tableList').bootstrapTable('getSelections');
-        if (selRecords.length <= 0) {
-            toastr.info("请选择记录");
-            return;
-        }
-        window.location.href = "../biz-manager/meidaoManage_addedit.html?userId=" + selRecords[0].userId+"&v=1";
-    });
-    //修改
-    $('#editBtn').click(function() {
-        var selRecords = $('#tableList').bootstrapTable('getSelections');
-        if (selRecords.length <= 0) {
-            toastr.info("请选择记录");
-            return;
-        }
-        window.location.href = "../biz-manager/meidaoManage_addedit.html?userId=" + selRecords[0].userId;
-    });
-    // 分配经纪人
+	// 分配经纪人
     $('#fenpeiManagerBtn').click(function() {
         var selRecords = $('#tableList').bootstrapTable('getSelections');
         if (selRecords.length <= 0) {
@@ -180,6 +172,14 @@ $(function() {
 
         },function() {})
     });
-
+    // 查看评论
+    $('#chakanpinglunBtn').click(function() {
+        var selRecords = $('#tableList').bootstrapTable('getSelections');
+        if (selRecords.length <= 0) {
+            toastr.info("请选择记录");
+            return;
+        }
+        window.location.href = './meidaoManage_pinglun.html?code='+selRecords[0].userId;
+    });
 
 });

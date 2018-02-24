@@ -1,59 +1,55 @@
 $(function() {
     // 业务管理-头像管理-头像管理
-    var userId = getQueryString('userId');
-    var view = !!getQueryString('v');
+    var code = getQueryString('code');
 
     var fields = [{
-        field : 'url',
+        field : 'kind',
         title : '针对角色',
-        type : 'select',
-        required : true
+        required : true,
+        type : 'checkbox',
+        items :[
+            {   // key是构建的checkbox的value属性，也就意味着是实际勾选后传过去的值
+                key : '0',
+                // value是checkbox后面跟的label显示的内容，并非传到后台的内容
+                value : '美导'
+            }, {
+                key : '1',
+                value : '讲师'
+            },{
+                key : '2',
+                value : '专家'
+            }
+        ]
     }, {
-        field : 'orderNo',
+        field : 'level',
         title : '针对等级',
         type : 'select',
-        required : true
+        required : true,
+        key: 'level',
+        keyCode:'805906'
     }, {
-        field : 'name',
-        title : '头像（单）',
+        field : 'url',
+        title : '头像',
         type : 'img',
         single : true
     }, {
-        field : 'orderNo',
-        title : '次序',
-        required : 'true'
+        field : 'remark',
+        title : '备注'
     }];
 
-    var options = {
+    buildDetail({
         fields: fields,
-        detailCode: '805121',
-        code: {
-            kind: "C",
-            companyCode:OSS.companyCode,
-            userId: userId
-        }
-    };
-    options.buttons = [{
-        title: '确认',
-        handler: function() {
-            if ($('#jsForm').valid()) {
-                var data = {};
-                data['userId'] = userId;
-                data["remark"] = $("#remark").val();
-                reqApi({
-                    code: "805195",
-                    json: data
-                }).done(function() {
-                    sucDetail();
-                });
+        beforeSubmit:function (data) {
+            if(data.kind.length>1) {
+                data.kind = data.kind.join(',');
             }
-        }
-    }, {
-        title: '返回',
-        handler: function() {
-            goBack();
-        }
-    }];
-    buildDetail(options);
+            return data;
+        },
+        detailCode: '805444',
+        addCode : '805440',
+        editCode : '805442',
+        code: code,
+        view :view
+    });
 
 });
