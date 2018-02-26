@@ -53,6 +53,29 @@ $(function() {
             '5':'已下课待录入',
             '6':'已录入'
         }
+    },{
+        field: 'meidao',
+        title: '是否有美导',
+        type : 'select',
+        data : {
+            '1' : '是',
+            '0' : '否'
+        },
+        readonly : false
+    },{
+        field: 'meidao1',
+        title: '美导',
+        type : 'select',
+        readonly : false,
+        listCode: '805120',
+        params: {
+            companyCode : OSS.company,
+            kind : 'M',
+            start : 1,
+            limit : 10
+        },
+        keyName: 'userId',
+        valueName: 'nickname'
     }];
 
     buildDetail({

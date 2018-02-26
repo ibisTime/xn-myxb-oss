@@ -9,10 +9,18 @@ $(function() {
 		title : '订单编号',
 		search: true
 	}, {
-		field : 'applyUser',
+		field : 'realName',
 		title : '下单用户',
-        search: true,
-        type: 'select'
+        // search: true,
+        // type: 'select',
+        // listCode: '805120',
+        // keyName : 'realName',
+        // searchName :'realName',
+        // valueName: 'realName',
+		// params : {
+		// 	start : 1,
+		// 	limit : 10
+		// }
 	}, {
 		field : 'productName',
 		title : '产品名称'
@@ -21,11 +29,15 @@ $(function() {
 		title : '订单价格',
 		formatter : moneyFormat
 	}, {
-		field : 'applyDatetime',
-		title : '下单时间',
+        field : 'applyDatetime',
+        title : '下单时间',
+        title1 : '下单时间',
         search: true,
-		type : 'date',
-		formatter : dateTimeFormat
+        type : 'date',
+        field1: 'applyStartDatetime',
+        field2: 'applyEndDatetime',
+        twoDate: true,
+        formatter: dateTimeFormat
 	},  {
 		field : 'status',
 		title : '状态',

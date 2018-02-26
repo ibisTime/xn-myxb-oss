@@ -1,30 +1,48 @@
 $(function() {
-	// 业务管理-专家管理-排名管理
+    // 业务管理-品牌管理-排名管理
 	var columns = [{
 		field : '',
 		title : '',
 		checkbox : true
 	}, {
-		field : 'name',
+		field : 'periods',
 		title : '期数',
-		search: true,
-        type: 'select'
+        // search: true,
+        // type: 'select'
 	}, {
-		field : 'expert',
+		field : 'refNo',
 		title : '专家',
-        search: true
+        search: true,
+        type: 'select',
+        listCode: '805258',
+        keyName : 'code',
+        searchName :'code',
+        valueName: 'name'
 	}, {
-		field : 'orderNo',
+		field : 'rank',
 		title : '排名'
 	}, {
-		field : 'remark',
+		field : 'amount',
 		title : '业绩额',
 		formatter : moneyFormat
 	}];
 
 	buildList({
 		columns: columns,
-		pageCode: '805000',
+		// searchParams : {
+		// 	type:'0'
+		// },
+		pageCode: '805123',
 		deleteCode: '805004'
 	});
+    // 调整
+    // $('#adjustBtn').click(function() {
+    //     var selRecords = $('#tableList').bootstrapTable('getSelections');
+    //     if (selRecords.length <= 0) {
+    //         toastr.info("请选择记录");
+    //         return;
+    //     }
+    //     window.location.href = "../biz-consultant/paimingManage_addedit.html?accountCode=" + selRecords[0].accountNumber;
+    //
+    // });
 });

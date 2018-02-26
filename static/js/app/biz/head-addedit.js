@@ -1,6 +1,7 @@
 $(function() {
     // 业务管理-头像管理-头像管理
     var code = getQueryString('code');
+    var view = getQueryString('v');
 
     var fields = [{
         field : 'kind',

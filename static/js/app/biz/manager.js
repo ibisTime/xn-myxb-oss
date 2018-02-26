@@ -13,7 +13,14 @@ $(function() {
 		title : '手机号'
 	}, {
 		field : 'level',
-		title : '级别'
+		title : '级别',
+        type: 'select',
+        listCode: '805906',
+        params :{
+            parentKey : 'level'
+        },
+        keyName : 'dkey',
+        valueName: 'dvalue'
 	}, {
 		field : 'serviceKind',
 		title : '服务对象',
@@ -56,7 +63,7 @@ $(function() {
 		pageCode: '805120',
 		deleteCode: '805004'
 	});
-    //注销
+    //注销/激活
     $('#zhuxiaoBtn').click(function() {
         var selRecords = $('#tableList').bootstrapTable('getSelections');
         if(selRecords.length <= 0){

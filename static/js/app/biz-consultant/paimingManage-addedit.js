@@ -1,24 +1,26 @@
 $(function() {
     // 业务管理-品牌管理-排名管理-调整
-    var userId = getQueryString('userId');
+    var code = getQueryString('code');
     var view = !!getQueryString('v');
 
     var fields = [{
-        field : 'name',
+        field : 'periods',
         title : '期数',
-        type: 'select',
         required : true
     }, {
-        field : 'url',
-        title : '品牌',
+        field : 'refNo',
+        title : '所属品牌',
+        required : true,
         type : 'select',
-        required : true
+        listCode: '805258',
+        keyName : 'code',
+        valueName: 'name'
     }, {
-        field : 'orderNo',
+        field : 'rank',
         title : '排名',
         required : true
     }, {
-        field : 'remark',
+        field : 'amount',
         title : '业绩额',
         required : true,
         formatter : moneyFormat
@@ -26,22 +28,21 @@ $(function() {
 
     var options = {
         fields: fields,
-        detailCode: '805121',
+        editCode: '805279',
         code: {
-            kind: "C",
-            companyCode:OSS.companyCode,
-            userId: userId
+            code: code,
+            companyCode:OSS.companyCode
         }
     };
     options.buttons = [{
         title: '确认',
         handler: function() {
             if ($('#jsForm').valid()) {
-                var data = {};
-                data['userId'] = userId;
-                data["remark"] = $("#remark").val();
+                var data = $('#jsForm').serializeObject();
+                data.code = code;
+                data.amount *= 1000;
                 reqApi({
-                    code: "805195",
+                    code: "805279",
                     json: data
                 }).done(function() {
                     sucDetail();

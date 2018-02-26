@@ -10,8 +10,8 @@ $(function() {
     },{
         field : 'loginName',
         title : '登录名',
-        readonly : view?true:false,
-        required : true
+        readonly : view?true:code?true:false,
+        required : true,
     }, {
         field : 'nickname',
         title : '昵称',
@@ -57,7 +57,8 @@ $(function() {
     }, {
         field : 'introduce',
         title : '介绍',
-        required : true
+        required : true,
+        type : 'textarea'
     },{
         field : 'remark',
         title : '备注'

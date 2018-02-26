@@ -1,40 +1,59 @@
 $(function() {
-    // 业务管理-专家管理-排名管理-调整
-    var userId = getQueryString('userId');
+    // 业务管理-品牌管理-排名管理-调整
+    var code = getQueryString('code');
     var view = !!getQueryString('v');
-    var check = !!getQueryString('check');
 
     var fields = [{
-        field : '',
-        title : '',
-        checkbox : true
-    }, {
-        field : 'name',
+        field : 'periods',
         title : '期数',
-        type: 'select',
         required : true
     }, {
-        field : 'expert',
-        title : '专家',
-        type: 'select',
-        required : true
+        field : 'refNo',
+        title : '所属品牌',
+        required : true,
+        type : 'select',
+        listCode: '805258',
+        keyName : 'code',
+        valueName: 'name'
     }, {
-        field : 'orderNo',
+        field : 'rank',
         title : '排名',
         required : true
     }, {
-        field : 'remark',
+        field : 'amount',
         title : '业绩额',
         required : true,
         formatter : moneyFormat
     }];
 
-    buildDetail({
+    var options = {
         fields: fields,
+        editCode: '805279',
         code: {
-            userId: userId
-        },
-        detailCode: '805121',
-        view: view
-    });
+            code: code,
+            companyCode:OSS.companyCode
+        }
+    };
+    options.buttons = [{
+        title: '确认',
+        handler: function() {
+            if ($('#jsForm').valid()) {
+                var data = $('#jsForm').serializeObject();
+                data.code = code;
+                reqApi({
+                    code: "805279",
+                    json: data
+                }).done(function() {
+                    sucDetail();
+                });
+            }
+        }
+    }, {
+        title: '返回',
+        handler: function() {
+            goBack();
+        }
+    }];
+    buildDetail(options);
+
 });

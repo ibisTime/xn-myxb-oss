@@ -56,6 +56,6 @@ $(function() {
             toastr.info("请选择记录");
             return;
         }
-        window.location.href = './meidaoManage_pinglunDetail.html?v=true&code='+selRecords[0].code;
+        window.location.href = './expertManage_pinglunDetail.html?v=true&code='+selRecords[0].code;
     });
 });

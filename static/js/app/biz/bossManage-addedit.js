@@ -1,44 +1,177 @@
 $(function() {
     // 业务管理-美容院管理-老板管理
-    var userId = getQueryString('userId');
+    var code = getQueryString('code');
     var view = !!getQueryString('v');
 
     var fields = [{
-        field : 'name',
-        title : '姓名'
+        field : 'kind',
+        type: 'hidden',
+        value : 'C'
+    }, {
+        field : 'loginName',
+        title : '登录名',
+        readonly : view,
+        required : true
+    },{
+        field : 'realName',
+        title : '真实姓名',
+        required : true
     }, {
         field : 'mobile',
-        title : '手机号'
+        title : '手机号',
+        required : true,
+        mobile : true
+    },
+        //     {
+    //     field : 'orderNo',
+    //     title : '推荐人手机号'
+    // },
+        {
+        field : 'storeName',
+        title : '店铺',
+        required : true
+    },
+    //     {
+    //     field : 'remark',
+    //     title : '店铺地址',
+    //     required : true
+    // },
+    // //     {
+    //     field : 'level',
+    //     title : '等级',
+    //     required : true
+    // },
+        {
+        field : 'adviser',
+        title : '团队顾问',
+        required : true,
+        type : 'select',
+        listCode: '805121',
+        // params: {
+        //     companyCode : OSS.company,
+        //     kind : 'A',
+        //     start : 1,
+        //     limit : 10
+        // },
+        keyName: 'userId',
+        valueName: 'realName'
     }, {
-        field : 'orderNo',
-        title : '推荐人'
-    }, {
-        field : 'remark',
-        title : '店铺'
-    }, {
-        field : 'level',
-        title : '等级'
-    }, {
-        field : 'remark',
-        title : '积分余额'
-    },{
-        field : 'remark',
-        title : '团队顾问'
-    }, {
-        field : 'status',
-        title : '状态'
-    }, {
-        field : 'remark',
-        title : '备注'
-    }];
+            field : 'gender',
+            title : '性别',
+            type : 'select',
+            data: {'1': '男', '0': '女'},
+            required : true
+        }, {
+            field : 'introduce',
+            title : '个人简介',
+            required : true,
+            type : 'textarea'
+        }, {
+            field : 'remark',
+            title : '备注'
+        }];
 
-    buildDetail({
-        fields: fields,
-        code: {
-            userId: userId
+
+    // 新增
+    var columns = [{
+        field : 'kind',
+        type: 'hidden',
+        value : 'C'
+    }, {
+        field : 'loginName',
+        title : '登录名',
+        readonly : view,
+        required : true
+    },{
+        field : 'realName',
+        title : '真实姓名',
+        required : true
+    }, {
+        field : 'mobile',
+        title : '手机号',
+        required : true,
+        mobile : true
+    },
+        //     {
+        //     field : 'orderNo',
+        //     title : '推荐人手机号'
+        // },
+        {
+            field : 'storeName',
+            title : '店铺',
+            required : true
         },
-        detailCode: '805121',
-        view: view
-    });
+        //     {
+        //     field : 'remark',
+        //     title : '店铺地址',
+        //     required : true
+        // },
+        // //     {
+        //     field : 'level',
+        //     title : '等级',
+        //     required : true
+        // },
+        {
+            field : 'adviser',
+            title : '团队顾问',
+            required : true,
+            type : 'select',
+            listCode: '805120',
+            params: {
+                companyCode : OSS.company,
+                kind : 'A',
+                start : 1,
+                limit : 10
+            },
+            keyName: 'userId',
+            valueName: 'realName'
+        }, {
+            field : 'gender',
+            title : '性别',
+            type : 'select',
+            data: {'1': '男', '0': '女'},
+            required : true
+        }, {
+            field : 'introduce',
+            title : '个人简介',
+            required : true,
+            type : 'textarea'
+        }, {
+            field : 'remark',
+            title : '备注'
+        }];
+    if(view) {
+        // 详情
+        buildDetail({
+            fields: fields,
+            code : {
+                userId : code
+            },
+            beforeSubmit : function (data) {
+                data.userId = code;
+                return data;
+            },
+            addCode : '805042',
+            editCode : '805081',
+            detailCode: '805121',
+            view: view
+        });
+    }else {
+        buildDetail({
+            fields: columns,
+            code : {
+                userId : code
+            },
+            beforeSubmit : function (data) {
+                data.userId = code;
+                return data;
+            },
+            addCode : '805042',
+            editCode : '805095',
+            detailCode: '805121',
+            view: view
+        });
+    }
+
 
 });

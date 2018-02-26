@@ -10,7 +10,8 @@ $(function() {
     }, {
         field : 'loginName',
         title : '登录名',
-        readonly : true
+        readonly : view?true:code?true:false,
+        required : true,
     },{
         field : 'realName',
         title : '真实姓名',
@@ -76,7 +77,7 @@ $(function() {
         title : '专长领域'
     }, {
         field : 'style',
-        title : '授课风格'// required : true
+        title : '授课风格'
     },{
         field : 'photo',
         title : '头像',
@@ -91,65 +92,14 @@ $(function() {
     }, {
         field : 'introduce',
         title : '个人简介',
-        required : true
+        required : true,
+        type : 'textarea'
     }, {
         field : 'remark',
         title : '备注',
         readonly : check ? false : view
     }];
-// if(check== true) {
-//     console.log('2');
-//     buildDetail({
-//         fields: fields,
-//         buttons: [{
-//             title: '通过',
-//             handler: function() {
-//
-//                 if ($('#remark').val() == "") {
-//                     toastr.error("审核意见不能为空");
-//                 } else {
-//                     var data = $('#popForm').serializeObject();
-//                     data.codeList = dataCode;
-//                     data.payResult = "1";
-//                     data.payUser = getUserName();
-//                     reqApi({
-//                         code: '802701',
-//                         json: data
-//                     }).done(function(data) {
-//                         sucList();
-//                         dw.close().remove();
-//                     });
-//                 }
-//
-//             }
-//         }, {
-//             title: '不通过',
-//             handler: function() {
-//                 if ($('#payNote').val() == "") {
-//                     toastr.error("审核意见不能为空");
-//                 } else {
-//                     var data = [];
-//                     data.codeList = dataCode;
-//                     data.payResult = "1";
-//                     data.payUser = getUserName();
-//                     reqApi({
-//                         code: '802701',
-//                         json: data
-//                     }).done(function(data) {
-//                         sucList();
-//                         dw.close().remove();
-//                     });
-//                 }
-//             }
-//         }, {
-//             title: '取消',
-//             handler: function() {
-//                 dw.close().remove();
-//             }
-//         }]
-//     });
-// }else {
-//     console.log('1');
+
     if(view) {
         buildDetail({
             fields: fields,
@@ -157,7 +107,7 @@ $(function() {
                 userId: code
             },
             addCode : '805042',
-            editCode : '805081',
+            editCode : '805095',
             detailCode: '805121',
             view: view
         });
@@ -172,13 +122,9 @@ $(function() {
                 return data;
             },
             addCode : '805042',
-            editCode : '805081',
+            editCode : '805095',
             detailCode: '805121',
             view: view
         });
     }
-
-// }
-
-
 });

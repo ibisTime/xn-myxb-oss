@@ -11,8 +11,8 @@ $(function() {
 	}, {
 		field : 'realName',
 		title : '下单用户',
-        search: true,
-        type: 'select'
+        // search: true,
+        // type: 'select'
 	}, {
 		field : 'productName',
 		title : '商品名称'

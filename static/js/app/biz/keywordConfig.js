@@ -21,7 +21,7 @@ $(function() {
 		field : 'updater',
 		title : '更新人'
 	}, {
-		field : 'updateTime',
+		field : 'updateDatetime',
 		title : '更新时间',
 		formatter : dateTimeFormat
 	}, {

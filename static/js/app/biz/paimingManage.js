@@ -33,7 +33,7 @@ $(function() {
     });
 	buildList({
 		columns: columns,
-		pageCode: '805000',
+		pageCode: '805122',
 		deleteCode: '805004'
 	});
 });

@@ -32,7 +32,14 @@ $(function() {
         valueName: 'nickname'
 	}, {
 		field : 'level',
-		title : '等级'
+		title : '等级',
+        type: 'select',
+        listCode: '805906',
+        params :{
+            parentKey : 'level'
+        },
+        keyName : 'dkey',
+        valueName: 'dvalue'
 	}, {
 		field : 'status',
 		title : '状态',
@@ -68,9 +75,14 @@ $(function() {
         pageCode: '805120'
 	});
 	// 审核
-	$('#checkBtn').click(function() {
+	$('#checkBtn').off().click(function() {
         var selRecords = $('#tableList').bootstrapTable('getSelections');
-        window.location.href = "../biz-manager/meidaoManage_addedit.html?accountCode=" + selRecords[0].accountNumber + "&check=1";
+        if (selRecords[0].status == '3') {
+            window.location.href = "../biz-manager/meidaoManage_check.html?v=1&code="+selRecords[0].userId+"&mobile="+selRecords[0].mobile;
+        }else {
+            toastr.info('该状态下不能进行审核');
+        }
+
     });
 	// 分配经纪人
     $('#fenpeiManagerBtn').click(function() {
@@ -171,6 +183,15 @@ $(function() {
             return;
         }
         window.location.href = './meidaoManage_pinglun.html?code='+selRecords[0].userId;
+    });
+    // 行程列表
+    $('#scheduleListBtn').click(function() {
+        var selRecords = $('#tableList').bootstrapTable('getSelections');
+        if (selRecords.length <= 0) {
+            toastr.info("请选择记录");
+            return;
+        }
+        window.location.href = './meidaoManage_scheduleList.html?code='+selRecords[0].userId;
     });
 
 });

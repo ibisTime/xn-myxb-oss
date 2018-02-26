@@ -2,8 +2,17 @@ $('title', window.parent.document).html(OSS.systemName);
 $(function() {
     if (!sessionStorage.getItem('token')) {
 		//判断域名是 hhr开头 合伙人域名 kind为11
-		var kind = document.domain.substr(0, 1)=='h'?'PA':(sessionStorage.getItem('loginKind') || '01')
-        location.href = 'signin.html?kind=' + (sessionStorage.getItem('loginKind') || 'P')
+		// var kind = document.domain.substr(0, 1)=='h'?'PA':(sessionStorage.getItem('loginKind') || '01')
+        var port = location.port;
+        var kind = port === 4108
+            ? 'P'
+            : port === 4107
+                ? 'A'
+                : port === 4106
+                    ? 'M'
+                    : 'P';
+        // location.href = 'signin.html?kind=' + (sessionStorage.getItem('loginKind') || kind);
+        location.href = 'signin.html?kind=' + kind;
         return;
     }
 
@@ -23,16 +32,16 @@ $(function() {
         sessionStorage.setItem('userName', data.loginName);
     });
 
-    reqApi({
-        code: '805022',
-        cache: true,
-        sync: true,
-        json: {
-            'code': sessionStorage.getItem('roleCode')
-        }
-    }).then(function(data) {
-        sessionStorage.setItem('roleLevel', data.level);
-    });
+    // reqApi({
+    //     code: '805022',
+    //     cache: true,
+    //     sync: true,
+    //     json: {
+    //         'code': sessionStorage.getItem('roleCode')
+    //     }
+    // }).then(function(data) {
+    //     sessionStorage.setItem('roleLevel', data.level);
+    // });
     // 设置根目录
     window.parentCode = OSS.menuRoot;
 

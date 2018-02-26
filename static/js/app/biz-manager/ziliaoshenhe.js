@@ -5,15 +5,18 @@ $(function() {
 		title : '',
 		checkbox : true
 	}, {
-		field : 'name',
+		field : 'realName',
 		title : '姓名',
 		search: true
 	}, {
 		field : 'mobile',
 		title : '手机号'
 	}, {
-		field : 'orderNo',
-		title : '推荐人'
+		field : 'refereeUser',
+		title : '推荐人',
+        formatter : function (v,data) {
+            return data.refereeUser?data.refereeUser.realName:'-';
+        }
 	}, {
 		field : 'remark',
 		title : '经纪人'
@@ -24,14 +27,23 @@ $(function() {
 		field : 'remark',
 		title : '积分余额'
 	}, {
-		field : 'remark',
+		field : 'speciality',
 		title : '专长领域'
 	}, {
-		field : 'remark',
+		field : 'style',
 		title : '授课风格'
 	}, {
-		field : 'remark',
-		title : '是否推荐'
+		field : 'location',
+		title : '是否推荐',
+        // search: true,
+        // type: 'select',
+        data :{'0':'否','1':'是'}
+	},{
+		field : 'status',
+		title : '状态',
+        // search: true,
+        type: 'select',
+        data :{'1':'待审核','2':'审核不通过','3':'审核通过'}
 	}, {
 		field : 'orderNo',
 		title : '序号'
@@ -39,19 +51,20 @@ $(function() {
 		field : 'remark',
 		title : '备注'
 	}];
-// 资料审核
+
+	buildList({
+		columns: columns,
+		pageCode: '805535',
+		deleteCode: '805004'
+	});
+    // 资料审核
     $('#checkBtn').click(function() {
         var selRecords = $('#tableList').bootstrapTable('getSelections');
         if (selRecords.length <= 0) {
             toastr.info("请选择记录");
             return;
         }
-        window.location.href = "../biz-manager/zilisoshenhe_addeddit.html?v=1&accountCode=" + selRecords[0].accountNumber;
+        window.location.href = "../biz-manager/ziliaoshenhe_addedit.html?v=1&code=" + selRecords[0].code;
 
     });
-	buildList({
-		columns: columns,
-		pageCode: '805000',
-		deleteCode: '805004'
-	});
 });

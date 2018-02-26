@@ -1,7 +1,6 @@
 $(function() {
     // 业务管理-讲师管理-讲师管理
-    console.log(getQueryString('userId'));
-    var userId = getQueryString('userId');
+    var code = getQueryString('code');
     var view = !!getQueryString('v');
     var check = !!getQueryString('check');
 
@@ -12,7 +11,8 @@ $(function() {
     },{
         field : 'loginName',
         title : '登录名',
-        required : true
+        required : true,
+        readonly : view?true:false,
     }, {
         field : 'realName',
         title : '真实姓名',
@@ -22,22 +22,9 @@ $(function() {
         title : '手机号',
         required : true,
         mobile : true
-    },
-    //     {
-    //     field : 'orderNo',
-    //     title : '推荐人手机号',
-    //     required : true
-    // },
-    //     {
-    //     field : 'level',
-    //     title : '等级',
-    //     type : 'select',
-    //     required : true
-    // },
-        {
+    }, {
         field : 'speciality',
-        title : '专长领域',
-        // required : true
+        title : '专长领域'
     }, {
         field : 'style',
         title : '授课风格'
@@ -55,7 +42,62 @@ $(function() {
     }, {
         field : 'introduce',
         title : '个人简介',
+        required : true,
+        type: 'textarea'
+    }, {
+        field : 'handler',
+        title : '经纪人',
+        type : 'select',
+        pageCode: '805121',
+        keyName: 'userId',
+        valueName: 'nickname',
+        hidden :view?false:true
+    },{
+        field : 'remark',
+        title : '备注',
+        readonly : check ? false : view
+    }];
+// 新增和修改
+    var columns = [{
+        field: 'kind',
+        type: 'hidden',
+        value: 'L'
+    },{
+        field : 'loginName',
+        title : '登录名',
+        required : true,
+        readonly : view?true:false,
+    }, {
+        field : 'realName',
+        title : '真实姓名',
         required : true
+    }, {
+        field : 'mobile',
+        title : '手机号',
+        required : true,
+        mobile : true
+    }, {
+        field : 'speciality',
+        title : '专长领域'
+    }, {
+        field : 'style',
+        title : '授课风格'
+    }, {
+        field : 'photo',
+        title : '头像',
+        type : 'img',
+        single : true
+    },{
+        field : 'gender',
+        title : '性别',
+        type : 'select',
+        data: {'1': '男', '0': '女'},
+        required : true
+    }, {
+        field : 'introduce',
+        title : '个人简介',
+        required : true,
+        type: 'textarea'
     }, {
         field : 'remark',
         title : '备注',
@@ -113,15 +155,39 @@ $(function() {
 //         }]
 //     });
 // }else {
-    buildDetail({
-        fields: fields,
-        code: {
-            userId: userId
-        },
-        addCode : '805042',
-        detailCode: '805121',
-        view: view
-    });
+    if(view) {
+        buildDetail({
+            fields: fields,
+            code: {
+                userId: code
+            },
+            beforeSubmit : function (data) {
+                data.userId = code;
+                return data;
+            },
+            addCode : '805042',
+            editCode : '805095',
+            detailCode: '805121',
+            view: view
+        });
+    }else {
+        buildDetail({
+            fields: columns,
+            code: {
+                userId: code
+            },
+            beforeSubmit : function (data) {
+                data.userId = code;
+                return data;
+            },
+            addCode : '805042',
+            editCode : '805095',
+            detailCode: '805121',
+            view: view
+        });
+    }
+
+
 // }
 
 });

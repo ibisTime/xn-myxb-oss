@@ -5,23 +5,29 @@ $(function() {
 		title : '',
 		checkbox : true
 	}, {
-		field : 'name',
+		field : 'realName',
 		title : '姓名',
 		search: true
 	}, {
 		field : 'mobile',
 		title : '手机号'
 	}, {
-		field : 'remark',
+		field : 'speciality',
 		title : '专长领域'
 	}, {
-		field : 'remark',
+		field : 'style',
 		title : '授课风格'
 	}, {
 		field : 'remark',
 		title : '备注'
 	}];
-// 资料审核
+
+	buildList({
+		columns: columns,
+		pageCode: '805535',
+		deleteCode: '805004'
+	});
+    // 资料审核
     $('#checkBtn').click(function() {
         var selRecords = $('#tableList').bootstrapTable('getSelections');
         if (selRecords.length <= 0) {
@@ -31,9 +37,4 @@ $(function() {
         window.location.href = "../biz-manager/zilisoshenhe2_addeddit.html?v=1&accountCode=" + selRecords[0].accountNumber;
 
     });
-	buildList({
-		columns: columns,
-		pageCode: '805000',
-		deleteCode: '805004'
-	});
 });

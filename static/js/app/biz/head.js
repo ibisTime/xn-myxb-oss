@@ -7,8 +7,13 @@ $(function() {
 	}, {
 		field : 'url',
 		title : '图片',
+		type : 'img',
+		single : true,
+		formatter: function(v, data) {
+            return data.url && '<img  style="width:40px;height:40px" src="' + OSS.picBaseUrl + '/' + data.url + '" >' || "-"
+        }
 
-	}, {
+    }, {
 		field : 'kind',
 		title : '针对角色',
         formatter: function (v, data) {
