@@ -5,30 +5,36 @@ $(function() {
 		title : '',
 		checkbox : true
 	}, {
-		field : 'name',
+		field : 'content',
 		title : '内容'
 	}, {
 		field : 'status',
 		title : '状态',
         search: true,
-		type:'select'
+		type:'select',
+        data :{
+            'A':'已发布',
+            'B':'审批通过',
+            'C':'审批不通过',
+            'D':'被过滤',
+            'AB':'已发布和审核通过'
+        }
 	}, {
-		field : 'orderNo',
+		field : 'nickname',
 		title : '评论人'
 	}, {
-		field : 'remark',
+		field : 'entityName',
 		title : '评论对象',
         search: true,
         type:'select'
 	},{
-		field : 'remark',
+		field : 'commentDatetime',
 		title : '评论时间',
 		formatter : dateTimeFormat
 	}];
 
 	buildList({
 		columns: columns,
-		pageCode: '805000',
-		deleteCode: '805004'
+        pageCode: '805425',
 	});
 });

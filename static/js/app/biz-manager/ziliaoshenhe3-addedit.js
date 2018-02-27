@@ -1,24 +1,20 @@
 $(function() {
     // 业务管理-专家管理-资料审核-审核
-    var userId = getQueryString('userId');
+    var code = getQueryString('code');
     var view = !!getQueryString('v');
 
-    var fields = [{
-        field : '',
-        title : '',
-        checkbox : true
-    }, {
-        field : 'name',
+    var fields = [ {
+        field : 'realName',
         title : '姓名',
         search: true
     }, {
         field : 'mobile',
         title : '手机号'
     }, {
-        field : 'remark',
+        field : 'speciality',
         title : '专长领域'
     }, {
-        field : 'remark',
+        field : 'style',
         title : '授课风格'
     }, {
         field : 'remark',
@@ -26,54 +22,55 @@ $(function() {
     }];
 
 
-    buildDetail({
+    var buttons = [{
+        title: '通过',
+        handler: function() {
+            if ($('#jsForm').valid()) {
+                var data = $('#jsForm').serializeObject();
+                data.approver = getUserName();
+                data.result = '1';
+                data.code = code;
+                data.remark = $('#reamrk').val();
+                reqApi({
+                    code: '805531',
+                    json: data
+                }).done(function(data) {
+                    sucDetail();
+                });
+            }
+        }
+    }, {
+        title: '不通过',
+        handler: function() {
+            if ($('#jsForm').valid()) {
+                var data = $('#jsForm').serializeObject();
+                data.approver = getUserName();
+                data.result = '0';
+                data.code = code;
+                data.remark = $('#reamrk').val();
+                reqApi({
+                    code: '805531',
+                    json: data
+                }).done(function(data) {
+                    sucDetail();
+                });
+            }
+        }
+    }, {
+        title: '返回',
+        handler: function() {
+            goBack();
+        }
+    }];
+    var options = {
         fields: fields,
-        buttons: [{
-            title: '通过',
-            handler: function() {
-
-                if ($('#remark').val() == "") {
-                    toastr.error("审核意见不能为空");
-                } else {
-                    var data = $('#popForm').serializeObject();
-                    data.codeList = dataCode;
-                    data.payResult = "1";
-                    data.payUser = getUserName();
-                    reqApi({
-                        code: '802701',
-                        json: data
-                    }).done(function(data) {
-                        sucList();
-                        dw.close().remove();
-                    });
-                }
-
-            }
-        }, {
-            title: '不通过',
-            handler: function() {
-                if ($('#payNote').val() == "") {
-                    toastr.error("审核意见不能为空");
-                } else {
-                    var data = [];
-                    data.codeList = dataCode;
-                    data.payResult = "1";
-                    data.payUser = getUserName();
-                    reqApi({
-                        code: '802701',
-                        json: data
-                    }).done(function(data) {
-                        sucList();
-                        dw.close().remove();
-                    });
-                }
-            }
-        }, {
-            title: '取消',
-            handler: function() {
-                dw.close().remove();
-            }
-        }]
-    });
+        code: {
+            code: code
+        },
+        view: true,
+        buttons: buttons,
+        detailCode: '805536',
+    };
+    buildDetail(options);
 
 });

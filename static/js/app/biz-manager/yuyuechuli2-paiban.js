@@ -30,7 +30,7 @@ $(function() {
         }
     }, {
         field : 'remark10',
-        title : '美导',
+        title : '讲师',
         formatter : function (v, data) {
             return data.user?data.user.realName:'-';
         }
@@ -55,7 +55,7 @@ $(function() {
         }
     },{
         field: 'meidao',
-        title: '是否有美导',
+        title: '是否有讲师',
         type : 'select',
         data : {
             '1' : '是',
@@ -65,13 +65,13 @@ $(function() {
         readonly : false
     },{
         field: 'owner',
-        title: '美导',
+        title: '讲师',
         type : 'select',
         readonly : false,
         listCode: '805120',
         params: {
             companyCode : OSS.company,
-            kind : 'T',
+            kind : 'L',
             start : 1,
             limit : 10
         },

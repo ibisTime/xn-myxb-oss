@@ -1227,7 +1227,9 @@ function buildDetail(options) {
                 html += '<input id="' + item.field + '" name="' + item.field + '" class="lay-input"/></li>';
             } else if (item.type == "o2m") {
                 html += '<div id="' + item.field + '" style="display: inline-block;"></div>';
-            } else {
+            } else if(item.type=='imgCheck'){
+            	html += '<div class="imgCheckWrap"><div id="' + item.field + '" style="display: inline-block;width:100px;height: 100px"></div><input type="button" id="'+item.imgCheckBtnId+'" value="'+item.imgCheckBtnVal+'" class="btn" style="margin-left: 100px"/>';
+            }else {
                 html += '<input id="' + item.field + '" name="' + item.field + '" class="control-def" ' + (item.placeholder ?
                     ('placeholder="' + item.placeholder + '"') :
                     '') + '/></li>';

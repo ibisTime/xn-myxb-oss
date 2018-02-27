@@ -1,6 +1,6 @@
 $(function() {
     // 业务管理-喜报预报管理-喜报
-    var userId = getQueryString('userId');
+    var code = getQueryString('code');
     var view = !!getQueryString('v');
 
     var fields = [{
@@ -8,48 +8,39 @@ $(function() {
         title : '标题',
         required : true
     }, {
-        field : 'status',
-        title : '缩略图（单）',
+        field : 'pic',
+        title : '缩略图',
         type : 'img',
         single : true,
         required : true
     },{
-        field : 'orderNo',
+        field : 'advPic',
+        title : '广告图',
+        type : 'img',
+        required : true
+    },{
+        field : 'description',
         title : '详情',
         maxlength : 250,
+        type : 'textarea',
         required : true
+    },{
+        field : 'remark',
+        title : '备注'
     }];
 
-    var options = {
+    buildDetail({
         fields: fields,
-        detailCode: '805121',
-        code: {
-            kind: "C",
-            companyCode:OSS.companyCode,
-            userId: userId
-        }
-    };
-    options.buttons = [{
-        title: '确认',
-        handler: function() {
-            if ($('#jsForm').valid()) {
-                var data = {};
-                data['userId'] = userId;
-                data["remark"] = $("#remark").val();
-                reqApi({
-                    code: "805195",
-                    json: data
-                }).done(function() {
-                    sucDetail();
-                });
-            }
-        }
-    }, {
-        title: '返回',
-        handler: function() {
-            goBack();
-        }
-    }];
-    buildDetail(options);
+        code: code,
+        beforeSubmit : function (data) {
+            data.type = '0';
+            data.code = code;
+            return data
+        },
+        detailCode: '805415',
+        addCode:'805430',
+        editCode:'805412',
+        view: view
+    });
 
 });

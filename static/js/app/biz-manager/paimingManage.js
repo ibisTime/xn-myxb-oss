@@ -10,14 +10,14 @@ $(function() {
         // search: true,
         // type: 'select'
 	}, {
-		field : 'refNo',
+		field : 'name',
 		title : '专家',
-        search: true,
-        type: 'select',
-        listCode: '805258',
-        keyName : 'code',
-        searchName :'code',
-        valueName: 'name'
+        // search: true,
+        // type: 'select',
+        // listCode: '805258',
+        // keyName : 'code',
+        // searchName :'code',
+        // valueName: 'name'
 	}, {
 		field : 'rank',
 		title : '排名'
@@ -29,9 +29,9 @@ $(function() {
 
 	buildList({
 		columns: columns,
-		// searchParams : {
-		// 	type:'0'
-		// },
+		searchParams : {
+			type:'1'
+		},
 		pageCode: '805123',
 		deleteCode: '805004'
 	});

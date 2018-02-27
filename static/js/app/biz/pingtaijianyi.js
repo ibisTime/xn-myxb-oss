@@ -5,33 +5,43 @@ $(function() {
 		title : '',
 		checkbox : true
 	}, {
-		field : 'name',
+		field : 'content',
 		title : '内容'
 	}, {
 		field : 'status',
 		title : '状态',
         search: true,
-		type:'select'
+		type:'select',
+		data : {
+            '0':'待采纳',
+			'1':'未采纳',
+			'2':'已采纳'
+		}
 	}, {
-		field : 'orderNo',
+		field : 'commenter',
 		title : '评论人'
 	},{
-		field : 'remark',
+		field : 'commentDatetime',
 		title : '评论时间',
 		formatter : dateTimeFormat
 	}];
-// 采纳
+
+	buildList({
+		columns: columns,
+		pageCode: '805402',
+		deleteCode: '805004'
+	});
+    // 采纳
     $('#cainaBtn').click(function() {
         var selRecords = $('#tableList').bootstrapTable('getSelections');
         if (selRecords.length <= 0) {
             toastr.info("请选择记录");
             return;
         }
-        window.location.href = "../biz-pingtaijianyi_addedit.html?caina=1&code="+selRecords[0].code;
+        if(selRecords[0].status == '0') {
+            window.location.href = "../biz/pingtaijianyi_addedit.html?caina=1&code="+selRecords[0].code;
+        }else {
+            toastr.info('该状态下不可进行采纳')
+        }
     });
-	buildList({
-		columns: columns,
-		pageCode: '805402',
-		deleteCode: '805004'
-	});
 });

@@ -11,7 +11,12 @@ $(function() {
 		field : 'status',
 		title : '状态',
 		search: true,
-		type: 'select'
+		type: 'select',
+        data : {
+            '0':'待发布',
+            '1':'已上架',
+            '2':'已下架'
+        }
 	}, {
 		field : 'orderNo',
 		title : '序号'
@@ -22,7 +27,10 @@ $(function() {
 
 	buildList({
 		columns: columns,
-		pageCode: '805436',
+		searchParams : {
+			type : '0'
+		},
+		pageCode: '805435',
 		deleteCode: '805004'
 	});
 });

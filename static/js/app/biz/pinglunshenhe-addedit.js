@@ -1,26 +1,30 @@
 $(function() {
     // 业务管理-评论管理-评论审核-审核
-    var userId = getQueryString('userId');
+    var code = getQueryString('code');
     var view = !!getQueryString('v');
     var check = !!getQueryString('check');
 
     var fields = [{
-        field : 'name',
-        title : '内容',
-        readonly : check
+        field : 'entityName',
+        title : '评论对象'
+
+    },{
+        field : 'content',
+        title : '内容'
+
     }, {
-        field : 'orderNo',
-        title : '评论人',
-        readonly : check
+        field : 'nickname',
+        title : '评论人'
+
     }, {
-        field : 'remark',
+        field : 'commentDatetime',
         title : '评论时间',
-        readonly : check,
         formatter : dateTimeFormat
     }, {
         field : 'remark',
         title : '备注',
-        maxlength : 250
+        maxlength : 250,
+        readonly : false
     }];
 
     var buttons = [{
@@ -29,11 +33,11 @@ $(function() {
 
             if ($('#jsForm').valid()) {
                 var data = $('#jsForm').serializeObject();
-                data.codeList = [code];
-                data.approveResult = "1";
-                data.approveUser = getUserName();
+                data.code = code;
+                data.result = "1";
+                data.approver = getUserName();
                 reqApi({
-                    code: '802752',
+                    code: '805422',
                     json: data
                 }).done(function(data) {
                     sucDetail();
@@ -46,11 +50,11 @@ $(function() {
         handler: function() {
             if ($('#jsForm').valid()) {
                 var data = $('#jsForm').serializeObject();
-                data.codeList = [code];
-                data.approveResult = "0";
-                data.approveUser = getUserName();
+                data.code = code;
+                data.result = "0";
+                data.approver = getUserName();
                 reqApi({
-                    code: '802752',
+                    code: '805422',
                     json: data
                 }).done(function(data) {
                     sucDetail();
@@ -66,7 +70,7 @@ $(function() {
     var options = {
         fields: fields,
         code: code,
-        detailCode: '802756',
+        detailCode: '805426',
         view: true,
         buttons: buttons
     };

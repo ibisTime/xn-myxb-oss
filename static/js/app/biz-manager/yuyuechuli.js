@@ -55,12 +55,19 @@ $(function() {
 
 	buildList({
 		columns: columns,
+		searchParams : {
+			type : 'T'
+		},
 		pageCode: '805520',
 		deleteCode: '805004'
 	});
 	// 排班
     $('#paibanBtn').click(function() {
         var selRecords = $('#tableList').bootstrapTable('getSelections');
-        window.location.href = "../biz-manager/yuyuechuli_paiban.html?v=1&code=" + selRecords[0].code + "&check=1";
+        if(selRecords[0].status == '1') {
+            window.location.href = "../biz-manager/yuyuechuli_paiban.html?v=1&code=" + selRecords[0].code + "&check=1";
+        }else {
+        	toastr.info('该状态下不可排班');
+		}
     });
 });

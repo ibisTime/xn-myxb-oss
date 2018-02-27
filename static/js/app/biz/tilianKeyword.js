@@ -5,19 +5,14 @@ $(function() {
 		title : '',
 		checkbox : true
 	}, {
-		field : 'keyword',
+		field : 'word',
 		title : '关键字',
 		search:true
-	}, {
-		field : 'type',
-		title : '类型',
-        search: true,
-		type:'select'
 	}, {
 		field : 'updater',
 		title : '更新人'
 	},{
-		field : 'updateTime',
+		field : 'updateDatetime',
 		title : '更新时间',
 		formatter : dateTimeFormat
 	},{
@@ -27,7 +22,10 @@ $(function() {
 
 	buildList({
 		columns: columns,
-		pageCode: '805000',
-		deleteCode: '805004'
+        searchParams : {
+            type : '1'
+        },
+		pageCode: '805413',
+		deleteCode: '805411'
 	});
 });

@@ -94,7 +94,7 @@ $(function() {
         },
         view: true,
         buttons: buttons,
-        detailCode: '805521',
+        detailCode: '805536',
     };
     buildDetail(options);
 

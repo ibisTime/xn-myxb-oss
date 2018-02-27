@@ -1,52 +1,44 @@
 $(function() {
     // 业务管理-评论管理-提炼关键字
-    var userId = getQueryString('userId');
+    var code = getQueryString('code');
     var view = !!getQueryString('v');
 
     var fields = [{
-        field : 'keyword',
+        field : 'word',
         title : '关键字',
         required : true
     }, {
-        field : 'type',
-        title : '类型',
+        field : 'kind',
+        title : '分类',
+        required : true,
         type : 'select',
-        required : true
-    },{
+        listCode: '805906',
+        params: {
+            parentKey: 'key_kind'
+        },
+        keyName: 'dkey',
+        valueName: 'dvalue'
+    }, {
         field : 'remark',
         title : '备注'
     }];
 
-    var options = {
+    buildDetail({
         fields: fields,
-        detailCode: '805121',
-        code: {
-            kind: "C",
-            companyCode:OSS.companyCode,
-            userId: userId
-        }
-    };
-    options.buttons = [{
-        title: '确认',
-        handler: function() {
-            if ($('#jsForm').valid()) {
-                var data = {};
-                data['userId'] = userId;
-                data["remark"] = $("#remark").val();
-                reqApi({
-                    code: "805195",
-                    json: data
-                }).done(function() {
-                    sucDetail();
-                });
-            }
-        }
-    }, {
-        title: '返回',
-        handler: function() {
-            goBack();
-        }
-    }];
-    buildDetail(options);
+        code: code,
+        beforeSubmit : function (data) {
+            data.weight = '1';
+            data.level = '0';
+            data.reaction = '3';
+            data.type = '1';
+            data.code = code;
+            return data
+        },
+        detailCode: '805415',
+        addCode:'805410',
+        editCode:'805412',
+        view: view
+    });
+
 
 });

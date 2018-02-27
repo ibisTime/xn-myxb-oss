@@ -6,6 +6,14 @@ $(function() {
     var fields = [{
         field : 'periods',
         title : '期数',
+        listCode: '805127',
+        type : 'select',
+        params : {
+            type : '0'
+        },
+        keyName : 'periods',
+        searchName :'periods',
+        valueName: 'periods',
         required : true
     }, {
         field : 'refNo',

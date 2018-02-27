@@ -17,24 +17,37 @@ $(function() {
 	}, {
 		field : 'style',
 		title : '授课风格'
-	}, {
+	},{
+        field : 'status',
+        title : '状态',
+        search: true,
+        type: 'select',
+        data :{'1':'待审核','2':'审核不通过','3':'审核通过'}
+    },  {
 		field : 'remark',
 		title : '备注'
 	}];
 
 	buildList({
 		columns: columns,
-		pageCode: '805535',
-		deleteCode: '805004'
+        searchParams : {
+            type : 'L'
+        },
+        pageCode: '805535',
 	});
     // 资料审核
-    $('#checkBtn').click(function() {
+    $('#checkBtn').off().click(function() {
         var selRecords = $('#tableList').bootstrapTable('getSelections');
         if (selRecords.length <= 0) {
             toastr.info("请选择记录");
             return;
         }
-        window.location.href = "../biz-manager/zilisoshenhe2_addeddit.html?v=1&accountCode=" + selRecords[0].accountNumber;
+        if(selRecords[0].status == '1') {
+            window.location.href = "../biz-manager/ziliaoshenhe2_addedit.html?v=1&code=" + selRecords[0].code;
+        }else {
+            toastr.info('该状态不能进行审核');
+        }
 
-    });
+    }
+	)
 });

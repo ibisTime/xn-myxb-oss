@@ -17,10 +17,12 @@ $(function() {
         formatter : function (v,data) {
             return data.refereeUser?data.refereeUser.realName:'-';
         }
-	}, {
+	},
+		{
 		field : 'remark',
 		title : '经纪人'
-	}, {
+	},
+		{
 		field : 'level',
 		title : '等级'
 	}, {
@@ -41,7 +43,7 @@ $(function() {
 	},{
 		field : 'status',
 		title : '状态',
-        // search: true,
+        search: true,
         type: 'select',
         data :{'1':'待审核','2':'审核不通过','3':'审核通过'}
 	}, {
@@ -54,17 +56,23 @@ $(function() {
 
 	buildList({
 		columns: columns,
-		pageCode: '805535',
-		deleteCode: '805004'
+		searchParams : {
+			type : 'T'
+		},
+		pageCode: '805535'
 	});
     // 资料审核
-    $('#checkBtn').click(function() {
+    $('#checkBtn').off().click(function() {
         var selRecords = $('#tableList').bootstrapTable('getSelections');
         if (selRecords.length <= 0) {
             toastr.info("请选择记录");
             return;
         }
-        window.location.href = "../biz-manager/ziliaoshenhe_addedit.html?v=1&code=" + selRecords[0].code;
+        if(selRecords[0].status == '1') {
+            window.location.href = "../biz-manager/ziliaoshenhe_addedit.html?v=1&code=" + selRecords[0].code;
+        }else {
+        	toastr.info('该状态不能进行审核');
+		}
 
     });
 });

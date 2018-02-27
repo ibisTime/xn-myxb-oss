@@ -29,7 +29,7 @@ $(function() {
             return data.mryUser?data.mryUser.storeName:'-';
         }
     }, {
-        field : 'remark',
+        field : 'remark11',
         title : '美导',
         formatter : function (v, data) {
             return data.user?data.user.realName:'-';

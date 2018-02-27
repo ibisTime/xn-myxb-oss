@@ -1,5 +1,5 @@
 $(function() {
-    // 业务管理-评论管理-关键字设置
+    // 业务管理-评论管理-提炼关键字
     var code = getQueryString('code');
     var view = !!getQueryString('v');
 
@@ -8,33 +8,33 @@ $(function() {
         title : '关键字',
         required : true
     }, {
-        field : 'weight',
-        title : '权重',
-        type : 'select',
-        required : true
-    }, {
-        field : 'level',
-        title : '作用等级',
-        type : 'select',
-        required : true
-    }, {
-        field : 'reaction',
-        title : '反应',
-        type : 'select',
-        required : true
+        field : 'kind',
+        title : '分类',
+        required : true,
+        value : 'PB',
+        hidden : true
     }, {
         field : 'remark',
-        title : '备注',
-        maxlength : 250
+        title : '备注'
     }];
 
-    var options = {
+    buildDetail({
         fields: fields,
-        detailCode: '805121',
+        code: code,
+        beforeSubmit : function (data) {
+            data.weight = '1';
+            data.level = '0';
+            data.reaction = '3';
+            data.type = '0';
+            data.code = code;
+            return data
+        },
+        detailCode: '805415',
         addCode:'805410',
         editCode:'805412',
-        code: code
-    };
-    buildDetail(options);
+        view: view
+    });
+
+
 
 });

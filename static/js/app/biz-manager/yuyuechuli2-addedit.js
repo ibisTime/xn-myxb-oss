@@ -1,46 +1,71 @@
 $(function() {
     // 业务管理-讲师管理-预约处理
-    var userId = getQueryString('userId');
+    var code = getQueryString('code');
     var view = !!getQueryString('v');
 
     var fields = [{
-        field : 'code',
-        title : '编号'
+        field: 'code1',
+        title: '编号',
+        readonly: true,
+        formatter: function(v, data) {
+            return data.code
+        }
     }, {
         field : 'url',
-        title : '预约人'
+        title : '预约人',
+        formatter : function (v, data) {
+            return data.mryUser?data.mryUser.realName:'-';
+        }
     }, {
         field : 'mobile',
-        title : '预约人手机号'
+        title : '预约人手机号',
+        formatter : function (v, data) {
+            return data.mryUser?data.mryUser.mobile:'-';
+        }
     }, {
         field : 'remark',
-        title : '店铺'
+        title : '店铺',
+        formatter : function (v, data) {
+            return data.mryUser?data.mryUser.storeName:'-';
+        }
     }, {
         field : 'remark',
-        title : '讲师'
+        title : '讲师',
+        formatter : function (v, data) {
+            return data.user?data.user.realName:'-';
+        }
     }, {
-        field : 'remark',
+        field : 'appointDatetime',
         title : '预约时间',
         formatter : dateTimeFormat
     }, {
-        field : 'remark',
+        field : 'appointDays',
         title : '预约天数'
     },{
-        field : 'remark',
+        field : 'planDatetime',
         title : '排班时间',
         formatter : dateTimeFormat
     }, {
-        field : 'remark',
+        field : 'planDays',
         title : '排班天数'
     }, {
         field : 'status',
-        title : '状态'
+        title : '状态',
+        type: 'select',
+        data : {
+            '1':'待排班',
+            '2':'已排班待上门',
+            '3':'无档期',
+            '4':'已上门待下课',
+            '5':'已下课待录入',
+            '6':'已录入'
+        }
     }];
 
     buildDetail({
         fields: fields,
         code: {
-            userId: userId
+            code: code
         },
         detailCode: '805121',
         view: view

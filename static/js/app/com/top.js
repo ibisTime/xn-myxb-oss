@@ -11,8 +11,7 @@ $(function() {
                 : port === 4106
                     ? 'M'
                     : 'P';
-        // location.href = 'signin.html?kind=' + (sessionStorage.getItem('loginKind') || kind);
-        location.href = 'signin.html?kind=' + kind;
+        location.href = 'signin.html?kind=' + (sessionStorage.getItem('loginKind') || kind);
         return;
     }
 

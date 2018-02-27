@@ -1,29 +1,37 @@
 $(function() {
     // 业务管理-评论管理-评论查询
-    var userId = getQueryString('userId');
+    var code = getQueryString('code');
     var view = !!getQueryString('v');
 
     var fields = [{
-        field : 'name',
+        field : 'content',
         title : '内容'
     }, {
         field : 'status',
-        title : '状态'
+        title : '状态',
+        type:'select',
+        data :{
+            'A':'已发布',
+            'B':'审批通过',
+            'C':'审批不通过',
+            'D':'被过滤',
+            'AB':'已发布和审核通过'
+        }
     }, {
-        field : 'orderNo',
+        field : 'nickname',
         title : '评论人'
     }, {
-        field : 'remark',
+        field : 'entityName',
         title : '评论对象'
     },{
-        field : 'remark',
+        field : 'commentDatetime',
         title : '评论时间',
         formatter : dateTimeFormat
     }, {
-        field : 'remark',
+        field : 'approver',
         title : '审核人'
     }, {
-        field : 'remark',
+        field : 'approveDatetime',
         title : '审核时间',
         formatter : dateTimeFormat
     }, {
@@ -33,10 +41,8 @@ $(function() {
 
     buildDetail({
         fields: fields,
-        code: {
-            userId: userId
-        },
-        detailCode: '805121',
+        code: code,
+        detailCode: '805426',
         view: view
     });
 

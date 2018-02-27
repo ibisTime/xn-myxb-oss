@@ -78,7 +78,7 @@ $(function() {
 	$('#checkBtn').off().click(function() {
         var selRecords = $('#tableList').bootstrapTable('getSelections');
         if (selRecords[0].status == '3') {
-            window.location.href = "../biz-manager/meidaoManage_check.html?v=1&code="+selRecords[0].userId+"&mobile="+selRecords[0].mobile;
+            window.location.href = "../biz-manager/meidaoManage_check.html?v=0&code="+selRecords[0].userId+"&mobile="+selRecords[0].mobile;
         }else {
             toastr.info('该状态下不能进行审核');
         }

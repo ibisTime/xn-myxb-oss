@@ -1,20 +1,26 @@
 $(function() {
     // 业务管理-评论管理-平台建议
-    var userId = getQueryString('userId');
+    var code = getQueryString('code');
     var view = !!getQueryString('v');
     var caina = !!getQueryString('caina');
 
     var fields = [{
-        field : 'name',
+        field : 'content',
         title : '内容'
     }, {
         field : 'status',
-        title : '状态'
+        title : '状态',
+        type:'select',
+        data : {
+            '0':'待采纳',
+            '1':'未采纳',
+            '2':'已采纳'
+        }
     }, {
-        field : 'orderNo',
+        field : 'commenter',
         title : '评论人'
     },{
-        field : 'remark',
+        field : 'commentDatetime',
         title : '评论时间',
         formatter : dateTimeFormat
     },{
@@ -31,11 +37,29 @@ $(function() {
 
                 if ($('#jsForm').valid()) {
                     var data = $('#jsForm').serializeObject();
-                    data.codeList = [code];
-                    data.approveResult = "1";
-                    data.approveUser = getUserName();
+                    data.code = code;
+                    data.result = "1";
+                    data.approver = getUserName();
                     reqApi({
-                        code: '802752',
+                        code: '805401',
+                        json: data
+                    }).done(function(data) {
+                        sucDetail();
+                    });
+                }
+
+            }
+        }, {
+            title: '不采纳',
+            handler: function() {
+
+                if ($('#jsForm').valid()) {
+                    var data = $('#jsForm').serializeObject();
+                    data.code = code;
+                    data.result = "0";
+                    data.approver = getUserName();
+                    reqApi({
+                        code: '805401',
                         json: data
                     }).done(function(data) {
                         sucDetail();
@@ -52,20 +76,20 @@ $(function() {
         var options = {
             fields: fields,
             code: code,
-            detailCode: '802756',
+            detailCode: '805403',
             view: true,
             buttons: buttons
         };
 
         buildDetail(options);
+    } else {
+        buildDetail({
+            fields: fields,
+            code: code,
+            detailCode: '805403',
+            view: view
+        });
     }
-    buildDetail({
-        fields: fields,
-        code: {
-            userId: userId
-        },
-        detailCode: '805121',
-        view: view
-    });
+
 
 });

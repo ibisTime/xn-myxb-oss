@@ -2,18 +2,14 @@ $(function() {
     // 业务管理-美导管理-美导管理
     var code = getQueryString('code');
     var mobile = getQueryString('mobile');
-    var view = !!getQueryString('v');
     var check = !!getQueryString('check');
+    var view = !!getQueryString('view');
+    var data111;
     var fields = [{
         field: 'kind',
         type: 'hidden',
         value: 'T'
     }, {
-        field : 'loginName',
-        title : '登录名',
-        readonly : view?true:code?true:false,
-        required : true,
-    },{
         field : 'realName',
         title : '真实姓名',
         required : true
@@ -23,18 +19,11 @@ $(function() {
         required : true,
         mobile : true
     }, {
-        field : 'speciality',
-        title : '专长领域'
-    }, {
-        field : 'style',
-        title : '授课风格'
-    },{
         field : 'photo',
         title : '头像',
         type : 'img',
         single : true,
-        required : true,
-        readonly : false
+        required : true
     }, {
         field : 'gender',
         title : '性别',
@@ -43,15 +32,13 @@ $(function() {
         required : true
     }, {
         field : 'introduce',
-        title : '个人简介'
+        title : '个人简介',
+        type : 'textarea',
+        required : true
     }, {
-        field : 'handler',
-        title : '经纪人',
-        type : 'select',
-        pageCode: '805121',
-        keyName: 'userId',
-        valueName: 'nickname',
-        hidden :view?false:true
+        field : 'slogan',
+        title : '广告语',
+        required : true
     },{
         field : 'mainBrand',
         title : '主荐品牌',
@@ -60,17 +47,16 @@ $(function() {
         type: 'select',
         listCode: '805258',
         keyName : 'code',
-        valueName: 'name',
-        readonly : false
+        valueName: 'name'
     },{
-        field : 'slogan',
-        title : '广告语',
-        required : true,
-        readonly : false
+        field : 'speciality',
+        title : '专长领域'
+    }, {
+        field : 'style',
+        title : '授课风格'
     },{
         field : 'remark',
-        title : '备注',
-        readonly : false
+        title : '备注'
     }];
 
 
@@ -79,12 +65,13 @@ $(function() {
         handler: function() {
             if ($('#jsForm').valid()) {
                 var data = $('#jsForm').serializeObject();
-                console.log(data);
-                console.log($('#introduce').val());
+                console.log($('.center-img'));
                 data.approveResult = '1';
                 data.kind = 'T';
                 data.userId = code;
                 data.mobile = mobile;
+                data.approver = getUserName();
+                data.approver = getUserName();
                 data.introduce = $('#introduce').val();
                 reqApi({
                     code: '805044',
@@ -103,6 +90,8 @@ $(function() {
                 data.kind = 'T';
                 data.code = code;
                 data.mobile = mobile;
+                data.approver = getUserName();
+                data.introduce = $('#introduce').val();
                 reqApi({
                     code: '805044',
                     json: data
@@ -122,9 +111,50 @@ $(function() {
         code: {
             userId: code
         },
-        view: true,
+        view: view,
         buttons: buttons,
+        addCode : '805044',
         detailCode: '805121',
     };
     buildDetail(options);
+    // $('#subBtn').attr('value','通过');
+    // $('#backBtn').attr('value','不通过').attr('id','rejectBtn');
+    // $('#subBtn').click(function () {
+    //     console.log(data111);
+    //     if ($('#jsForm').valid()) {
+    //                     // var data = $('#jsForm').serializeObject();
+    //                     // console.log($('.center-img'));
+    //                     data111.approveResult = '1';
+    //                     // data.kind = 'T';
+    //                     data111.userId = code;
+    //                     // data.mobile = mobile;
+    //                     data111.approver = getUserName();
+    //                     // data.introduce = $('#introduce').val();
+    //                     reqApi({
+    //                         code: '805044',
+    //                         json: data111
+    //                     }).done(function(data) {
+    //                         sucDetail();
+    //                     });
+    //                 }
+    // })
+    // $('#rejectBtn').off().click(function () {
+    //     console.log(data111);
+    //     if ($('#jsForm').valid()) {
+    //                     // var data = $('#jsForm').serializeObject();
+    //                     // console.log($('.center-img'));
+    //                     data111.approveResult = '0';
+    //                     // data.kind = 'T';
+    //                     data111.userId = code;
+    //                     // data.mobile = mobile;
+    //                     data111.approver = getUserName();
+    //                     // data.introduce = $('#introduce').val();
+    //                     reqApi({
+    //                         code: '805044',
+    //                         json: data111
+    //                     }).done(function(data) {
+    //                         sucDetail();
+    //                     });
+    //                 }
+    // })
 });
