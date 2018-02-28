@@ -74,10 +74,10 @@ $(function() {
                 companyCode : OSS.company,
                 kind : 'M',
                 start : 1,
-                limit : 10
+                limit : 1000
             },
             keyName: 'userId',
-            valueName: 'nickname',
+            valueName: 'realName',
             readonly: false
         }];
 

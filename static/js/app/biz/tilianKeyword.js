@@ -8,7 +8,18 @@ $(function() {
 		field : 'word',
 		title : '关键字',
 		search:true
-	}, {
+	},{
+        field : 'kind',
+        title : '分类',
+        required : true,
+        type : 'select',
+        listCode: '805906',
+        params: {
+            parentKey: 'key_kind'
+        },
+        keyName: 'dkey',
+        valueName: 'dvalue'
+    },  {
 		field : 'updater',
 		title : '更新人'
 	},{

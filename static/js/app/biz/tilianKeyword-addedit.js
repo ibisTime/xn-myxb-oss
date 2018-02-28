@@ -13,11 +13,8 @@ $(function() {
         required : true,
         type : 'select',
         listCode: '805906',
-        params: {
-            parentKey: 'key_kind'
-        },
-        keyName: 'dkey',
-        valueName: 'dvalue'
+        key: 'key_kind',
+        keyCode:'805906'
     }, {
         field : 'remark',
         title : '备注'

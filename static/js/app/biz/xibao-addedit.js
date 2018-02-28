@@ -37,9 +37,9 @@ $(function() {
             data.code = code;
             return data
         },
-        detailCode: '805415',
+        detailCode: '805436',
         addCode:'805430',
-        editCode:'805412',
+        editCode:'805432',
         view: view
     });
 

@@ -20,10 +20,6 @@ $(function() {
         valueName: 'dvalue',
         search: true
 	}, {
-		field : 'amount',
-		title : '积分余额',
-        formatter : moneyFormat
-	}, {
 		field : 'remark',
 		title : '备注'
 	}];

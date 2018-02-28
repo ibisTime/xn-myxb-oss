@@ -44,7 +44,15 @@ $(function() {
     // 设置根目录
     window.parentCode = OSS.menuRoot;
 
-    var data = { "parentCode": window.parentCode, "type": "1", 'roleCode': sessionStorage.getItem('roleCode') };
+    // if(sessionStorage.getItem('loginKind') == 'P') {
+    //     var data = { "parentCode": window.parentCode, "type": "1", 'roleCode': sessionStorage.getItem('roleCode') };
+    //
+    // }else {
+    //     var data = { "parentCode": 'HYSM201708241036442974134', "type": "1", 'roleCode': sessionStorage.getItem('roleCode') };
+    //
+    // }
+        var data = { "parentCode": window.parentCode, "type": "1", 'roleCode': sessionStorage.getItem('roleCode') };
+
     reqApi({
         code: '805026',
         json: data,

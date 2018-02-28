@@ -5,8 +5,11 @@ $(function() {
     var fields = [{
         title: '流水编号',
         field: 'code1',
-        '[value]': 'code',
-        readonly: view
+        // '[value]': 'code',
+        readonly: view,
+        formatter :function (v, data) {
+            return data.code
+        }
     }, {
         title: '户名',
         field: 'realName',
@@ -25,18 +28,7 @@ $(function() {
         key: 'currency',
         formatter: Dict.getNameForList("currency"),
         readonly: view
-    }, {
-        field: 'channelType',
-        title: '渠道类型',
-        type: 'select',
-        key: 'channel_type',
-        formatter: Dict.getNameForList('channel_type'),
-        readonly: view
-    }, {
-        field: 'channelOrder',
-        title: '渠道单号',
-        readonly: view
-    }, {
+    },  {
         field: 'bizType',
         title: '业务类型',
         type: 'select',
@@ -67,35 +59,6 @@ $(function() {
         formatter: dateTimeFormat,
         readonly: view
     }, {
-        field: 'status',
-        title: '状态',
-        type: 'select',
-        key: 'jour_status',
-        formatter: Dict.getNameForList('jour_status'),
-        readonly: view
-    }, {
-        field: 'workDate',
-        title: '拟对账时间',
-        readonly: view
-    }, {
-        field: 'checkUser',
-        title: '对账人',
-        readonly: view
-    }, {
-        field: 'checkDatetime',
-        title: '对账时间',
-        formatter: dateTimeFormat,
-        readonly: view
-    }, {
-        field: 'adjustUser',
-        title: '调账人',
-        readonly: view
-    }, {
-        field: 'adjustDatetime',
-        title: '调账时间',
-        formatter: dateTimeFormat,
-        readonly: view
-    }, {
         title: '备注',
         field: 'remark',
         maxlength: 250,
@@ -105,7 +68,8 @@ $(function() {
     var options = {
         fields: fields,
         code: code,
-        detailCode: '802522',
+
+        detailCode: '805367',
         view: view
     };
 

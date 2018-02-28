@@ -6,9 +6,7 @@ $(function() {
 		checkbox : true
 	}, {
 		field : 'periods',
-		title : '期数',
-        // search: true,
-        // type: 'select'
+		title : '期数'
 	}, {
 		field : 'name',
 		title : '专家',

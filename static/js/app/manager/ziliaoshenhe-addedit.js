@@ -25,10 +25,6 @@ $(function() {
         readonly : view
     }, {
         field : 'remark',
-        title : '积分余额',
-        readonly : view
-    }, {
-        field : 'remark',
         title : '专长领域',
         readonly : view
     }, {

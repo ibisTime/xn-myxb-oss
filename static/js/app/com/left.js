@@ -8,8 +8,15 @@ $(function() {
 			window.parent.noRenderLeftMenu = true;
 			return;
 		}
-		var data = {"parentCode":parentCode,"type":"1", 'roleCode': sessionStorage.getItem('roleCode')};
-		
+        // if(sessionStorage.getItem('loginKind') == 'P') {
+        //     var data = {"parentCode":parentCode,"type":"1", 'roleCode': sessionStorage.getItem('roleCode')};
+        //
+        // }else {
+        //     var data = {"type":"1", 'roleCode': sessionStorage.getItem('roleCode')};
+        //
+        // }
+            var data = {"parentCode":parentCode,"type":"1", 'roleCode': sessionStorage.getItem('roleCode')};
+
 		// 一级菜单
 		reqApi({
 			code: '805026',
@@ -30,13 +37,28 @@ $(function() {
 				var me = this;
 				var $ul = $(me).parent().next();
 				if (!$(me).attr('data-loaded')) {
+					// if(sessionStorage.getItem('loginKind') == 'p') {
+                     //    var ooo = {
+                     //        parentCode: $ul.attr('id'),
+                     //        type: '1',
+                     //        roleCode: sessionStorage.getItem('roleCode')
+                     //    }
+					// }else {
+                     //    var ooo = {
+                     //        type: '1',
+                     //        roleCode: sessionStorage.getItem('roleCode')
+                     //    }
+					// }
+
+
+                    var ooo = {
+                        parentCode: $ul.attr('id'),
+                        type: '1',
+                        roleCode: sessionStorage.getItem('roleCode')
+                    }
 					reqApi({
 						code: '805026',
-						json: {
-							parentCode: $ul.attr('id'),
-							type: '1',
-							roleCode: sessionStorage.getItem('roleCode')
-						}
+						json: ooo
 					}, true).then(function(data) {
 						// 二级菜单
 						var html = '';

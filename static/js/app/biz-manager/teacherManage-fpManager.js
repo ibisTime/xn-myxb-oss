@@ -39,7 +39,9 @@ $(function() {
     }, {
         field : 'style',
         title : '授课风格',
-        // required : true
+            type : 'select',
+            key: 'style',
+            keyCode:'805906'
     },{
         field : 'photo',
         title : '头像',
@@ -67,10 +69,10 @@ $(function() {
             companyCode : OSS.company,
             kind : 'M',
             start : 1,
-            limit : 10
+            limit : 1000
         },
         keyName: 'userId',
-        valueName: 'nickname',
+        valueName: 'realName',
         readonly: false
     }];
 

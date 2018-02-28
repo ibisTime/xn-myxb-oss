@@ -1,6 +1,7 @@
 $(function() {
     // 业务管理-品牌管理-排名管理-调整
     var code = getQueryString('code');
+    console.log(code);
     var view = !!getQueryString('v');
 
     var fields = [{
@@ -36,11 +37,14 @@ $(function() {
 
     var options = {
         fields: fields,
+        code : code,
+        beforeSubmit : function (data) {
+            data.amount *= 1000;
+            data.code = code;
+        },
         editCode: '805279',
-        code: {
-            code: code,
-            companyCode:OSS.companyCode
-        }
+        detailCode : '805277',
+
     };
     options.buttons = [{
         title: '确认',
@@ -49,6 +53,7 @@ $(function() {
                 var data = $('#jsForm').serializeObject();
                 data.code = code;
                 data.amount *= 1000;
+
                 reqApi({
                     code: "805279",
                     json: data

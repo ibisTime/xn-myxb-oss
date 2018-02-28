@@ -14,7 +14,10 @@ $(function() {
         title : '专长领域'
     }, {
         field : 'style',
-        title : '授课风格'
+        title : '授课风格',
+        type : 'select',
+        key: 'style',
+        keyCode:'805906'
     }, {
         field : 'remark',
         title : '备注'

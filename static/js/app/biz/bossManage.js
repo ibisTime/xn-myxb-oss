@@ -32,9 +32,6 @@ $(function() {
         valueName: 'dvalue'
 	}, {
 		field : 'remark',
-		title : '积分余额'
-	},{
-		field : 'remark',
 		title : '团队顾问'
 	}, {
         field : 'status',

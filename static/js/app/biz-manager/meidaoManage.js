@@ -5,7 +5,7 @@ $(function() {
 		title : '',
 		checkbox : true
 	}, {
-		field : 'loginName',
+		field : 'realName',
 		title : '姓名',
 		search: true
 	}, {
@@ -20,16 +20,9 @@ $(function() {
 	}, {
 		field : 'handler',
 		title : '经纪人',
-        type : 'select',
-        listCode: '805120',
-        params: {
-            companyCode : OSS.company,
-            kind : 'M',
-            start : 1,
-            limit : 10
-        },
-        keyName: 'userId',
-        valueName: 'nickname'
+        formatter : function (v, data) {
+            return data.handlerUser? data.handlerUser.realName : '-';
+        }
 	}, {
 		field : 'level',
 		title : '等级',
@@ -52,7 +45,10 @@ $(function() {
 		title : '专长领域'
 	}, {
 		field : 'style',
-		title : '授课风格'
+		title : '授课风格',
+        type: 'select',
+        formatter : Dict.getNameForList('style'),
+        key: 'style'
 	}, {
 		field : 'location',
 		title : '是否推荐',
@@ -78,7 +74,7 @@ $(function() {
 	$('#checkBtn').off().click(function() {
         var selRecords = $('#tableList').bootstrapTable('getSelections');
         if (selRecords[0].status == '3') {
-            window.location.href = "../biz-manager/meidaoManage_check.html?v=0&code="+selRecords[0].userId+"&mobile="+selRecords[0].mobile;
+            window.location.href = "../biz-manager/meidaoManage_addedit.html?check=1&v=0&code="+selRecords[0].userId+"&mobile="+selRecords[0].mobile;
         }else {
             toastr.info('该状态下不能进行审核');
         }
@@ -192,6 +188,24 @@ $(function() {
             return;
         }
         window.location.href = './meidaoManage_scheduleList.html?code='+selRecords[0].userId;
+    });
+    // 详情
+    $('#detailBtn').off().click(function() {
+        var selRecords = $('#tableList').bootstrapTable('getSelections');
+        if (selRecords.length <= 0) {
+            toastr.info("请选择记录");
+            return;
+        }
+        window.location.href = './meidaoManage_detail.html?v=1&code='+selRecords[0].userId;
+    });
+    // 修改
+    $('#editBtn').click(function() {
+        var selRecords = $('#tableList').bootstrapTable('getSelections');
+        if (selRecords.length <= 0) {
+            toastr.info("请选择记录");
+            return;
+        }
+        window.location.href = './meidaoManage_addedit.html?code='+selRecords[0].userId+'&level='+selRecords[0].level;
     });
 
 });

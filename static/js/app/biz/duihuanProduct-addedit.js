@@ -15,12 +15,13 @@ $(function() {
         field : 'price',
         title : '积分',
         required : true,
-        formatter : view?'':moneyFormat,
+        formatter : view || code?moneyFormat: '',
         number : true
     }, {
         field : 'quantity',
         title : '库存',
-        required : true
+        required : true,
+        number : true
     }, {
         field : 'advPic',
         title : '广告图',
@@ -74,6 +75,13 @@ $(function() {
         editCode: '805282',
         view: view,
         beforeSubmit:function (data) {
+            if(data.price.indexOf('.')!=-1) {
+                toastr.info('积分价格只能为整数');
+                return
+            }else if(data.quantity.indexOf('.')!=-1) {
+                toastr.info('库存只能为整数');
+                return
+            }
             if(data.faceKind.length>1) {
                 data.faceKind = data.faceKind.join(',');
             }

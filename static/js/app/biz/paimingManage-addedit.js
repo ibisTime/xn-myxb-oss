@@ -1,47 +1,65 @@
 $(function() {
     // 业务管理-品牌管理-排名管理-调整
-    var userId = getQueryString('userId');
+    var code = getQueryString('code');
     var view = !!getQueryString('v');
 
     var fields = [{
-        field : 'name',
+        field : 'periods',
         title : '期数',
-        type: 'select',
-        required : true
-    }, {
-        field : 'url',
-        title : '店铺',
+        listCode: '805127',
         type : 'select',
+        params : {
+            type : '0'
+        },
+        keyName : 'periods',
+        searchName :'periods',
+        valueName: 'periods',
         required : true
     }, {
-        field : 'orderNo',
+        field : 'refNo',
+        title : '店铺',
+        required : true,
+        type : 'select',
+        params : {
+            start : 1,
+            limit : 100,
+            type : 'C'
+        },
+        listCode: '805120',
+        keyName : 'userId',
+        valueName: 'realName'
+    }, {
+        field : 'rank',
         title : '排名',
         required : true
     }, {
-        field : 'remark',
+        field : 'amount',
         title : '业绩额',
         required : true,
         formatter : moneyFormat
     }];
 
     var options = {
-        fields: columns,
-        detailCode: '805121',
-        code: {
-            kind: "C",
-            companyCode:OSS.companyCode,
-            userId: userId
-        }
+        fields: fields,
+        code : code,
+        beforeSubmit : function (data) {
+            data.amount *= 1000;
+            data.code = code;
+        },
+        editCode: '805131',
+        detailCode : '805130',
+
     };
     options.buttons = [{
         title: '确认',
         handler: function() {
             if ($('#jsForm').valid()) {
-                var data = {};
-                data['userId'] = userId;
-                data["remark"] = $("#remark").val();
+                var data = $('#jsForm').serializeObject();
+                data.code = code;
+                data.amount *= 1000;
+
                 reqApi({
-                    code: "805195",
+                    code: "805131",
                     json: data
                 }).done(function() {
                     sucDetail();

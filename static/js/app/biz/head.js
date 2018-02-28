@@ -17,9 +17,9 @@ $(function() {
 		field : 'kind',
 		title : '针对角色',
         formatter: function (v, data) {
-            return data.kind.replace(/0/, "美导")
-                .replace(/1/, "讲师")
-                .replace(/2/, "专家")
+            return data.kind.replace(/T/, "美导")
+                .replace(/L/, "讲师")
+                .replace(/S/, "专家")
         }
 	}, {
 		field : 'level',

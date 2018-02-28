@@ -10,14 +10,14 @@ $(function() {
         type : 'checkbox',
         items :[
             {   // key是构建的checkbox的value属性，也就意味着是实际勾选后传过去的值
-                key : '0',
+                key : 'T',
                 // value是checkbox后面跟的label显示的内容，并非传到后台的内容
                 value : '美导'
             }, {
-                key : '1',
+                key : 'L',
                 value : '讲师'
             },{
-                key : '2',
+                key : 'S',
                 value : '专家'
             }
         ]
@@ -32,7 +32,8 @@ $(function() {
         field : 'url',
         title : '头像',
         type : 'img',
-        single : true
+        single : true,
+        required : true
     }, {
         field : 'remark',
         title : '备注'

@@ -91,7 +91,7 @@ $(function() {
                 data1 = data;
             },
             addCode : '805291',
-            detailCode: '805295',
+            detailCode: '805293',
             view: view
         });
         $('#subBtn').click(function () {
@@ -106,7 +106,7 @@ $(function() {
         buildDetail({
             fields: fields,
             code:code,
-            detailCode: '805295',
+            detailCode: '805293',
             view: view
         });
     }

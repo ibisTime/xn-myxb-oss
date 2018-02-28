@@ -50,7 +50,7 @@ $(function() {
 
 	buildList({
 		columns: columns,
-		pageCode: '805293'
+		pageCode: '805294'
 	});
     // 发货
     $('#fahuoBtn').click(function() {

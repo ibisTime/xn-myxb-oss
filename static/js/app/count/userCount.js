@@ -1,45 +1,43 @@
 $(function() {
-	// 统计分析-用户统计
-	var columns = [{
-		field : '',
-		title : '',
-		checkbox : true
-	}, {
-		field : 'name',
-		title : '菜单名称',
-		search: true
-	}, {
-		field : 'url',
-		title : '菜单url'
-	}, {
-		field : 'parentCode',
-		title : '父菜单编号',
-		type : 'select',
-		listCode: '805001',
-		params: {
-			type: '1'
-		},
-		keyName: 'code',
-		valueName: '{{code.DATA}} {{name.DATA}}',
-		search: true
-	}, {
-		field : 'type',
-		title : '类型',
-		type : 'select',
-		data: {'1': '菜单', '2': '按钮'},
-		search: true
-	}, {
-		field : 'orderNo',
-		title : '菜单顺序'
-	}, {
-		field : 'remark',
-		title : '备注'
-	}];
+    var accountNumberCNY;
+    var accountNumberJF;
+    var accountNumberTG;
+     reqApi({
+         code: '805700'
+     }).done(function(data) {
+         $("#amount-ZJ").text(data.totalZJCount);
+         $("#amount-MD").text(data.totalMDCount);
+         $("#amount-JS").text(data.totalJSCount);
+         $("#amount-LB").text(data.totalMRYCount);
+         $("#amount-newZJ").text(data.newZJCount);
+         $("#amount-newMD").text(data.newMDCount);
+         $("#amount-newJS").text(data.newJSCount);
+         $("#amount-newLB").text(data.newMRYCount);
+         // accountNumberCNY = data[0].accountNumber;
+         // $("#amount-JF").text(moneyFormat(data[1]?data[1].amount:0));
+         // accountNumberJF = data[1].accountNumber;
+     });
 
-	buildList({
-		router: 'menu',
-		columns: columns,
-		pageCode: '805000',
-		deleteCode: '805004'
-	});
+     // reqApi({
+     //     code: '802503',
+     //     json: {
+     //         userId: OSS.SYS_USER + "_TG"
+     //     }
+     // }).then(function(data) {
+     //     $("#amount-TG").text("￥" + moneyFormat(data[0]?data[0].amount:0));
+     //     accountNumberTG = data[0].accountNumber;
+     // });
+
+     // $("#CNYls-Btn").click(function() {
+     //     location.href = "ledger.html?accountNumber=" + accountNumberCNY + "&kind=CNY";
+     // });
+     // $("#JFls-Btn").click(function() {
+     //     location.href = "ledger.html?accountNumber=" + accountNumberJF + "&kind=JF";
+     // });
+     // $("#accoutGrantBtn").click(function() {
+     //     location.href = "ledger.html?accountNumber=" + accountNumberTG + "&kind=TG";
+     // });
+     // $("#accouBtn").click(function() {
+     //     window.location.href = 'account_enchashment.html?accountNumber=' + accountNumberTG;
+     // });
 });

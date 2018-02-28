@@ -67,7 +67,7 @@ $(function() {
         code: {
             code: code
         },
-        detailCode: '805121',
+        detailCode: '805521',
         view: view
     });
 

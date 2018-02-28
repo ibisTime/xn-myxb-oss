@@ -1,8 +1,36 @@
 $(function() {
     // 业务管理-专家管理-专家管理
     var code = getQueryString('code');
+    var mobile = getQueryString('mobile');
+    console.log(mobile);
     var view = !!getQueryString('v');
     var check = !!getQueryString('check');
+    var level = getQueryString('level') || 1;
+
+
+
+    if(code) {
+        reqApi({
+            code: '805121',
+            json: {
+                userId: code
+            }
+        }, true).then(function (data) {
+            $("#photo").css('background','url("' + OSS.picBaseUrl+'/'+data.photo + '")');
+            $("#photo").css('background-size','cover');
+            $("#photo").attr("data-url",data.photo);
+            $("#photo").attr("src",OSS.picBaseUrl+'/'+data.photo);
+        })
+    }
+    //分页器用
+    var config={
+        start:1,
+        limit:10,
+        level:level,
+        kind :'S'
+    };
+
+
 
     var fields = [{
         field: 'kind',
@@ -17,66 +45,39 @@ $(function() {
         field : 'realName',
         title : '真实姓名',
         required : true
-    },{
+    }, {
         field : 'mobile',
-        title : '手机号'
-    }, {
-        field : 'orderNo',
-        title : '推荐人',
-        formatter : function (v,data) {
-            return data.refereeUser?data.refereeUser.realName:'-';
-        }
-    }, {
-        field : 'level',
-        title : '等级',
-        type: 'select',
-        listCode: '805906',
-        params :{
-            parentKey : 'level'
-        },
-        keyName : 'dkey',
-        valueName: 'dvalue'
-    },
-    //     {
-    //     field : 'remark',
-    //     title : '积分余额'
-    // },
-        {
-            field : 'status',
-            title : '状态',
-            search: true,
-            type: 'select',
-            formatter : Dict.getNameForList('user_status'),
-            key: 'user_status'
+        title : '手机号',
+        required : true,
+        mobile : true
     }, {
         field : 'speciality',
         title : '专长领域'
     }, {
         field : 'style',
-        title : '授课风格'
+        title : '授课风格',
+        type : 'select',
+        key: 'style',
+        keyCode:'805906'
     },{
-            field : 'photo',
-            title : '头像',
-            type : 'img',
-            single : true
+        field : 'photo',
+        title : '头像',
+        type : 'img',
+        single : true
     }, {
-            field : 'gender',
-            title : '性别',
-            type : 'select',
-            data: {'1': '男', '0': '女'},
-            required : true
-        }, {
-            field : 'introduce',
-            title : '个人简介',
-            required : true
-        },
-    //     {
-    //     field : 'orderNo',
-    //     title : '序号'
-    // },
-        {
+        field : 'gender',
+        title : '性别',
+        type : 'select',
+        data: {'1': '男', '0': '女'},
+        required : true
+    }, {
+        field : 'introduce',
+        title : '个人简介',
+        required : true
+    }, {
         field : 'remark',
-        title : '备注'
+        title : '备注',
+        readonly : check ? false : view
     },{
         field : 'handler',
         title : '经纪人',
@@ -92,109 +93,289 @@ $(function() {
         field: 'kind',
         type: 'hidden',
         value: 'S'
-    }, {
+    },{
         field : 'loginName',
         title : '登录名',
+        required : true,
         readonly : view?true:code?true:false,
-        required : true
     },{
         field : 'realName',
         title : '真实姓名',
         required : true
-    },{
+    }, {
         field : 'mobile',
         title : '手机号',
+        required : true,
+        mobile : true
+    },{
+        field : 'speciality',
+        title : '专长领域'
+    }, {
+        field : 'style',
+        title : '授课风格',
+        type : 'select',
+        key: 'style',
+        keyCode:'805906'
+    },{
+        field : 'photo',
+        title : '头像',
+        type: 'imgCheck',
+        imgCheckBtnVal:'头像选择',
+        imgCheckBtnId:'imgCheckBtn'
+    }, {
+        field : 'level',
+        title : '用户等级',
+        type : 'hidden'
+    }, {
+        field : 'gender',
+        title : '性别',
+        type : 'select',
+        data: {'1': '男', '0': '女'},
         required : true
-    },
-    //     {
-    //     field : 'orderNo',
-    //     title : '推荐人',
-    //     formatter : function (v,data) {
-    //         return data.refereeUser?data.refereeUser.realName:'-';
-    //     }
-    // },
-    //     {
-    //     field : 'level',
-    //     title : '等级',
-    //     type: 'select',
-    //     listCode: '805906',
-    //     params :{
-    //         parentKey : 'level'
-    //     },
-    //     keyName : 'dkey',
-    //     valueName: 'dvalue'
-    // },
-        //     {
-        //     field : 'remark',
-        //     title : '积分余额'
-        // },
-        // {
-        //     field : 'status',
-        //     title : '状态',
-        //     search: true,
-        //     type: 'select',
-        //     formatter : Dict.getNameForList('user_status'),
-        //     key: 'user_status'
-        // },
-        {
-            field : 'speciality',
-            title : '专长领域'
-        }, {
-            field : 'style',
-            title : '授课风格'
-        },{
-            field : 'photo',
-            title : '头像',
-            type : 'img',
-            single : true
-        }, {
-            field : 'gender',
-            title : '性别',
-            type : 'select',
-            data: {'1': '男', '0': '女'},
-            required : true
-        }, {
-            field : 'introduce',
-            title : '个人简介',
-            required : true,
-            type : 'textarea'
-        },
-        //     {
-        //     field : 'orderNo',
-        //     title : '序号'
-        // },
-        {
-            field : 'remark',
-            title : '备注'
-        }];
+    }, {
+        field : 'introduce',
+        title : '个人简介',
+        required : true,
+        type : 'textarea'
+    }, {
+        field : 'remark',
+        title : '备注',
+        readonly : check ? false : view
+    }];
 
-    if(view) {
-        buildDetail({
-            fields: fields,
+
+    //审核
+    var shenhe = [{
+        field: 'kind',
+        type: 'hidden',
+        value: 'S'
+    }, {
+        field : 'realName',
+        title : '真实姓名',
+        required : true
+    }, {
+        field : 'mobile',
+        title : '手机号',
+        required : true,
+        mobile : true
+    }, {
+        field : 'photo',
+        title : '头像',
+        type: 'imgCheck',
+        imgCheckBtnVal:'头像选择',
+        imgCheckBtnId:'imgCheckBtn'
+    }, {
+        field : 'gender',
+        title : '性别',
+        type : 'select',
+        data: {'1': '男', '0': '女'},
+        required : true
+    }, {
+        field : 'introduce',
+        title : '个人简介',
+        type : 'textarea',
+        required : true
+    }, {
+        field : 'slogan',
+        title : '广告语',
+        required : true
+    },{
+        field : 'mainBrand',
+        title : '主荐品牌',
+        required : true,
+        search: true,
+        type: 'select',
+        listCode: '805258',
+        keyName : 'code',
+        valueName: 'name'
+    },{
+        field : 'speciality',
+        title : '专长领域'
+    }, {
+        field : 'style',
+        title : '授课风格',
+        type : 'select',
+        key: 'style',
+        keyCode:'805906'
+    },{
+        field : 'remark',
+        title : '备注'
+    }];
+
+    // 审核用按钮
+    var buttons = [{
+        title: '通过',
+        handler: function() {
+            if ($('#jsForm').valid()) {
+                var data = $('#jsForm').serializeObject();
+                data.approveResult = '1';
+                data.kind = 'S';
+                data.userId = code;
+                data.mobile = mobile;
+                data.approver = getUserName();
+                data.approver = getUserName();
+                data.introduce = $('#introduce').val();
+                data.photo = $("#photo").attr("data-url");
+                reqApi({
+                    code: '805044',
+                    json: data
+                }).done(function(data) {
+                    sucDetail();
+                });
+            }
+        }
+    }, {
+        title: '不通过',
+        handler: function() {
+            if ($('#jsForm').valid()) {
+                var data = $('#jsForm').serializeObject();
+                data.result = '0';
+                data.kind = 'S';
+                data.code = code;
+                data.mobile = mobile;
+                data.approver = getUserName();
+                data.introduce = $('#introduce').val();
+                data.photo = $("#photo").attr("data-url");
+                reqApi({
+                    code: '805044',
+                    json: data
+                }).done(function(data) {
+                    sucDetail();
+                });
+            }
+        }
+    }, {
+        title: '返回',
+        handler: function() {
+            goBack();
+        }
+    }];
+    if(check) {
+        var options = {
+            fields: shenhe,
             code: {
                 userId: code
             },
-            addCode : '805042',
-            editCode : '805095',
-            detailCode: '805121',
-            view: view
-        });
-    }else{
-        buildDetail({
-            fields: columns,
-            code : {
-                userId : code
-            },
+            view: false,
+            buttons : buttons,
             beforeSubmit : function (data) {
+                data.photo = $("#photo").attr("data-url");
                 data.userId = code;
-                return data;
+                return data
             },
             addCode : '805042',
-            editCode : '805095',
+            editCode : '805044',
             detailCode: '805121',
-            view: view
-        });
+        };
+        buildDetail(options);
+    }else {
+        if(view) {
+            buildDetail({
+                fields: fields,
+                code: {
+                    userId: code
+                },
+                addCode : '805042',
+                editCode : '805095',
+                detailCode: '805121',
+                view: view
+            });
+        }else{
+            buildDetail({
+                fields: columns,
+                code : {
+                    userId : code
+                },
+                beforeSubmit : function (data) {
+                    data.userId = code;
+                    if(data.level==""){
+                        delete data.level
+                    }
+                    data.photo = $("#photo").attr("data-url");
+                    return data;
+                },
+                addCode : '805042',
+                editCode : '805095',
+                detailCode: '805121',
+                view: view
+            });
+        }
     }
 
+    $("#imgCheckBtn").click(function(){
+        showLoading()
+        getImg(true);
+        $("#dialog").removeClass("hidden")
+    })
 
+    function getImg(refresh){
+        refresh?config.start='1':'';
+        hideLoading()
+
+        //请求图片
+        reqApi({
+            code: '805443',
+            json: config
+        }, true).then(function(data){
+            var lists = data.list;
+            if(data.list.length){
+                var html = "";
+                for(var v of lists) {
+                    html += buildHtml(v);
+                }
+                $("#dialog .content .wrap").html(html);
+
+            }else{
+                config.start == 1 && $("#dialog .content").empty()
+            }
+            config.start == 1 && initPagination(data);
+        },hideLoading)
+
+        //弹窗图片点击
+        $("#dialog .content").on("click",'.item',function(){
+            var _this= $(this)
+            var url = _this.attr("data-url");
+            $("#photo").css('background','url("' + OSS.picBaseUrl+'/'+url + '")');
+            $("#photo").css('background-size','cover');
+            $("#photo").attr("data-url",url);
+            $("#photo").attr("src",OSS.picBaseUrl+'/'+url);
+            $("#dialog").addClass("hidden")
+        })
+
+        $('#no-Btn').click(function () {
+            $("#dialog").addClass("hidden")
+        })
+
+    }
+
+    function buildHtml(item){
+        var htmlTmpl='<div class="item" style = "display:inline-block" data-url="'+item.url+'"><img style="width: 100px;height: 100px" src="'+OSS.picBaseUrl+'/'+item.url+'" /></div>'
+
+        return htmlTmpl;
+    }
+
+    // 初始化分页器
+    function initPagination(data){
+        $("#pagination .pagination").pagination({
+            pageCount: data.totalPage,
+            showData: config.limit,
+            jump: true,
+            coping: true,
+            prevContent: '<img src="/static/images/arrow---left.png" />',
+            nextContent: '<img src="/static/images/arrow---right.png" />',
+            keepShowPN: true,
+            totalData: data.totalCount,
+            jumpIptCls: 'pagination-ipt',
+            jumpBtnCls: 'pagination-btn',
+            jumpBtn: '确定',
+            isHide: true,
+            callback: function(_this){
+                if(_this.getCurrent() != config.start){
+                    showLoading();
+                    config.start = _this.getCurrent();
+                    getImg();
+                }
+            }
+        });
+    }
 });

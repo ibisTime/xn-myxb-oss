@@ -22,7 +22,8 @@ $(function() {
         type : 'select',
         params : {
             start : 1,
-            limit : 100
+            limit : 100,
+            type : 'S'
         },
         listCode: '805120',
         keyName : 'userId',
@@ -40,19 +41,14 @@ $(function() {
 
     var options = {
         fields: fields,
-        editCode: '805279',
-        code: {
-            code: code,
-            companyCode:OSS.companyCode
-        }
-    };
-    var options = {
-        fields: fields,
-        editCode: '805279',
-        code: {
-            code: code,
-            companyCode:OSS.companyCode
-        }
+        code : code,
+        beforeSubmit : function (data) {
+            data.amount *= 1000;
+            data.code = code;
+        },
+        editCode: '805125',
+        detailCode : '805124',
+
     };
     options.buttons = [{
         title: '确认',
@@ -61,6 +57,7 @@ $(function() {
                 var data = $('#jsForm').serializeObject();
                 data.code = code;
                 data.amount *= 1000;
+
                 reqApi({
                     code: "805125",
                     json: data

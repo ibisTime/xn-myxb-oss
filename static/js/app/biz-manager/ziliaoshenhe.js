@@ -25,10 +25,7 @@ $(function() {
 		{
 		field : 'level',
 		title : '等级'
-	}, {
-		field : 'remark',
-		title : '积分余额'
-	}, {
+	},  {
 		field : 'speciality',
 		title : '专长领域'
 	}, {
