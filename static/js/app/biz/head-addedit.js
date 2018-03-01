@@ -19,6 +19,9 @@ $(function() {
             },{
                 key : 'S',
                 value : '专家'
+            },{
+                key : 'C',
+                value : '美容院'
             }
         ]
     }, {

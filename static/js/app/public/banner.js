@@ -8,6 +8,12 @@ $(function() {
 		title: 'banner名称',
 		field: 'name',
         search:true
+	}, {
+		title: '分类',
+		field: 'kind',
+        search:true,
+        key: 'banner_kind',
+        formatter: Dict.getNameForList("banner_kind"),
 	},{
 		title: '位置',
 		field: 'location',

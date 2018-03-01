@@ -10,23 +10,12 @@ $(function() {
     },{
         field : 'loginName',
         title : '登录名',
-        readonly : view?true:code?true:false,
-        required : true,
-    }, {
-        field : 'nickname',
-        title : '昵称',
-        required : true
-    }, {
-        field : 'gender',
-        title : '性别',
-        required : true,
-        type: 'select',
-        data: {'1': '男', '0': '女'}
+        hidden : view?false : true
     }, {
         field : 'realName',
         title : '真实姓名',
         required : true
-    }, {
+    },  {
         field : 'mobile',
         title : '手机号',
         required : true,
@@ -49,16 +38,6 @@ $(function() {
                 value : '专家'
             }
         ]
-    }, {
-        field : 'photo',
-        title : '头像',
-        type : 'img',
-        single : true
-    }, {
-        field : 'introduce',
-        title : '介绍',
-        required : true,
-        type : 'textarea'
     },{
         field : 'remark',
         title : '备注'
@@ -76,6 +55,7 @@ $(function() {
         beforeSubmit : function (data) {
             data.serviceKind = data.serviceKind.toString();
             data.userId = code;
+            data.loginName = data.mobile;
             return data;
         }
     });

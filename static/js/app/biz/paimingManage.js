@@ -7,9 +7,37 @@ $(function() {
 	}, {
 		field : 'periods',
 		title : '期数'
+	},{
+		field : 'periods',
+		title : '期数',
+		listCode: '805127',
+		search : true,
+        type : 'select',
+        params : {
+            type : '2'
+        },
+        keyName : 'periods',
+        searchName :'periods',
+        valueName: 'periods',
+		visible : false
 	}, {
 		field : 'name',
 		title : '店铺'
+	}, {
+		field : 'refNo',
+		title : '店铺',
+		listCode: '805120',
+        params: {
+            companyCode : OSS.company,
+            kind : 'C',
+            start : 1,
+            limit : 100
+        },
+        keyName: 'userId',
+        valueName: 'storeName',
+        type : 'select',
+		search : true,
+        visible : false
 	}, {
 		field : 'rank',
 		title : '排名'
@@ -18,18 +46,20 @@ $(function() {
 		title : '业绩额',
 		formatter : moneyFormat
 	}];
-// 调整
-//     $('#adjustBtn').click(function() {
-//         var selRecords = $('#tableList').bootstrapTable('getSelections');
-//         if (selRecords.length <= 0) {
-//             toastr.info("请选择记录");
-//             return;
-//         }
-//         window.location.href = "../biz/paimingManage_addeddit.html?accountCode=" + selRecords[0].accountNumber;
-//
-//     });
+
 	buildList({
 		columns: columns,
 		pageCode: '805128'
 	});
+    // 详情
+    $('#detailBtn').off().click(function() {
+        var selRecords = $('#tableList').bootstrapTable('getSelections');
+        if (selRecords.length <= 0) {
+            toastr.info("请选择记录");
+            return;
+        }
+        window.location.href = "../biz/paimingManage_detail.html?v=1&code=" + selRecords[0].code;
+
+    });
+
 });

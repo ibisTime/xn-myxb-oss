@@ -36,11 +36,21 @@ $(function() {
 		field : 'remark',
 		title : '备注'
 	}];
+    if(sessionStorage.getItem('loginKind') == 'A') {
+    buildList({
+        columns: columns,
+        searchParams : {
+            adviser : getUserId()
+        },
+        pageCode: '805256'
+    });
+}else {
+    buildList({
+        columns: columns,
+        pageCode: '805256'
+    });
+}
 
-	buildList({
-		columns: columns,
-		pageCode: '805256'
-	});
 
     // 设置推荐
     $('#setTuijianBtn').click(function() {

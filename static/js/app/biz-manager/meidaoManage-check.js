@@ -4,7 +4,6 @@ $(function() {
     var mobile = getQueryString('mobile');
     var check = !!getQueryString('check');
     var view = !!getQueryString('view');
-    var data111;
     var fields = [{
         field: 'kind',
         type: 'hidden',
@@ -33,8 +32,8 @@ $(function() {
     }, {
         field : 'introduce',
         title : '个人简介',
-        type : 'textarea',
-        required : true
+        required : true,
+        type : 'doubleLine'
     }, {
         field : 'slogan',
         title : '广告语',

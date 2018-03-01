@@ -4,8 +4,6 @@ $(function() {
     var view = !!getQueryString('v');
     var add = !!getQueryString('add');
     var detail = getQueryString('detail');
-    // console.log(add);
-    // console.log("detail"+detail);
     var fields = [{
         field : 'name',
         title : '品牌名称',
@@ -37,16 +35,9 @@ $(function() {
     }, {
         field : 'status',
         title : '状态',
-        // readonly : true,
         data : {'1':'未上架','2':'已上架','3':'已下架'},
         type : !view? 'hidden' : 'select'
-    },
-    //     {
-    //     field : 'orderNo',
-    //     title : '次序',
-    //     required : true
-    // },
-        {
+    }, {
         field : 'remark',
         title : '备注'
     }];

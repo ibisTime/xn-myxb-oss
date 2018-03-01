@@ -41,7 +41,11 @@ $(function() {
         type : 'select',
         data: {'1': '男', '0': '女'},
         required : true
-    }, {
+    },  {
+        field : 'slogan',
+        title : '广告语',
+        required : true
+    },{
         field : 'introduce',
         title : '个人简介',
         required : true
@@ -55,7 +59,7 @@ $(function() {
         type : 'select',
         pageCode: '805121',
         keyName: 'userId',
-        valueName: 'nickname',
+        valueName: 'realName',
         hidden :view?false:true
     }];
 

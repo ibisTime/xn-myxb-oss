@@ -9,10 +9,6 @@ $(function() {
         required: true,
         readonly: view
     }, {
-        title: "昵称",
-        field: "nickname",
-        readonly: view
-    }, {
         field: 'idKind',
         title: '证件类型',
         type: 'select',

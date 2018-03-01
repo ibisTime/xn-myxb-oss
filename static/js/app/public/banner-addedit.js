@@ -44,6 +44,14 @@ $(function() {
         readonly: view,
         maxlength: 32 //
     }, {
+        title: '分类',
+        field: 'kind',
+        search:true,
+        type:'select',
+        key: 'banner_kind',
+        formatter: Dict.getNameForList("banner_kind"),
+        required : true
+    },{
         title: '位置',
         field: 'location',
         type: "select",

@@ -58,12 +58,19 @@ $(function() {
             '6':'已录入'
         }
 	}];
-
+    if(sessionStorage.getItem('loginKind') == 'M') {
+        var searchParams = {
+            type : 'S',
+            handler : getUserId()
+        }
+    }else {
+        var searchParams = {
+            type : 'S'
+        }
+    }
 	buildList({
 		columns: columns,
-        searchParams : {
-            type : 'S'
-        },
+        searchParams : searchParams,
         pageCode: '805520',
 		deleteCode: '805004'
 	});

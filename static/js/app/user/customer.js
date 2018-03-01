@@ -9,9 +9,6 @@ $(function() {
         title: '手机号',
         search: true
     }, {
-        field: 'nickname',
-        title: '昵称',
-    }, {
         field: 'idNo',
         title: '证件号码',
         search: true
@@ -35,7 +32,7 @@ $(function() {
             updater: ""
         },
         keyName: "userId",
-        valueName: "{{mobile.DATA}}--{{nickname.DATA}}",
+        valueName: "{{mobile.DATA}}--{{realName.DATA}}",
         searchName: "mobile",
         search: true,
         visible: false

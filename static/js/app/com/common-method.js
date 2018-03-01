@@ -1229,7 +1229,11 @@ function buildDetail(options) {
                 html += '<div id="' + item.field + '" style="display: inline-block;"></div>';
             } else if(item.type=='imgCheck'){
             	html += '<div class="imgCheckWrap"><div id="' + item.field + '" style="display: inline-block;width:100px;height: 100px"></div><input type="button" id="'+item.imgCheckBtnId+'" value="'+item.imgCheckBtnVal+'" class="btn" style="margin-left: 100px"/>';
-            }else {
+            }else if(item.type == 'doubleLine'){
+                html += '<textarea id="' + item.field + '" rows="2" style="height:80px;" name="' + item.field + '" class="control-def" ' + (item.placeholder ?
+                    ('placeholder="' + item.placeholder + '"') :
+                    '') + '/></li>';
+            } else {
                 html += '<input id="' + item.field + '" name="' + item.field + '" class="control-def" ' + (item.placeholder ?
                     ('placeholder="' + item.placeholder + '"') :
                     '') + '/></li>';

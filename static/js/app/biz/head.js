@@ -20,6 +20,7 @@ $(function() {
             return data.kind.replace(/T/, "美导")
                 .replace(/L/, "讲师")
                 .replace(/S/, "专家")
+                .replace(/C/, "美容院")
         }
 	}, {
 		field : 'level',

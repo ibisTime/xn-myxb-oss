@@ -33,12 +33,23 @@ $(function() {
 		field : 'remark',
 		title : '备注'
 	}];
+if(sessionStorage.getItem('loginKind') == 'A') {
+    buildList({
+        columns: columns,
+        searchParams : {
+            adviser : getUserId()
+        },
+        pageCode: '805266',
+        deleteCode: '805004'
+    });
+}else {
+    buildList({
+        columns: columns,
+        pageCode: '805266',
+        deleteCode: '805004'
+    });
+}
 
-	buildList({
-		columns: columns,
-		pageCode: '805266',
-		deleteCode: '805004'
-	});
 
     // 上架
     $('#upBtn').click(function() {
@@ -152,6 +163,6 @@ $(function() {
             toastr.info("请选择记录");
             return;
         }
-        window.location.href = './meidaoManage_pinglun.html?code='+selRecords[0].code;
+        window.location.href = './chanpinManage_pinglun.html?code='+selRecords[0].code;
     });
 });

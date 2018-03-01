@@ -10,17 +10,7 @@ $(function() {
 		search: true
 	}, {
 		field : 'realName',
-		title : '下单用户',
-        // search: true,
-        // type: 'select',
-        // listCode: '805120',
-        // keyName : 'realName',
-        // searchName :'realName',
-        // valueName: 'realName',
-		// params : {
-		// 	start : 1,
-		// 	limit : 10
-		// }
+		title : '下单用户'
 	}, {
 		field : 'productName',
 		title : '产品名称'
@@ -54,11 +44,21 @@ $(function() {
 		field : 'approveNote',
 		title : '备注'
 	}];
+if(sessionStorage.getItem('loginKind') == 'A') {
+    buildList({
+        columns: columns,
+		searchParams : {
+        	adviser : getUserId()
+		},
+        pageCode: '805273'
+    });
+}else {
+    buildList({
+        columns: columns,
+        pageCode: '805273'
+    });
+}
 
-	buildList({
-		columns: columns,
-		pageCode: '805273'
-	});
 
     // 审核
     $('#checkBtn').click(function() {

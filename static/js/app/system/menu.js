@@ -33,10 +33,15 @@ $(function() {
 		title : '菜单顺序'
 	}, {
         field: 'kind',
-        title: '可见用户类型',
+        title: '菜单针对对象',
         type : 'select',
-        data: {'L': '讲师', 'S': '专家','T' :'美导'},
-        search: true
+        search: true,
+        listCode: '805906',
+		params : {
+        	parentKey : 'menu_kind'
+		},
+        keyName: 'dkey',
+        valueName: 'dvalue'
     },{
 		field : 'remark',
 		title : '备注'

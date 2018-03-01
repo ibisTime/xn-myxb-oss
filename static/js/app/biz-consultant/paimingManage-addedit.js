@@ -1,7 +1,6 @@
 $(function() {
     // 业务管理-品牌管理-排名管理-调整
     var code = getQueryString('code');
-    console.log(code);
     var view = !!getQueryString('v');
 
     var fields = [{
@@ -23,7 +22,7 @@ $(function() {
         type : 'select',
         listCode: '805258',
         keyName : 'code',
-        valueName: 'name'
+        valueName: 'name',
     }, {
         field : 'rank',
         title : '排名',
@@ -32,6 +31,7 @@ $(function() {
         field : 'amount',
         title : '业绩额',
         required : true,
+        number : true,
         formatter : moneyFormat
     }];
 
@@ -39,7 +39,7 @@ $(function() {
         fields: fields,
         code : code,
         beforeSubmit : function (data) {
-            data.amount *= 1000;
+            data.amount = +$('#amount').val()*1000;
             data.code = code;
         },
         editCode: '805279',
@@ -51,8 +51,10 @@ $(function() {
         handler: function() {
             if ($('#jsForm').valid()) {
                 var data = $('#jsForm').serializeObject();
+                console.log(data);
+                console.log($('#amount').val());
                 data.code = code;
-                data.amount *= 1000;
+                data.amount = +$('#amount').val()*1000;
 
                 reqApi({
                     code: "805279",

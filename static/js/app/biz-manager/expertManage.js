@@ -61,13 +61,21 @@ $(function() {
 		field : 'remark',
 		title : '备注'
 	}];
-
+if(sessionStorage.getItem('loginKind') == 'M') {
+    var searchParams = {
+        companyCode : OSS.company,
+        kind : 'S',
+        handler : getUserId()
+    }
+}else {
+    var searchParams = {
+        companyCode : OSS.company,
+        kind : 'S'
+    }
+}
 	buildList({
 		columns: columns,
-        searchParams: {
-            companyCode : OSS.company,
-            kind : 'S'
-        },
+        searchParams: searchParams,
         pageCode: '805120'
 	});
     // 审核
@@ -193,19 +201,11 @@ $(function() {
     // 详情
     $('#detailBtn').off().click(function() {
         var selRecords = $('#tableList').bootstrapTable('getSelections');
-        if (selRecords.length <= 0) {
-            toastr.info("请选择记录");
-            return;
-        }
         window.location.href = './expertManage_detail.html?v=1&code='+selRecords[0].userId;
     });
     // 修改
     $('#editBtn').click(function() {
         var selRecords = $('#tableList').bootstrapTable('getSelections');
-        if (selRecords.length <= 0) {
-            toastr.info("请选择记录");
-            return;
-        }
         window.location.href = './expertManage_addedit.html?code='+selRecords[0].userId+'&level='+selRecords[0].level;
     });
 });

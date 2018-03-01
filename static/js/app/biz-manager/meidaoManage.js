@@ -62,12 +62,21 @@ $(function() {
 		field : 'remark',
 		title : '备注'
 	}];
-	buildList({
-		columns: columns,
-        searchParams: {
+	if(sessionStorage.getItem('loginKind') == 'M') {
+	    var searchParams = {
+            companyCode : OSS.company,
+            kind : 'T',
+            handler : getUserId()
+        }
+    }else {
+        var searchParams = {
             companyCode : OSS.company,
             kind : 'T'
-        },
+        }
+    }
+	buildList({
+		columns: columns,
+        searchParams: searchParams,
         pageCode: '805120'
 	});
 	// 审核
@@ -192,19 +201,11 @@ $(function() {
     // 详情
     $('#detailBtn').off().click(function() {
         var selRecords = $('#tableList').bootstrapTable('getSelections');
-        if (selRecords.length <= 0) {
-            toastr.info("请选择记录");
-            return;
-        }
         window.location.href = './meidaoManage_detail.html?v=1&code='+selRecords[0].userId;
     });
     // 修改
     $('#editBtn').click(function() {
         var selRecords = $('#tableList').bootstrapTable('getSelections');
-        if (selRecords.length <= 0) {
-            toastr.info("请选择记录");
-            return;
-        }
         window.location.href = './meidaoManage_addedit.html?code='+selRecords[0].userId+'&level='+selRecords[0].level;
     });
 

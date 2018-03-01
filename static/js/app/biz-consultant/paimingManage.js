@@ -6,10 +6,21 @@ $(function() {
 		checkbox : true
 	}, {
 		field : 'periods',
-		title : '期数',
-        // search: true,
-        // type: 'select'
+		title : '期数'
 	}, {
+        field : 'periods',
+        title : '期数',
+        listCode: '805127',
+        search : true,
+        type : 'select',
+        params : {
+            type : '0'
+        },
+        keyName : 'periods',
+        searchName :'periods',
+        valueName: 'periods',
+        visible : false
+    },{
 		field : 'refNo',
 		title : '品牌',
         search: true,
@@ -27,22 +38,32 @@ $(function() {
 		formatter : moneyFormat
 	}];
 
+	if(sessionStorage.getItem('loginKind') == 'A') {
+        var searchParams = {
+            type:'0',
+			adviser : getUserId()
+        }
+	}else {
+        var searchParams = {
+            type:'0'
+        }
+	}
+
 	buildList({
 		columns: columns,
-		searchParams : {
-			type:'0'
-		},
+		searchParams : searchParams,
 		pageCode: '805259',
 		deleteCode: '805004'
 	});
-    // 调整
-    // $('#adjustBtn').click(function() {
-    //     var selRecords = $('#tableList').bootstrapTable('getSelections');
-    //     if (selRecords.length <= 0) {
-    //         toastr.info("请选择记录");
-    //         return;
-    //     }
-    //     window.location.href = "../biz-consultant/paimingManage_addedit.html?accountCode=" + selRecords[0].accountNumber;
-    //
-    // });
+
+    // 详情
+    $('#detailBtn').off().click(function() {
+        var selRecords = $('#tableList').bootstrapTable('getSelections');
+        if (selRecords.length <= 0) {
+            toastr.info("请选择记录");
+            return;
+        }
+        window.location.href = "../biz-consultant/paimingManage_detail.html?v=1&code=" + selRecords[0].code;
+
+    });
 });

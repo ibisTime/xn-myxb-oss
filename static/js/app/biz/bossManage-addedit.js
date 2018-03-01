@@ -64,8 +64,7 @@ $(function() {
         }, {
             field : 'introduce',
             title : '个人简介',
-            required : true,
-            type : 'textarea'
+            required : true
         }, {
             field : 'remark',
             title : '备注'
@@ -134,8 +133,7 @@ $(function() {
         }, {
             field : 'introduce',
             title : '个人简介',
-            required : true,
-            type : 'textarea'
+            required : true
         }, {
             field : 'remark',
             title : '备注'

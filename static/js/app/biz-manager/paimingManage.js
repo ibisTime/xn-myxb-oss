@@ -8,15 +8,37 @@ $(function() {
 		field : 'periods',
 		title : '期数'
 	}, {
+        field : 'periods',
+        title : '期数',
+        listCode: '805127',
+        search : true,
+        type : 'select',
+        params : {
+            type : '1'
+        },
+        keyName : 'periods',
+        searchName :'periods',
+        valueName: 'periods',
+        visible : false
+    }, {
 		field : 'name',
-		title : '专家',
-        // search: true,
-        // type: 'select',
-        // listCode: '805258',
-        // keyName : 'code',
-        // searchName :'code',
-        // valueName: 'name'
+		title : '专家'
 	}, {
+        field : 'refNo',
+        title : '专家',
+        listCode: '805120',
+        params: {
+            companyCode : OSS.company,
+            kind : 'S',
+            start : 1,
+            limit : 100
+        },
+        keyName: 'userId',
+        valueName: 'realName',
+        type : 'select',
+        search : true,
+        visible : false
+    }, {
 		field : 'rank',
 		title : '排名'
 	}, {
@@ -24,23 +46,30 @@ $(function() {
 		title : '业绩额',
 		formatter : moneyFormat
 	}];
-
+if(sessionStorage.getItem('loginKind') == 'M') {
+	var searchParams = {
+        type:'1',
+		handler : getUserId()
+    }
+}else {
+    var searchParams = {
+        type:'1'
+    }
+}
 	buildList({
 		columns: columns,
-		searchParams : {
-			type:'1'
-		},
+		searchParams : searchParams,
 		pageCode: '805123',
 		deleteCode: '805004'
 	});
-    // 调整
-    // $('#adjustBtn').click(function() {
-    //     var selRecords = $('#tableList').bootstrapTable('getSelections');
-    //     if (selRecords.length <= 0) {
-    //         toastr.info("请选择记录");
-    //         return;
-    //     }
-    //     window.location.href = "../biz-consultant/paimingManage_addedit.html?accountCode=" + selRecords[0].accountNumber;
-    //
-    // });
+    // 详情
+    $('#detailBtn').off().click(function() {
+        var selRecords = $('#tableList').bootstrapTable('getSelections');
+        if (selRecords.length <= 0) {
+            toastr.info("请选择记录");
+            return;
+        }
+        window.location.href = "../biz-manager/paimingManage_detail.html?v=1&code=" + selRecords[0].code;
+
+    });
 });

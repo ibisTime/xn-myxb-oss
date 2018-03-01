@@ -28,13 +28,12 @@ $(function() {
             if ($('#jsForm').valid()) {
                 var data = $('#jsForm').serializeObject();
                 data.code = code;
-                console.log(data);
-                // reqApi({
-                //     code: '805272',
-                //     json: data
-                // }).done(function() {
-                //     sucDetail();
-                // });
+                reqApi({
+                    code: '805272',
+                    json: data
+                }).done(function() {
+                    sucDetail();
+                });
             }
 
         }

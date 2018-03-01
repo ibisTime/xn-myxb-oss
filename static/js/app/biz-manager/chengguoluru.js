@@ -46,13 +46,21 @@ $(function() {
         field : 'planDays',
         title : '排班天数'
     }];
-
+if(sessionStorage.getItem('loginKind') == 'M') {
+    var searchParams = {
+        type : 'S',
+        status : '5',
+        handler : getUserId()
+    }
+}else {
+    var searchParams = {
+        type : 'S',
+        status : '5'
+    }
+}
 	buildList({
 		columns: columns,
-        searchParams : {
-            type : 'S',
-            status : '5'
-        },
+        searchParams : searchParams,
         pageCode: '805520',
 		deleteCode: '805004'
 	});

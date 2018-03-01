@@ -3,12 +3,12 @@ $(function() {
     reqApi({
         code: '805701'
     }).done(function(data) {
-        $("#amount-FF").text(data.sendAmount);
-        $("#amount-HS").text(data.reAmount);
-        $("#amount-ZJ").text(data.zjAmount);
-        $("#amount-MRY").text(data.myrAmount);
-        $("#amount-MD").text(data.mdAmount);
-        $("#amount-JS").text(data.jsAmount);
+        $("#amount-FF").text(data.sendAmount/1000);
+        $("#amount-HS").text(data.reAmount/1000);
+        $("#amount-ZJ").text(data.zjAmount/1000);
+        $("#amount-MRY").text(data.myrAmount/1000);
+        $("#amount-MD").text(data.mdAmount/1000);
+        $("#amount-JS").text(data.jsAmount/1000);
         // accountNumberCNY = data[0].accountNumber;
         // $("#amount-JF").text(moneyFormat(data[1]?data[1].amount:0));
         // accountNumberJF = data[1].accountNumber;

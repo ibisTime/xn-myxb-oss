@@ -23,6 +23,7 @@ $(function() {
     }, {
         field : 'price',
         title : '价格',
+        formatter : moneyFormat,
         required : true
     },{
         field : 'pic',
@@ -47,6 +48,15 @@ $(function() {
     buildDetail({
         fields: columns,
         code: code,
+        beforeSubmit : function (data) {
+            // 判断价格
+            if(data.price>=9999999999999999) {
+                toastr.info('价格过大');
+                return
+            }
+            data.price*=1000;
+            return data
+        },
         addCode:'805260',
         detailCode: '805267',
         editCode:'805262',

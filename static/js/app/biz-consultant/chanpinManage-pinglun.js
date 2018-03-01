@@ -29,11 +29,13 @@ $(function() {
 	}
 	];
 
+    var searchParams = {
+        entityCode : code
+    }
+
 	buildList({
 		columns: columns,
-        searchParams : {
-            entityCode : code
-        },
+        searchParams : searchParams,
 		pageCode: '805425',
 		deleteCode: '805004'
 	});

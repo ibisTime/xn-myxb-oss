@@ -5,57 +5,48 @@ $(function() {
 		title : '',
 		checkbox : true
 	}, {
+        field : 'mobile',
+        title : '手机号'
+    }, {
 		field : 'realName',
 		title : '姓名',
 		search: true
 	}, {
-		field : 'mobile',
-		title : '手机号'
-	}, {
-		field : 'refereeUser',
-		title : '推荐人',
-        formatter : function (v,data) {
-            return data.refereeUser?data.refereeUser.realName:'-';
-        }
-	},
-		{
-		field : 'remark',
-		title : '经纪人'
-	},
-		{
-		field : 'level',
-		title : '等级'
-	},  {
+        field : 'slogan',
+        title : '广告语'
+    },{
 		field : 'speciality',
 		title : '专长领域'
 	}, {
 		field : 'style',
-		title : '授课风格'
+		title : '授课风格',
+		type: 'select',
+        formatter : Dict.getNameForList('style'),
+        key: 'style'
 	}, {
-		field : 'location',
-		title : '是否推荐',
-        // search: true,
-        // type: 'select',
-        data :{'0':'否','1':'是'}
-	},{
 		field : 'status',
 		title : '状态',
         search: true,
         type: 'select',
         data :{'1':'待审核','2':'审核不通过','3':'审核通过'}
-	}, {
-		field : 'orderNo',
-		title : '序号'
-	}, {
+	},  {
 		field : 'remark',
 		title : '备注'
 	}];
 
+    if(sessionStorage.getItem('loginKind') == 'M') {
+        var searchParams = {
+            type : 'T',
+            handler : getUserId()
+        }
+    }else {
+        var searchParams = {
+            type : 'T'
+        }
+    }
 	buildList({
 		columns: columns,
-		searchParams : {
-			type : 'T'
-		},
+		searchParams : searchParams,
 		pageCode: '805535'
 	});
     // 资料审核
@@ -66,7 +57,7 @@ $(function() {
             return;
         }
         if(selRecords[0].status == '1') {
-            window.location.href = "../biz-manager/ziliaoshenhe_addedit.html?v=1&code=" + selRecords[0].code;
+            window.location.href = "../biz-manager/ziliaoshenhe_addedit.html?v=1&check=1&code=" + selRecords[0].code;
         }else {
         	toastr.info('该状态不能进行审核');
 		}

@@ -14,12 +14,6 @@ $(function() {
         field : 'status',
         title : '状态',
         type: 'select',
-        // listCode: '805906',
-        // params :{
-        //     parentKey : 'comment_status'
-        // },
-        // keyName : 'dkey',
-        // valueName: 'dvalue'
         key: 'comment_status',
         keyCode:'805906',
     }, {

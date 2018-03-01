@@ -37,7 +37,7 @@ $(function() {
         number: true
     },  {
         field: 'kind',
-        title: '可见用户类型',
+        title: '菜单针对对象',
         listCode: '805906',
         params: {
             parentKey : 'menu_kind'

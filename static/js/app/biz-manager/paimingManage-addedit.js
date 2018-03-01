@@ -9,7 +9,7 @@ $(function() {
         listCode: '805127',
         type : 'select',
         params : {
-            type : '0'
+            type : '1'
         },
         keyName : 'periods',
         searchName :'periods',
@@ -27,7 +27,7 @@ $(function() {
         },
         listCode: '805120',
         keyName : 'userId',
-        valueName: 'realName'
+        valueName: '{{realName.DATA}}--{{storeName.DATA}}',
     }, {
         field : 'rank',
         title : '排名',

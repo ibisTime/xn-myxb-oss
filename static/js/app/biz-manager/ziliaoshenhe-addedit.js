@@ -1,55 +1,45 @@
 $(function() {
     // 业务管理-美导管理-资料审核-审核
     var code = getQueryString('code');
+    var check = getQueryString('check');
     var view = !!getQueryString('v');
 
     var fields = [{
+        field : 'mobile',
+        title : '手机号'
+    },{
         field : 'realName',
         title : '姓名'
     }, {
-        field : 'mobile',
-        title : '手机号'
-    }, {
-        field : 'orderNo',
-        title : '推荐人',
-        formatter : function (v,data) {
-            return data.refereeUser?data.refereeUser.realName:'-';
-        }
-    },
-    //     {
-    //     field : 'remark',
-    //     title : '经纪人'
-    // },
-    //     {
-    //     field : 'level',
-    //     title : '等级'
-    // },
-        {
         field : 'speciality',
         title : '专长领域'
     }, {
         field : 'style',
         title : '授课风格',
-            type : 'select',
-            key: 'style',
-            keyCode:'805906'
+        type : 'select',
+        key: 'style',
+        keyCode:'805906'
     }, {
-            field : 'location',
-            title : '是否推荐',
-            data :{'0':'否','1':'是'}
-    },
-    //     {
-    //     field : 'orderNo',
-    //     title : '序号'
-    // },
-        {
+        field : 'status',
+        title : '状态',
+        search: true,
+        type: 'select',
+        data :{'1':'待审核','2':'审核不通过','3':'审核通过'}
+    }, {
+        field : 'slogan',
+        title : '广告语'
+    },  {
+        field : 'introduce',
+        title : '个人简介',
+        type : 'doubleLine'
+    }, {
         field : 'remark',
         title : '备注',
-        readonly : false
+        readonly : check?false :view?true:false
     }];
 
 
-
+if(check) {
     var buttons = [{
         title: '通过',
         handler: function() {
@@ -58,7 +48,7 @@ $(function() {
                 data.approver = getUserName();
                 data.result = '1';
                 data.code = code;
-                data.remark = $('#reamrk').val();
+                data.remark = $('#remark').val();
                 reqApi({
                     code: '805531',
                     json: data
@@ -75,7 +65,7 @@ $(function() {
                 data.approver = getUserName();
                 data.result = '0';
                 data.code = code;
-                data.remark = $('#reamrk').val();
+                data.remark = $('#remark').val();
                 reqApi({
                     code: '805531',
                     json: data
@@ -95,10 +85,22 @@ $(function() {
         code: {
             code: code
         },
+        buttons : buttons,
         view: true,
-        buttons: buttons,
         detailCode: '805536',
     };
+}else {
+    var options = {
+        fields: fields,
+        code: {
+            code: code
+        },
+        view: true,
+        detailCode: '805536',
+    };
+}
+
+
     buildDetail(options);
 
 });
