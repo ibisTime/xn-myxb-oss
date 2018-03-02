@@ -76,10 +76,10 @@ $(function() {
         view: view,
         beforeSubmit:function (data) {
             if(data.price.indexOf('.')!=-1) {
-                toastr.info('积分价格只能为整数');
+                toastr.info('积分价格只能为整数,不能以逗号分隔');
                 return
             }else if(data.quantity.indexOf('.')!=-1) {
-                toastr.info('库存只能为整数');
+                toastr.info('库存只能为整数,不能以逗号分隔');
                 return
             }
             if(data.faceKind.length>1) {

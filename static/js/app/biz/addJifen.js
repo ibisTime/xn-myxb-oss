@@ -20,6 +20,10 @@ $(function() {
         valueName: 'dvalue',
         search: true
 	}, {
+		field : 'amount',
+		title : '积分余额',
+        formatter : moneyFormat
+	}, {
 		field : 'remark',
 		title : '备注'
 	}];
@@ -42,7 +46,7 @@ $(function() {
         window.location.href = "../biz/addJifen_addJifen.html?userId=" + selRecords[0].userId;
     });
     // 详情
-    $('#detailBtn').click(function() {
+    $('#detailBtn').off().click(function() {
         var selRecords = $('#tableList').bootstrapTable('getSelections');
         if (selRecords.length <= 0) {
             toastr.info("请选择记录");

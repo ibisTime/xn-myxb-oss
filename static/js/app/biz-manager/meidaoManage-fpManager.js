@@ -80,7 +80,8 @@ $(function() {
         },
         keyName: 'userId',
         valueName: 'realName',
-        readonly: false
+        readonly: false,
+        required : true
     }];
 
 

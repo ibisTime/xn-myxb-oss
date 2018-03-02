@@ -3,40 +3,40 @@ $(function() {
     reqApi({
         code: '805701'
     }).done(function(data) {
-        $("#amount-FF").text(data.sendAmount/1000);
-        $("#amount-HS").text(data.reAmount/1000);
-        $("#amount-ZJ").text(data.zjAmount/1000);
-        $("#amount-MRY").text(data.myrAmount/1000);
-        $("#amount-MD").text(data.mdAmount/1000);
-        $("#amount-JS").text(data.jsAmount/1000);
+        $("#amount-FF").text(moneyFormat(data.sendAmount));
+        $("#amount-HS").text(moneyFormat(data.reAmount));
+        $("#amount-ZJ").text(moneyFormat(data.zjAmount));
+        $("#amount-MRY").text(moneyFormat(data.myrAmount));
+        $("#amount-MD").text(moneyFormat(data.mdAmount));
+        $("#amount-JS").text(moneyFormat(data.jsAmount));
         // accountNumberCNY = data[0].accountNumber;
         // $("#amount-JF").text(moneyFormat(data[1]?data[1].amount:0));
         // accountNumberJF = data[1].accountNumber;
     });
 
      $("#FF-Btn").click(function() {
-         location.href = "ledger.html?kind=ff";
+         location.href = "ledgerFF.html";
      });
 
      $("#HS-Btn").click(function() {
-         location.href = "ledger.html?kind=hs";
+         location.href = "ledgerHS.html";
      });
      //
 
 
      $("#ZJ-Btn").click(function() {
-         location.href = "zhanghu.html?type=S";
+         location.href = "zhanghuS.html";
      });
 
      $("#MRY-Btn").click(function() {
-         location.href = "zhanghu.html?type=C";
+         location.href = "zhanghuC.html";
      });
 
      $("#MD-Btn").click(function() {
-         location.href = "zhanghu.html?type=T";
+         location.href = "zhanghuT.html";
      });
 
      $("#JS-Btn").click(function() {
-         location.href = "zhanghu.html?type=L";
+         location.href = "zhanghuL.html";
      });
 });

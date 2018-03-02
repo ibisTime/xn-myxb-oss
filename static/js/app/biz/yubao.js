@@ -46,11 +46,11 @@ $(function() {
             toastr.info("请选择记录");
             return;
         }
-        if(selRecords[0].status == '0') {
+        if(selRecords[0].status == '0' || selRecords[0].status == '2') {
             confirm('确定上架？').then(function () {
                 var dw = dialog({
                     content: '<form class="pop-form" id="popForm" novalidate="novalidate">' +
-                    '<ul class="form-info" id="formContainer"><li style="text-align:center;font-size: 15px;">请输入该喜报的位序</li></ul>' +
+                    '<ul class="form-info" id="formContainer"><li style="text-align:center;font-size: 15px;">请输入该预报的位序</li></ul>' +
                     '</form>'
                 });
 

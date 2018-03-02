@@ -74,7 +74,7 @@ $(function() {
         columns: columns,
         pageCode: '802520',
         beforeDetail: function(data) {
-            location.href = "ledger_addedit.html?v=1&code=" + data.code;
+            location.href = "ledgerFF_addedit.html?v=1&code=" + data.code;
         },
         beforeEdit: function(r) {
             if (r.status != '1') {

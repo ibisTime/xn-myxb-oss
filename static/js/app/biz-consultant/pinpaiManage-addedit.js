@@ -38,10 +38,17 @@ $(function() {
         data : {'1':'未上架','2':'已上架','3':'已下架'},
         type : !view? 'hidden' : 'select'
     }, {
+        field : 'brandAdviser',
+        title : '品牌顾问',
+        type : 'select',
+        listCode: '805121',
+        keyName: 'userId',
+        valueName: 'realName'
+    },{
         field : 'remark',
         title : '备注'
     }];
-
+// 新增
     var columns = [{
         field : 'name',
         title : '品牌名称',
@@ -70,19 +77,8 @@ $(function() {
         title : '备注'
     }];
 
-        if(add) {
-            buildDetail({
-                fields: columns,
-                code: {
-                    code : code,
-                    consultant:sessionStorage.getItem('loginKind') == 'A'?getUserId():''
-                },
-                detailCode: '805257',
-                addCode:'805250',
-                editCode:'805252',
-                view: view
-            });
-        }else {
+        if(view) {
+
             buildDetail({
                 fields: fields,
                 code: {
@@ -94,6 +90,32 @@ $(function() {
                 editCode:'805252',
                 view: view
             });
+
+        }else {
+            if(code) {
+                buildDetail({
+                    fields: columns,
+                    code:code,
+                    detailCode: '805257',
+                    addCode:'805250',
+                    editCode:'805252',
+                    view: view
+                });
+            }else {
+                buildDetail({
+                    fields: columns,
+                    code: {
+                        code : code,
+                        consultant:sessionStorage.getItem('loginKind') == 'A'?getUserId():''
+                    },
+
+                    detailCode: '805257',
+                    addCode:'805250',
+                    editCode:'805252',
+                    view: view
+                });
+            }
+
         }
 
 

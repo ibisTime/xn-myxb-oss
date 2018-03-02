@@ -8,9 +8,6 @@ $(function() {
 		field : 'remark',
 		title : '规则名称'
 	}, {
-		field : 'ckey',
-		title : '规则分类'
-	}, {
 		field : 'cvalue',
 		title : '数值'
 	}];

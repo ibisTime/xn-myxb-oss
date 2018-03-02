@@ -15,7 +15,7 @@ $(function() {
 		field : 'mobile',
 		title : '联系人手机号'
 	}, {
-		field : 'brandAdviser',
+		field : 'realName',
 		title : '品牌顾问'
 	}, {
 		field : 'location',
@@ -191,18 +191,13 @@ $(function() {
 
 
     });
-    // 加盟
-    // $('#addBtn').click(function() {
-    //     window.location.href = "../biz-consultant/pinpaiManage_addedit.html?add=true"
-    // });
-    // 修改
-    // 详情
-    // $('#detailBtn').click(function() {
-    //     var selRecords = $('#tableList').bootstrapTable('getSelections');
-    //     if (selRecords.length <= 0) {
-    //         toastr.info("请选择记录");
-    //         return;
-    //     }
-    //     window.location.href = "../biz-consultant/pinpaiManage_addedit.html?code="+selRecords[0].code+"&detail=11"
-    // });
+    // 设置品牌顾问
+    $('#setConsultantBtn').click(function() {
+        var selRecords = $('#tableList').bootstrapTable('getSelections');
+        if (selRecords.length <= 0) {
+            toastr.info("请选择记录");
+            return;
+        }
+        window.location.href = "../biz-consultant/pinpaiManage_setConsultant.html?code=" + selRecords[0].code+"&v=1";
+    });
 });

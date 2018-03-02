@@ -3,14 +3,11 @@ $(function() {
     var id = getQueryString('id');
     var view = !!getQueryString('v');
 
-    var fields = [{
-        field : 'ckey',
-        title : '规则分类',
-        readonly : true
-    }, {
+    var fields = [ {
         field : 'remark',
         title : '规则名称',
-        required : true
+        required : true,
+        readonly : true
     }, {
         field : 'cvalue',
         title : '数值',

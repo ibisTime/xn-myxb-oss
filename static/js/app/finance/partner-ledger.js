@@ -73,6 +73,6 @@ $(function() {
             toastr.info("请选择记录");
             return;
         }
-        location.href = "ledger_addedit.html?v=1&code=" + selRecords[0].code;
+        location.href = "ledgerFF_addedit.html?v=1&code=" + selRecords[0].code;
     });
 });

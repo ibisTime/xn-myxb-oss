@@ -1,7 +1,6 @@
 $(function() {
     // 业务管理-品牌顾问管理
     var code = getQueryString('code');
-    console.log(code);
     var view = !!getQueryString('v');
 
     var fields = [{

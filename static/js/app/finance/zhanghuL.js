@@ -16,7 +16,7 @@ $(function() {
     }, {
         title: "币种",
         field: "currency",
-        search : true,
+        // search : true,
         type: "select",
         key: "currency",
         formatter: Dict.getNameForList("currency")
@@ -46,7 +46,7 @@ $(function() {
         columns: columns,
         pageCode: "805350",
         searchParams: {
-            type : type
+            type : 'L'
         }
     });
 
@@ -61,7 +61,7 @@ $(function() {
             toastr.info("请选择记录");
             return;
         }
-        window.location.href = "zhanghu_addedit.html?accountNumber=" + selRecords[0].accountNumber + "&v=1";
+        window.location.href = "zhanghuS_addedit.html?accountNumber=" + selRecords[0].accountNumber + "&v=1";
     });
 
 });

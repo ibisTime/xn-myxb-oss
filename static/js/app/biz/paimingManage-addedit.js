@@ -55,6 +55,10 @@ $(function() {
         handler: function() {
             if ($('#jsForm').valid()) {
                 var data = $('#jsForm').serializeObject();
+                if(data.amount.indexOf(',') != -1) {
+                    toastr.info('业绩额需为数字，不能以逗号隔开');
+                    return
+                }
                 data.code = code;
                 data.amount *= 1000;
 

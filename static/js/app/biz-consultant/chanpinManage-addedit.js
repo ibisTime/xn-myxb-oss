@@ -49,6 +49,10 @@ $(function() {
         fields: columns,
         code: code,
         beforeSubmit : function (data) {
+            if(data.price.indexOf('.')!=-1) {
+                toastr.info('积分价格只能为整数,不能以逗号分隔');
+                return
+            }
             // 判断价格
             if(data.price>=9999999999999999) {
                 toastr.info('价格过大');

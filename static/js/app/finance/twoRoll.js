@@ -79,7 +79,7 @@ $(function() {
             companyCode: OSS.company
         },
         beforeDetail: function(data) {
-            location.href = "ledger_addedit.html?v=1&code=" + data.code;
+            location.href = "ledgerFF_addedit.html?v=1&code=" + data.code;
         },
         beforeSearch: function(data) {
             if (data.workDate) {

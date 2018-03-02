@@ -51,8 +51,10 @@ $(function() {
         handler: function() {
             if ($('#jsForm').valid()) {
                 var data = $('#jsForm').serializeObject();
-                console.log(data);
-                console.log($('#amount').val());
+                if(data.amount.indexOf(',') != -1) {
+                    toastr.info('业绩额需为数字，不能以逗号隔开');
+                    return
+                }
                 data.code = code;
                 data.amount = +$('#amount').val()*1000;
 

@@ -29,13 +29,13 @@ $(function() {
      // });
 
      // $("#CNYls-Btn").click(function() {
-     //     location.href = "ledger.html?accountNumber=" + accountNumberCNY + "&kind=CNY";
+     //     location.href = "ledgerFF.html?accountNumber=" + accountNumberCNY + "&kind=CNY";
      // });
      // $("#JFls-Btn").click(function() {
-     //     location.href = "ledger.html?accountNumber=" + accountNumberJF + "&kind=JF";
+     //     location.href = "ledgerFF.html?accountNumber=" + accountNumberJF + "&kind=JF";
      // });
      // $("#accoutGrantBtn").click(function() {
-     //     location.href = "ledger.html?accountNumber=" + accountNumberTG + "&kind=TG";
+     //     location.href = "ledgerFF.html?accountNumber=" + accountNumberTG + "&kind=TG";
      // });
      // $("#accouBtn").click(function() {
      //     window.location.href = 'account_enchashment.html?accountNumber=' + accountNumberTG;

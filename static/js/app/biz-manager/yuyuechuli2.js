@@ -78,6 +78,10 @@ $(function() {
     // 排班
     $('#paibanBtn').click(function() {
         var selRecords = $('#tableList').bootstrapTable('getSelections');
+        if (selRecords.length <= 0) {
+            toastr.info("请选择记录");
+            return;
+        }
         if(selRecords[0].status == '1') {
             window.location.href = "../biz-manager/yuyuechuli2_paiban.html?v=1&code=" + selRecords[0].code + "&check=1";
         }else {

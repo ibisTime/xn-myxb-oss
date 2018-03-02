@@ -82,6 +82,10 @@ $(function() {
 	// 审核
 	$('#checkBtn').off().click(function() {
         var selRecords = $('#tableList').bootstrapTable('getSelections');
+        if (selRecords.length <= 0) {
+            toastr.info("请选择记录");
+            return;
+        }
         if (selRecords[0].status == '3') {
             window.location.href = "../biz-manager/meidaoManage_addedit.html?check=1&v=0&code="+selRecords[0].userId+"&mobile="+selRecords[0].mobile;
         }else {
@@ -201,6 +205,10 @@ $(function() {
     // 详情
     $('#detailBtn').off().click(function() {
         var selRecords = $('#tableList').bootstrapTable('getSelections');
+        if (selRecords.length <= 0) {
+            toastr.info("请选择记录");
+            return;
+        }
         window.location.href = './meidaoManage_detail.html?v=1&code='+selRecords[0].userId;
     });
     // 修改

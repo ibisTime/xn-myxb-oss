@@ -23,10 +23,13 @@ $(function() {
         handler: function() {
             if ($('#jsForm').valid()) {
                 var data = $('#jsForm').serializeObject();
+                if(data.amount.indexOf('.')!=-1) {
+                    toastr.info('增加积分数只能为整数,不能以逗号分隔');
+                    return
+                }
                 data['toUserId'] = userId;
                 data["currency"] = 'JF';
                 data["amount"] *= 1000;
-                // data["fromUserId"] = getUserName();
                 reqApi({
                     code: "805340",
                     json: data

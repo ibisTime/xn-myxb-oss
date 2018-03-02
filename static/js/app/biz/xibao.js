@@ -46,7 +46,7 @@ $(function() {
             toastr.info("请选择记录");
             return;
         }
-        if(selRecords[0].status == '0') {
+        if(selRecords[0].status == '0' || selRecords[0].status == '2') {
             confirm('确定上架？').then(function () {
                 var dw = dialog({
                     content: '<form class="pop-form" id="popForm" novalidate="novalidate">' +
@@ -97,20 +97,6 @@ $(function() {
                         }
                     }]
                 });
-
-                //     dw.__center();
-                //     reqApi({
-                //         code: 805263,
-                //         json: {
-                //             code: selRecords[0].code,
-                //             location : '1',
-                //             orderNo: selRecords[0].orderNo,
-                //             updater : getUserName()
-                //         }
-                //     }).then(function(){
-                //         sucList();
-                //     });
-                // })
             })
         }
         else
