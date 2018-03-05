@@ -26,7 +26,7 @@ $(function() {
         required : true,
         search: true,
         type: 'select',
-        listCode: '805258',
+        listCode: '805257',
         keyName : 'code',
         valueName: 'name'
     }, {

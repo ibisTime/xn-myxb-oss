@@ -25,8 +25,8 @@ $(function() {
 	}, {
 		field : 'entityName',
 		title : '评论对象',
-        search: true,
-        type:'select'
+        // search: true,
+        // type:'select'
 	},{
 		field : 'commentDatetime',
 		title : '评论时间',

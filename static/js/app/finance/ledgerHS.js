@@ -22,7 +22,7 @@ $(function() {
         title: '业务类型',
         type: 'select',
         search: true,
-        key: "currency",
+        key: "biz_type",
         formatter: Dict.getNameForList("biz_type")
     }, {
         field: 'transAmount',

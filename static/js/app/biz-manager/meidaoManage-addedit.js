@@ -257,7 +257,8 @@ $(function() {
  			$("#dialog .content .wrap").html(html);
 
          }else{
-         	config.start == 1 && $("#dialog .content").empty()
+         	// config.start == 1 && $("#dialog .content").empty()
+         	config.start == 1 && $("#dialog .content").html('<p>暂无可使用的头像</p>');
          }
      	config.start == 1 && initPagination(data);
  	},hideLoading)

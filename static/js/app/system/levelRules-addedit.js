@@ -6,7 +6,15 @@ $(function() {
         field: 'ckey',
         required: true,
         maxlength: 20,
-        readonly: true
+        type: 'select',
+        readonly: true,
+        listCode: '805906',
+        params: {
+            parentKey : 'level'
+        },
+        keyName: 'dkey',
+        valueName: 'dvalue',
+        search: true
     },  {
         title: '参数值',
         field: 'cvalue',

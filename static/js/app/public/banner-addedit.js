@@ -48,8 +48,10 @@ $(function() {
         field: 'kind',
         search:true,
         type:'select',
+        // key: 'banner_kind',
+        // formatter: Dict.getNameForList("banner_kind"),
         key: 'banner_kind',
-        formatter: Dict.getNameForList("banner_kind"),
+        keyCode:'805906',
         required : true
     },{
         title: '位置',
@@ -96,5 +98,13 @@ $(function() {
         editCode: "805802",
         detailCode: '805807'
     });
-hideLoading();
+    $('#kind').change(function(){
+        var result = $('#kind').val();
+        if(result != '1') {
+            // 不是广告，不要url
+            $('#url').parent().css('display','none');
+        }else {
+            $('#url').parent().css('display','block');
+        }
+    });
 });

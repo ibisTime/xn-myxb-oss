@@ -32,12 +32,21 @@ $(function() {
 				if ($('#jsForm').valid()) {
 					var data = $('#jsForm').serializeObject();
 					data['id'] = data['code'];
-					reqApi({
-						code: '805911',
-						json: data
-					}).done(function(data) {
-						toastr.success('操作成功');
-					});
+                    var a = /^0\d{2,3}-[1-9]\d{6,7}$/;
+                    var myreg=/^[1][3,4,5,7,8][0-9]{9}$/;
+                    if(!a.test(data.cvalue) && !myreg.test(data.cvalue)) {
+                        toastr.info('请输入合法的号码');
+                        return
+					}else {
+                    	reqApi({
+                        code: '805911',
+                        json: data
+                    }).done(function(data) {
+                        toastr.success('操作成功');
+                    });
+
+					}
+
 				}
 			}
 		}]

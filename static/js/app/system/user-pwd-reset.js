@@ -6,7 +6,7 @@ $(function() {
 		type: 'hidden',
 		value: userId
 	}, {
-		field: 'adminUserId',
+		field: 'adminId',
 		type: 'hidden',
 		value: getUserId()
 	}, {
@@ -21,7 +21,7 @@ $(function() {
 		required: true
 	}, {
 		title: '管理员密码',
-		field: 'adminPwd',
+		field: 'adminLoginPwd',
 		type: 'password',
 		required: true
 	}];

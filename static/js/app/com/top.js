@@ -4,14 +4,17 @@ $(function() {
 		//判断域名是 hhr开头 合伙人域名 kind为11
 		// var kind = document.domain.substr(0, 1)=='h'?'PA':(sessionStorage.getItem('loginKind') || '01')
         var port = location.port;
-        var kind = port === 4108
+        // debugger;
+        var kind = port === '4408'
             ? 'P'
-            : port === 4107
+            : port === '4407'
                 ? 'A'
-                : port === 4106
-                    ? 'M'
-                    : 'P';
-        location.href = 'signin.html?kind=' + (sessionStorage.getItem('loginKind') || kind);
+                    : port === '4406'
+                        ?'M'
+                            :'P';
+        // location.href = 'signin.html?kind=' + (sessionStorage.getItem('loginKind') || kind);
+        location.href = 'signin.html?kind=' + kind;
+        sessionStorage.setItem('loginKind',kind);
         return;
     }
 
