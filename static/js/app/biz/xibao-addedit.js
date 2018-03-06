@@ -19,6 +19,16 @@ $(function() {
         type : 'img',
         required : true
     },{
+        field : 'location',
+        title : '是否推荐',
+        data : {'1':'是','0':'否'},
+        type : 'select',
+        required : true
+    },{
+        field : 'ordeNo',
+        title : '位置',
+        required : true
+    },{
         field : 'description',
         title : '详情',
         maxlength : 250,

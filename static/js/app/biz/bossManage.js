@@ -31,8 +31,11 @@ $(function() {
         keyName : 'dkey',
         valueName: 'dvalue'
 	}, {
-		field : 'remark',
-		title : '团队顾问'
+		field : 'adviserUser',
+		title : '团队顾问',
+        formatter : function (v,data) {
+            return data.adviserUser?data.adviserUser.realName:'-';
+        }
 	}, {
         field : 'status',
         title : '状态',

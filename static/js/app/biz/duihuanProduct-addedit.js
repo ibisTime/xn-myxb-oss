@@ -15,7 +15,9 @@ $(function() {
         field : 'price',
         title : '积分',
         required : true,
-        formatter : view || code?moneyFormat: '',
+        formatter : view?moneyFormat:function (v, data) {
+            return (data.price/1000);
+        },
         number : true
     }, {
         field : 'quantity',

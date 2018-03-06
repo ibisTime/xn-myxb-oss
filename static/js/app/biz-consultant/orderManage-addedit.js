@@ -16,7 +16,7 @@ $(function() {
         type: 'select',
         listCode: '805121',
         keyName: 'userId',
-        valueName: 'nickname'
+        valueName: 'realName'
     }, {
         field : 'productName',
         title : '产品名称'

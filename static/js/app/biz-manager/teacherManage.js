@@ -7,7 +7,8 @@ $(function() {
 		checkbox : true
 	}, {
         field : 'realName',
-        title : '登录名'
+        title : '姓名',
+        search: true
 	}, {
 		field : 'mobile',
 		title : '手机号'
@@ -125,7 +126,7 @@ if(sessionStorage.getItem('loginKind') == 'M') {
             return;
         }
 
-        if(selRecords[0].status == 1){
+        if(selRecords[0].location == '1'){
             toastr.info("已推荐");
             return;
         }

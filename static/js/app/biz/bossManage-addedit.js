@@ -2,7 +2,6 @@ $(function() {
     // 业务管理-美容院管理-老板管理
     var code = getQueryString('code');
     var view = !!getQueryString('v');
-
     var fields = [{
         field : 'kind',
         type: 'hidden',
@@ -10,8 +9,7 @@ $(function() {
     }, {
         field : 'loginName',
         title : '登录名',
-        readonly : view,
-        required : true
+        hidden : view?false : true
     },{
         field : 'realName',
         title : '真实姓名',
@@ -21,38 +19,16 @@ $(function() {
         title : '手机号',
         required : true,
         mobile : true
-    },
-        //     {
-    //     field : 'orderNo',
-    //     title : '推荐人手机号'
-    // },
-        {
+    }, {
         field : 'storeName',
         title : '店铺',
         required : true
-    },
-    //     {
-    //     field : 'remark',
-    //     title : '店铺地址',
-    //     required : true
-    // },
-    // //     {
-    //     field : 'level',
-    //     title : '等级',
-    //     required : true
-    // },
-        {
+    }, {
         field : 'adviser',
         title : '团队顾问',
         required : true,
         type : 'select',
         listCode: '805121',
-        // params: {
-        //     companyCode : OSS.company,
-        //     kind : 'A',
-        //     start : 1,
-        //     limit : 10
-        // },
         keyName: 'userId',
         valueName: 'realName'
     }, {
@@ -79,8 +55,7 @@ $(function() {
     }, {
         field : 'loginName',
         title : '登录名',
-        readonly : view,
-        required : true
+        hidden : view?false : true
     },{
         field : 'realName',
         title : '真实姓名',
@@ -90,27 +65,11 @@ $(function() {
         title : '手机号',
         required : true,
         mobile : true
-    },
-        //     {
-        //     field : 'orderNo',
-        //     title : '推荐人手机号'
-        // },
-        {
+    }, {
             field : 'storeName',
             title : '店铺',
             required : true
-        },
-        //     {
-        //     field : 'remark',
-        //     title : '店铺地址',
-        //     required : true
-        // },
-        // //     {
-        //     field : 'level',
-        //     title : '等级',
-        //     required : true
-        // },
-        {
+        }, {
             field : 'adviser',
             title : '团队顾问',
             required : true,
@@ -162,6 +121,7 @@ $(function() {
             },
             beforeSubmit : function (data) {
                 data.userId = code;
+                data.loginName = data.mobile;
                 return data;
             },
             addCode : '805042',

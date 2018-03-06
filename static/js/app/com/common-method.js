@@ -588,15 +588,15 @@ function zipImg(file, pos) {
 
 //后退
 function goBack() {
-    if ('referrer' in document) {
-        if (/top\.html/.test(window.document.referrer)) {
-            window.history.back();
-            return;
-        }
-        window.location = document.referrer;
-    } else {
+    // if ('referrer' in document) {
+    //     if (/top\.html/.test(window.document.referrer)) {
+    //         window.history.back();
+    //         return;
+    //     }
+    //     window.location = document.referrer;
+    // } else {
         window.history.back();
-    }
+    // }
 }
 
 String.prototype.temp = function(obj) {

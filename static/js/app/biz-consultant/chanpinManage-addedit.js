@@ -23,7 +23,9 @@ $(function() {
     }, {
         field : 'price',
         title : '价格',
-        formatter : moneyFormat,
+        formatter : view?moneyFormat:function (v, data) {
+            return (data.price/1000);
+        },
         required : true
     },{
         field : 'pic',

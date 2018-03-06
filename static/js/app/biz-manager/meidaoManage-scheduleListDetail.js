@@ -25,6 +25,10 @@ $(function() {
             fields: fields,
             code :view || code?{code : code}:{userId : code},
             beforeSubmit : function (data) {
+                if(data.startDatetime>data.endDatetime) {
+                    toastr.info('开始时间不能晚于结束时间');
+                    return
+                }
                 if(view || code) {
                     // 详情或是修改
                     data.code = code;
