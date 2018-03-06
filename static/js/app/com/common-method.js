@@ -913,7 +913,7 @@ function buildList(options) {
             }
         }
         dw = dialog({
-            content: '<form class="pop-form" id="popForm" novalidate="novalidate">' + '<div class="alert-warning">xlsx文件导入，读取第一个sheet数据，第一行header定义字段属性（驼峰拼写）</div>' + '<div class="form-body">' + '<input type="file" id="importFile"/>' + '</div></form>'
+            content: '<form class="pop-form" id="popForm" novalidate="novalidate">' + '<div class="alert-warning">xlsx文件导入，读取第一个sheet数据，第一行必须是新增字段的中文字段名</div>' + '<div class="form-body">' + '<input type="file" id="importFile"/>' + '</div></form>'
         });
         dw.showModal();
         $('#importFile').on('change', getImportDataFun(options, dw));

@@ -33,6 +33,8 @@ $(function() {
         addCode:'805410',
         editCode:'805412',
         view: view
+
+
     });
 
 

@@ -79,7 +79,7 @@ $(function() {
                 companyCode : OSS.company,
                 kind : 'A',
                 start : 1,
-                limit : 10
+                limit : 1000
             },
             keyName: 'userId',
             valueName: 'realName'

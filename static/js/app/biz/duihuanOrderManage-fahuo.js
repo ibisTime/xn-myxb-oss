@@ -19,42 +19,16 @@ $(function() {
     }, {
         field : 'pdf1',
         title : '物流单',
-        required : true,
         type : 'img',
         single : true
     }];
-    // var buttons = [{
-    //     title: '确认发货',
-    //     handler: function() {
-    //
-    //         if ($('#jsForm').valid()) {
-    //             var data = $('#jsForm').serializeObject();
-    //             console.log(data);
-    //             data.code = code;
-    //             data.pdf = data.pdf1;
-    //             reqApi({
-    //                 code: '805291',
-    //                 json: data
-    //             }).done(function() {
-    //                 sucDetail();
-    //             });
-    //         }
-    //
-    //     }
-    // }, {
-    //     title: '返回',
-    //     handler: function() {
-    //         goBack();
-    //     }
-    // }];
 
     var options = {
         fields: fields,
         code: code,
         addCode : '805291',
         detailCode: '805295',
-        view: false,
-        // buttons: buttons
+        view: false
     };
 
     buildDetail(options);

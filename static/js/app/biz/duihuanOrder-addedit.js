@@ -17,7 +17,7 @@ $(function() {
         type: 'select',
         listCode: '805121',
         keyName: 'userId',
-        valueName: 'nickname'
+        valueName: 'realName'
     }, {
         field : 'productName',
         title : '商品名称'
@@ -32,7 +32,6 @@ $(function() {
     }, {
         field : 'status',
         title : '状态',
-        search: true,
         type: 'select',
         data :{'0':'待发货','1':'待收货','2':'待评价','3':'已完成','4':'无货取消'}
     },{
@@ -47,11 +46,17 @@ $(function() {
         title : '物流单号'
     },{
         field : 'logisticsCompany',
-        title : '物流公司'
+        title : '物流公司',
+        type :'select',
+        listCode: '805906',
+        key: 'kd_company'
     },{
         field : 'pdf',
         title : '物流单',
-        type : 'img'
+        type : 'img',
+        // formatter : function (v, data) {
+        //     return data.pdf?data.pdf : '无'
+        // }
     }, {
         field : 'receiver',
         title : '收件人'
@@ -75,11 +80,13 @@ $(function() {
     }, {
         field : 'logisticsCompany',
         title : '物流公司',
-        required : true
+        required : true,
+        type :'select',
+        listCode: '805906',
+        key: 'kd_company'
     }, {
         field : 'pdf',
         title : '物流单',
-        required : true,
         type : 'img',
         single : true
     }];
@@ -95,12 +102,15 @@ $(function() {
             view: view
         });
         $('#subBtn').click(function () {
-            reqApi({
-                code: '805291',
-                json: data1,
-            }).then(function() {
-                sucDetail();
-            });
+            if($('#deliverer').val() && $('#logisticsCode').val() && $('#logisticsCompany').val()) {
+                reqApi({
+                    code: '805291',
+                    json: data1,
+                }).then(function() {
+                    sucDetail();
+                });
+            }
+
         })
     }else {
         buildDetail({

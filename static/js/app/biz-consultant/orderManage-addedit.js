@@ -34,6 +34,29 @@ $(function() {
         data : {'0':'待审核','1':'审核未通过','2':'待发货','3':'待评价','4':'已完成'},
         type: 'select'
     },  {
+        field : 'deliveryDatetime',
+        title : '发货时间',
+        formatter : dateTimeFormat
+    },{
+        field : 'deliverer',
+        title : '发货人'
+    },{
+        field : 'logisiticsCode',
+        title : '物流单号'
+    },{
+        field : 'logisiticsCompany',
+        title : '物流公司',
+        type :'select',
+        listCode: '805906',
+        key: 'kd_company'
+    },{
+        field : 'pdf',
+        title : '物流单',
+        type : 'img',
+        // formatter : function (v, data) {
+        //     return data.pdf?data.pdf : '无'
+        // }
+    }, {
         field : 'receiver',
         title : '收件人'
     },  {
@@ -56,7 +79,10 @@ $(function() {
     }, {
         field : 'logisticsCompany',
         title : '物流公司',
-        required : true
+        required : true,
+        type :'select',
+        listCode: '805906',
+        key: 'kd_company'
     }, {
         field : 'pdf',
         title : '物流单',

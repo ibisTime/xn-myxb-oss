@@ -17,9 +17,6 @@ $(function() {
         valueName: 'dvalue',
         type : 'select'
     },{
-        field: 'remark',
-        title: '参数说明'
-    },{
         field: 'ckey',
         title: '参数键',
         type: 'select',
@@ -29,6 +26,9 @@ $(function() {
         },
         keyName : 'dkey',
         valueName: 'dvalue'
+    },{
+        field: 'remark',
+        title: '参数说明'
     },{
         field: 'cvalue',
         title: '参数值'
@@ -40,5 +40,15 @@ $(function() {
         searchParams : {
             typeList : ['YY_ZJ','YY_JS','YY_MD']
         }
+    });
+    // 修改
+    $('#editBtn').off().click(function() {
+        var selRecords = $('#tableList').bootstrapTable('getSelections');
+        if (selRecords.length <= 0) {
+            toastr.info("请选择记录");
+            return;
+        }
+        // debugger;
+        window.location.href = "../system/bookRules_addedit.html?v=0&id=" + selRecords[0].id;
     });
 });

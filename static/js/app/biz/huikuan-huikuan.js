@@ -18,7 +18,7 @@ $(function() {
         type : 'select',
         params : {
             start : 1,
-            limit : 10,
+            limit : 1000,
             kind : 'C'
         },
         listCode: '805120',

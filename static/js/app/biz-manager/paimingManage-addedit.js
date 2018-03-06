@@ -22,7 +22,7 @@ $(function() {
         type : 'select',
         params : {
             start : 1,
-            limit : 100,
+            limit : 1000,
             type : 'S'
         },
         listCode: '805120',

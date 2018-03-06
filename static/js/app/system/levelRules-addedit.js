@@ -1,21 +1,20 @@
 $(function() {
-    var code = getQueryString('code');
+    var id = getQueryString('id');
 
     var fields = [{
-        title: '参数说明',
+        title: '参数键',
         field: 'ckey',
-        required: true,
         maxlength: 20,
-        type: 'select',
         readonly: true,
-        listCode: '805906',
-        params: {
-            parentKey : 'level'
-        },
-        keyName: 'dkey',
-        valueName: 'dvalue',
+        key: 'level',
+        formatter: Dict.getNameForList("level"),
         search: true
-    },  {
+    }, {
+        title: '参数说明',
+        field: 'remark',
+        required: true,
+        maxlength: 20
+    }, {
         title: '参数值',
         field: 'cvalue',
         type: "textarea",
@@ -24,12 +23,14 @@ $(function() {
 
     buildDetail({
         fields: fields,
-        code: code,
+        code: {
+            id : id
+        },
         addCode: "805910",
         detailCode: '805916',
         editCode: '805911',
         beforeSubmit:function(data){
-            data.remark = $('#ckey').text();
+            data.remark = $('#remark').val();
             return data
         }
     });
