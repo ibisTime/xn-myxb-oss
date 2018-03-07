@@ -14,7 +14,7 @@ $(function() {
             }
         }, true).then(function (data) {
             $("#photo").css('background','url("' + OSS.picBaseUrl+'/'+data.photo + '")');
-            $("#photo").css('background-size','cover');
+            $("#photo").css('background-size','100px 100px');
             $("#photo").attr("data-url",data.photo);
             $("#photo").attr("src",OSS.picBaseUrl+'/'+data.photo);
         })
@@ -263,7 +263,7 @@ $(function() {
             var _this= $(this)
             var url = _this.attr("data-url");
             $("#photo").css('background','url("' + OSS.picBaseUrl+'/'+url + '")');
-            $("#photo").css('background-size','cover');
+            $("#photo").css('background-size','100px 100px');
             $("#photo").attr("data-url",url);
             $("#photo").attr("src",OSS.picBaseUrl+'/'+url);
             $("#dialog").addClass("hidden")

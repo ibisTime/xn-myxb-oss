@@ -1,6 +1,7 @@
 $(function() {
     // 业务管理-积分管理-积分规则
     var id = getQueryString('id');
+    var remark = getQueryString('remark');
     var view = !!getQueryString('v');
 // debugger;
     var fields = [ {
@@ -21,7 +22,7 @@ $(function() {
             id: id
         },
         beforeSubmit : function (data) {
-            delete data.remark;
+            data.remark = remark;
             return data;
         },
         detailCode: '805916',

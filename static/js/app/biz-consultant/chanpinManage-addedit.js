@@ -1,9 +1,13 @@
 $(function() {
     // 业务管理-品牌管理-产品管理
     var code = getQueryString('code');
+    var edit = getQueryString('edit');
     var view = !!getQueryString('v');
     var detail = !!getQueryString('detail');
 
+    if(edit) {
+        view = false
+    }
     var columns = [{
         field : 'name',
         title : '名称',
@@ -19,7 +23,7 @@ $(function() {
         type : 'select',
         listCode: '805258',
         keyName : 'code',
-        valueName: 'name'
+        valueName: 'realName'
     }, {
         field : 'price',
         title : '价格',
@@ -51,10 +55,15 @@ $(function() {
         fields: columns,
         code: code,
         beforeSubmit : function (data) {
+
             if(data.price.indexOf('.')!=-1) {
-                toastr.info('积分价格只能为整数,不能以逗号分隔');
+                toastr.info('积分价格只能为整数');
+                return
+            }if(data.price.indexOf(',')!=-1) {
+                toastr.info('积分价格不能以逗号分隔');
                 return
             }
+
             // 判断价格
             if(data.price>=9999999999999999) {
                 toastr.info('价格过大');

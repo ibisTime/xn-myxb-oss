@@ -19,7 +19,7 @@ $(function() {
         required : true,
         listCode: '805258',
         keyName : 'code',
-        valueName: 'name'
+        valueName: 'realName'
 	},
 	// 	{
 	// 	field : 'remark',
@@ -33,13 +33,8 @@ $(function() {
         title : '状态',
         search: true,
         type: 'select',
-        pageCode: '805906',
-        params : {
-            parentKey: 'user_status'
-        },
-        keyName: 'dkey',
-        valueName: 'dvalue',
-        data : {'0':'正常', '1':'程序锁定','2':'人工锁定','3':'待审核','4':'审核不通过'}
+        formatter : Dict.getNameForList('user_status'),
+        key: 'user_status'
 	}, {
 		field : 'remark',
 		title : '备注'
@@ -62,18 +57,22 @@ $(function() {
             return;
         }
 
+        if(selRecords[0].status == '0' || selRecords[0].status == '1' || selRecords[0].status == '2') {
+            confirm("确定注销/激活？").then(function() {
+                reqApi({
+                    code: '805091',
+                    json: {
+                        userId: selRecords[0].userId,
+                        remark: selRecords[0].remark
+                    }
+                }).then(function() {
+                    sucList();
+                });
 
-        confirm("确定注销/激活？").then(function() {
-            reqApi({
-                code: '805091',
-                json: {
-                    userId: selRecords[0].userId,
-                    remark: selRecords[0].remark
-                }
-            }).then(function() {
-                sucList();
-            });
+            },function() {})
 
-        },function() {})
+        }else {
+            toastr.info('该状态下不可进行激活/注销操作')
+        }
     });
 });

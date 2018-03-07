@@ -28,6 +28,6 @@ $(function() {
             toastr.info("请选择记录");
             return;
         }
-		window.location.href = './jifenRules_addedit.html?&id='+selRecords[0].id;
+		window.location.href = './jifenRules_addedit.html?&id='+selRecords[0].id+"&remark="+selRecords[0].remark;
     })
 });

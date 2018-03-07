@@ -45,7 +45,10 @@ $(function() {
 		title : '专长领域'
 	},  {
 		field : 'style',
-		title : '授课风格'
+		title : '授课风格',
+        type: 'select',
+        formatter : Dict.getNameForList('style'),
+        key: 'style'
 	}, {
         field : 'location',
         title : '是否推荐',
@@ -100,19 +103,23 @@ if(sessionStorage.getItem('loginKind') == 'M') {
             return;
         }
 
+        if(selRecords[0].status == '0' || selRecords[0].status == '1' || selRecords[0].status == '2') {
+            confirm("确定注销/激活？").then(function() {
+                reqApi({
+                    code: '805091',
+                    json: {
+                        userId: selRecords[0].userId,
+                        remark: selRecords[0].remark
+                    }
+                }).then(function() {
+                    sucList();
+                });
 
-        confirm("确定注销/激活？").then(function() {
-            reqApi({
-                code: '805091',
-                json: {
-                    userId: selRecords[0].userId,
-                    remark: selRecords[0].remark
-                }
-            }).then(function() {
-                sucList();
-            });
+            },function() {})
+        }else {
+            toastr.info('该状态下不可进行激活/注销操作')
+        }
 
-        },function() {})
     });
     // 分配经纪人
     $('#fenpeiManagerBtn').click(function() {

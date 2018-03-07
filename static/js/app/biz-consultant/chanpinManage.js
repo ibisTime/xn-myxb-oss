@@ -16,8 +16,13 @@ $(function() {
         listCode: '805258',
         keyName : 'code',
         searchName :'code',
-        valueName: 'name'
+        valueName: 'realName'
 	}, {
+	    title : '价格',
+        field : 'price',
+        formatter : moneyFormat
+    },
+        {
 		field : 'location',
 		title : '是否推荐',
         search: true,
@@ -30,6 +35,9 @@ $(function() {
 		type: 'select',
         data : {'1':'未上架','2':'已上架','3':'已下架'}
 	}, {
+	    title : '次序',
+        field : 'orderNo'
+    }, {
 		field : 'remark',
 		title : '备注'
 	}];
@@ -164,5 +172,19 @@ if(sessionStorage.getItem('loginKind') == 'A') {
             return;
         }
         window.location.href = './chanpinManage_pinglun.html?code='+selRecords[0].code;
+    });
+
+    // 修改
+    $('#editBtn').off().click(function() {
+        var selRecords = $('#tableList').bootstrapTable('getSelections');
+        if (selRecords.length <= 0) {
+            toastr.info("请选择记录");
+            return;
+        }
+        if(selRecords[0].status == '2') {
+            toastr.info('产品已上架，不能进行修改')
+        }else {
+            window.location.href = './chanpinManage_addedit.html?v=false&edit=1&code='+selRecords[0].code;
+        }
     });
 });

@@ -4,10 +4,7 @@ $(function() {
 		field : '',
 		title : '',
 		checkbox : true
-	}, {
-		field : 'title',
-		title : '标题'
-	}, {
+	},  {
 		field : 'content',
 		title : '内容'
 	}, {
@@ -52,7 +49,7 @@ $(function() {
             toastr.info("请选择记录");
             return;
         }
-        if(selRecords[0].isAccept == '0') {
+        if(selRecords[0].isAccept == '0' && selRecords[0].status != 'C' && selRecords[0].status != 'D') {
             window.location.href = "../biz/pingtaijianyi_addedit.html?caina=1&code="+selRecords[0].code;
         }else {
             toastr.info('该状态下不可进行采纳')

@@ -29,12 +29,13 @@ $(function() {
         title : '广告图',
         type : 'img',
         required : true,
-        single : true
+
     }, {
         field : 'pic',
         title : '展示图',
         type : 'img',
-        required : true
+        required : true,
+        single : true
     }, {
         field : 'faceKind',
         title : '查看对象',
@@ -77,11 +78,19 @@ $(function() {
         editCode: '805282',
         view: view,
         beforeSubmit:function (data) {
+
             if(data.price.indexOf('.')!=-1) {
-                toastr.info('积分价格只能为整数,不能以逗号分隔');
+                toastr.info('积分价格只能为整数');
+                return
+            }if(data.price.indexOf(',')!=-1) {
+                toastr.info('积分价格不能以逗号分隔');
+                return
+            }
+            if(data.quantity.indexOf('.')!=-1) {
+                toastr.info('库存只能为整数');
                 return
             }else if(data.quantity.indexOf('.')!=-1) {
-                toastr.info('库存只能为整数,不能以逗号分隔');
+                toastr.info('库存不能以逗号分隔');
                 return
             }
             if(data.faceKind.length>1) {

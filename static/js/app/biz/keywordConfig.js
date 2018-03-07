@@ -31,10 +31,10 @@ $(function() {
             var stockList =[];
 
             for (var i=0; i<list.length; i++) {
-                if($.trim(list[i]["关键词"])!=""){
+                if($.trim(list[i]["关键字"])!=""){
                     var tmpl1;
                     tmpl1={
-                        'word':$.trim(list[i]["关键词"]),
+                        'word':$.trim(list[i]["关键字"]),
                         'remark':$.trim(list[i]["备注"]),
                         'weight' :'1',
                     	'level' :'0',

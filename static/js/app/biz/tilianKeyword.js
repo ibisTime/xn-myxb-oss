@@ -42,13 +42,23 @@ $(function() {
             var stockList =[];
 
             for (var i=0; i<list.length; i++) {
-
-                if($.trim(list[i]["关键词"])!="" && $.trim(list[i]["分类"])!=""){
+                // debugger;
+                if($.trim(list[i]["关键字"])!="" && $.trim(list[i]["分类"])!=""){
+                    var kind;
+                    if($.trim(list[i]["分类"])=='讲师') {
+                        kind = 'L'
+                    }else if($.trim(list[i]["分类"])=='专家') {
+                        kind = 'S'
+                    }else if($.trim(list[i]["分类"])=='美导') {
+                        kind = 'T'
+                    }else {
+                        kind = 'P'
+                    }
                     var tmpl1;
                     tmpl1={
-                        'word':$.trim(list[i]["关键词"]),
+                        'word':$.trim(list[i]["关键字"]),
                         'remark':$.trim(list[i]["备注"]),
-                        'kind':$.trim(list[i]["分类"]),
+                        'kind':kind,
                         'weight' :'1',
                         'level' :'0',
                         'reaction' : '3',

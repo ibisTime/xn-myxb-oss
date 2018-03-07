@@ -63,7 +63,7 @@ $(function() {
     }];
 
 
-    var luru = [{
+    var luru1 = [{
         field : 'code1',
         title : '编号',
         formatter : function (v, data) {
@@ -143,11 +143,12 @@ $(function() {
     },{
         field : 'saleAmount',
         title : '销售业额',
-        readonly : false,
-        required : true
-    }];
+        required : true,
+        readonly : false
 
+    }];
     if(luru) {
+
         var buttons = [{
             title: '确定',
             handler: function() {
@@ -168,7 +169,7 @@ $(function() {
             }
         }];
         buildDetail({
-            fields: luru,
+            fields: luru1,
             code: code,
             buttons : buttons,
             addCode : '805514',

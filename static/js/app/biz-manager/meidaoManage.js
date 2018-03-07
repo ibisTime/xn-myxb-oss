@@ -110,19 +110,23 @@ $(function() {
             return;
         }
 
+        if(selRecords[0].status == '0' || selRecords[0].status == '1' || selRecords[0].status == '2') {
+            confirm("确定注销/激活？").then(function() {
+                reqApi({
+                    code: '805091',
+                    json: {
+                        userId: selRecords[0].userId,
+                        remark: selRecords[0].remark
+                    }
+                }).then(function() {
+                    sucList();
+                });
 
-        confirm("确定注销/激活？").then(function() {
-            reqApi({
-                code: '805091',
-                json: {
-                    userId: selRecords[0].userId,
-                    remark: selRecords[0].remark
-                }
-            }).then(function() {
-                sucList();
-            });
+            },function() {})
 
-        },function() {})
+        }else {
+            toastr.info('该状态下不可进行激活/注销操作')
+        }
     });
     //设置推荐
     $('#setTuijianBtn').click(function() {

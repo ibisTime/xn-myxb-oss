@@ -54,7 +54,7 @@ $(function() {
             '6':'已录入'
         }
     },{
-        field: 'meidao',
+        field: 'isPlan',
         title: '是否有美导',
         type : 'select',
         data : {

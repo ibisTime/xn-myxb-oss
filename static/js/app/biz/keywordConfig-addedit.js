@@ -5,7 +5,7 @@ $(function() {
 
     var fields = [{
         field : 'word',
-        title : '关键字',
+        title : '关键词',
         required : true
     }, {
         field : 'kind',
