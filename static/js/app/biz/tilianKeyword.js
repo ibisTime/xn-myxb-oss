@@ -51,8 +51,11 @@ $(function() {
                         kind = 'S'
                     }else if($.trim(list[i]["分类"])=='美导') {
                         kind = 'T'
-                    }else {
+                    }else if($.trim(list[i]["分类"])=='产品') {
                         kind = 'P'
+                    }else {
+                        toastr.info('分类必须为讲师，专家，美导，产品其中之一');
+                        return
                     }
                     var tmpl1;
                     tmpl1={

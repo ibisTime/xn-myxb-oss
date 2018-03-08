@@ -1229,6 +1229,8 @@ function buildDetail(options) {
                 html += '<div id="' + item.field + '" style="display: inline-block;"></div>';
             } else if(item.type=='imgCheck'){
             	html += '<div class="imgCheckWrap"><div id="' + item.field + '" style="display: inline-block;width:100px;height: 100px;background-size:100px 100px"></div><input type="button" id="'+item.imgCheckBtnId+'" value="'+item.imgCheckBtnVal+'" class="btn" style="margin-left: 100px"/>';
+
+                rules[item.field] = { required: true };
             }else if(item.type == 'doubleLine'){
                 html += '<textarea id="' + item.field + '" rows="2" style="height:80px;" name="' + item.field + '" class="control-def" ' + (item.placeholder ?
                     ('placeholder="' + item.placeholder + '"') :
@@ -1700,6 +1702,9 @@ function buildDetail(options) {
                         }
                         $('#' + item.field).html('<div class="zmdi ' + selectOne.icon + ' zmdi-hc-5x" title="' + selectOne.value + '"></div>');
                     } else if (item.type == "checkbox") {
+                        debugger;
+                        console.log('111111111111111111111111111111');
+                        console.log(displayValue);
                         var checkData = displayValue.split(/,/);
                         for (var h = 0; h < checkData.length; h++) {
                             for (var k = 0, len1 = item.items.length; k < len1; k++) {
@@ -1855,6 +1860,10 @@ function buildDetail(options) {
                     } else if (item.type == 'radio') {
                         $('input[name=' + item.field + '][value=' + displayValue + ']').prop('checked', true);
                     } else if (item.type == "checkbox") {
+                        if(displayValue == undefined) {
+
+                            displayValue = '';
+                        }
                         var checkData = displayValue.split(/,/);
                         for (var h = 0; h < checkData.length; h++) {
                             for (var k = 0, len1 = item.items.length; k < len1; k++) {

@@ -12,16 +12,6 @@ $(function() {
 		field : 'mobile',
 		title : '手机号'
 	}, {
-		field : 'level',
-		title : '级别',
-        type: 'select',
-        listCode: '805906',
-        params :{
-            parentKey : 'level'
-        },
-        keyName : 'dkey',
-        valueName: 'dvalue'
-	}, {
 		field : 'serviceKind',
 		title : '服务对象',
         pageCode: '805906',

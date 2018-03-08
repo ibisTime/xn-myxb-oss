@@ -5,7 +5,13 @@ $(function() {
     var check = !!getQueryString('check');
     var level = getQueryString('level') || 1;
     var style = [];
-
+    // var items = Dict.getName("style").map(function(item){
+    //     return {
+    //         key: item.dkey,
+    //         value: item.dvalue
+    //     };
+    // });
+    // console.log(items);
     reqApi({
         code: '805906',
         json: {
@@ -244,9 +250,6 @@ $(function() {
             getImg(true);
             $("#dialog").removeClass("hidden")
         })
-        console.log(style);
-
-
 
     });
 

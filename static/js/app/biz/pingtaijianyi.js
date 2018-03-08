@@ -5,6 +5,9 @@ $(function() {
 		title : '',
 		checkbox : true
 	},  {
+		field : 'score',
+		title : '评分'
+	},{
 		field : 'content',
 		title : '内容'
 	}, {

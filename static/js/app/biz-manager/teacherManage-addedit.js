@@ -115,7 +115,8 @@ $(function() {
             type : 'doubleLine'
         }, {
             field : 'speciality',
-            title : '专长领域'
+            title : '专长领域',
+            required : true
         }, {
             field : 'style',
             title : '授课风格',

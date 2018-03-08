@@ -5,7 +5,10 @@ $(function() {
     var caina = !!getQueryString('caina');
     var check = !!getQueryString('check');
 
-    var fields = [{
+    var fields = [ {
+        field : 'score',
+        title : '评分'
+    },{
         field : 'content',
         title : '内容'
     }, {
