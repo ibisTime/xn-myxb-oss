@@ -46,11 +46,8 @@ $(function() {
 		field : 'speciality',
 		title : '专长领域'
 	}, {
-		field : 'style',
-		title : '授课风格',
-        type: 'select',
-        formatter : Dict.getNameForList('style'),
-        key: 'style'
+		field : 'styleName',
+		title : '授课风格'
 	}, {
 		field : 'location',
 		title : '是否推荐',

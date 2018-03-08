@@ -28,7 +28,7 @@ $(function() {
         type: 'select',
         listCode: '805258',
         keyName : 'code',
-        valueName: 'realName'
+        valueName: 'name'
     },{
         field : 'remark',
         title : '备注'

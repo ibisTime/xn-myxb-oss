@@ -15,7 +15,7 @@ $(function() {
         required : true
     },{
         field : 'advPic',
-        title : '广告图',
+        title : '展示图',
         type : 'img',
         required : true
     },{

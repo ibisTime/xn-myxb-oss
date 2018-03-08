@@ -19,20 +19,7 @@ $(function() {
         title : '手机号',
         required : true,
         mobile : true
-    },
-    //     {
-    //     field : 'orderNo',
-    //     title : '推荐人手机号',
-    //     required : true,
-    //     mobile : true
-    // },
-    //     {
-    //     field : 'remark',
-    //     title : '等级',
-    //     type : 'select',
-    //     required : true
-    // },
-        {
+    }, {
         field : 'speciality',
         title : '专长领域',
         // required : true
@@ -68,6 +55,7 @@ $(function() {
         params: {
             companyCode : OSS.company,
             kind : 'M',
+            serviceKind : 'L',
             start : 1,
             limit : 1000
         },

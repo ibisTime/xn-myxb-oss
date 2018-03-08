@@ -15,7 +15,7 @@ $(function() {
             }
         }, true).then(function (data) {
             $("#photo").css('background','url("' + OSS.picBaseUrl+'/'+data.photo + '")');
-            $("#photo").css('background-size','cover');
+            $("#photo").css('background-size','100px 100px');
             $("#photo").attr("data-url",data.photo);
             $("#photo").attr("src",OSS.picBaseUrl+'/'+data.photo);
         })
@@ -47,21 +47,28 @@ $(function() {
         title : '头像',
         type: 'imgCheck',
         imgCheckBtnVal:'头像选择',
-        imgCheckBtnId:'imgCheckBtn'
+        imgCheckBtnId:'imgCheckBtn',
+        required : true
     },  {
         field : 'storeName',
         title : '店铺',
         required : true
     },
-    //     {
-    //     field : 'adviser',
-    //     title : '团队顾问',
-    //     required : true,
-    //     type : 'select',
-    //     listCode: '805121',
-    //     keyName: 'userId',
-    //     valueName: 'realName'
-    // },
+        {
+        field : 'adviser',
+        title : '团队顾问',
+        required : true,
+        type : 'select',
+            listCode: '805120',
+            params: {
+                companyCode : OSS.company,
+                kind : 'A',
+                start : 1,
+                limit : 1000
+            },
+            keyName: 'userId',
+            valueName: 'realName'
+    },
         {
             field : 'gender',
             title : '性别',
@@ -118,8 +125,8 @@ $(function() {
             companyCode : OSS.company,
             kind : 'A',
             start : 1,
-                limit : 1000
-            },
+            limit : 1000
+        },
         keyName: 'userId',
         valueName: 'realName'
     }, {
@@ -127,7 +134,8 @@ $(function() {
         title : '头像',
         type: 'imgCheck',
         imgCheckBtnVal:'头像选择',
-        imgCheckBtnId:'imgCheckBtn'
+        imgCheckBtnId:'imgCheckBtn',
+        required : true
     }, {
         field : 'level',
         title : '用户等级',
@@ -167,6 +175,10 @@ $(function() {
                 data.approver = getUserName();
                 data.introduce = $('#introduce').val();
                 data.photo = $("#photo").attr("data-url");
+                if(data.photo == '' || data.photo == undefined) {
+                    toastr.info('头像不能为空');
+                    return
+                }
                 reqApi({
                     code: '805044',
                     json: data
@@ -187,6 +199,10 @@ $(function() {
                 data.approver = getUserName();
                 data.introduce = $('#introduce').val();
                 data.photo = $("#photo").attr("data-url");
+                if(data.photo == '' || data.photo == undefined) {
+                    toastr.info('头像不能为空');
+                    return
+                }
                 reqApi({
                     code: '805044',
                     json: data
@@ -220,6 +236,7 @@ $(function() {
         };
         buildDetail(options);
     }else {
+        console.log('1');
         buildDetail({
             fields: columns,
             code : {
@@ -232,7 +249,12 @@ $(function() {
                     delete data.level
                 }
                 data.photo = $("#photo").attr("data-url");
-                return data;
+                if(data.photo == undefined || data.photo == '') {
+                    toastr.info('头像不能为空');
+                    return
+                }else {
+                    return data;
+                }
             },
             addCode : '805042',
             editCode : '805095',
@@ -276,7 +298,7 @@ $(function() {
             var _this= $(this)
             var url = _this.attr("data-url");
             $("#photo").css('background','url("' + OSS.picBaseUrl+'/'+url + '")');
-            $("#photo").css('background-size','cover');
+            $("#photo").css('background-size','100px 100px');
             $("#photo").attr("data-url",url);
             $("#photo").attr("src",OSS.picBaseUrl+'/'+url);
             $("#dialog").addClass("hidden")

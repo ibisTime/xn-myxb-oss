@@ -23,7 +23,7 @@ $(function() {
         type : 'select',
         listCode: '805258',
         keyName : 'code',
-        valueName: 'realName'
+        valueName: 'name'
     }, {
         field : 'price',
         title : '价格',

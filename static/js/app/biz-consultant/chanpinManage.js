@@ -16,7 +16,7 @@ $(function() {
         listCode: '805258',
         keyName : 'code',
         searchName :'code',
-        valueName: 'realName'
+        valueName: 'name'
 	}, {
 	    title : '价格',
         field : 'price',

@@ -23,7 +23,7 @@ $(function() {
         required : true
     }, {
         field : 'advPic',
-        title : '广告图',
+        title : '缩略图',
         required : true,
         type : 'img',
         single : true
@@ -68,7 +68,7 @@ $(function() {
         required : true
     }, {
         field : 'advPic',
-        title : '广告图',
+        title : '缩略图',
         required : true,
         type : 'img',
         single : true

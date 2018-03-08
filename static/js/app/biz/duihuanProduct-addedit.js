@@ -25,17 +25,16 @@ $(function() {
         required : true,
         number : true
     }, {
-        field : 'advPic',
-        title : '广告图',
-        type : 'img',
-        required : true,
-
-    }, {
         field : 'pic',
-        title : '展示图',
+        title : '缩略图',
         type : 'img',
         required : true,
         single : true
+    }, {
+        field : 'advPic',
+        title : '展示图',
+        type : 'img',
+        required : true
     }, {
         field : 'faceKind',
         title : '查看对象',

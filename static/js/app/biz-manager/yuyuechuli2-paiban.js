@@ -128,8 +128,8 @@ $(function() {
         buttons : buttons
     });
 
-    $('#meidao').change(function(){
-        var result = $('#meidao').val();
+    $('#isPlan').change(function(){
+        var result = $('#isPlan').val();
         if(result == '0') {
             $('#owner').parent().css('display','none');
             $('#planDatetime').parent().css('display','none');

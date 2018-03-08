@@ -25,11 +25,8 @@ $(function() {
         field : 'speciality',
         title : '专长领域'
     }, {
-        field : 'style',
-        title : '授课风格',
-        type : 'select',
-        key: 'style',
-        keyCode:'805906'
+        field : 'styleName',
+        title : '授课风格'
     },{
         field : 'photo',
         title : '头像',
