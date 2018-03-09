@@ -2,7 +2,6 @@ $(function() {
     // 业务管理-美导管理-美导管理
     var userId = getQueryString('userId');
     var view = !!getQueryString('v');
-    // console.log(check);
     var fields = [{
         field: 'kind',
         type: 'hidden',

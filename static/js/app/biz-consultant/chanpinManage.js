@@ -66,7 +66,6 @@ if(sessionStorage.getItem('loginKind') == 'A') {
             toastr.info("请选择记录");
             return;
         }
-        console.log(selRecords[0].status);
         if(selRecords[0].status == '1' || selRecords[0].status == '3') {
             confirm('确定上架？').then(function () {
                 var dw = dialog({

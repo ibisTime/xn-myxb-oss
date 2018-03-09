@@ -1702,9 +1702,6 @@ function buildDetail(options) {
                         }
                         $('#' + item.field).html('<div class="zmdi ' + selectOne.icon + ' zmdi-hc-5x" title="' + selectOne.value + '"></div>');
                     } else if (item.type == "checkbox") {
-                        debugger;
-                        console.log('111111111111111111111111111111');
-                        console.log(displayValue);
                         var checkData = displayValue.split(/,/);
                         for (var h = 0; h < checkData.length; h++) {
                             for (var k = 0, len1 = item.items.length; k < len1; k++) {

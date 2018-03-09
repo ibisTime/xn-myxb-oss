@@ -236,7 +236,6 @@ $(function() {
         };
         buildDetail(options);
     }else {
-        console.log('1');
         buildDetail({
             fields: columns,
             code : {

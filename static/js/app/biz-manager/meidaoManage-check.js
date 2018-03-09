@@ -64,7 +64,6 @@ $(function() {
         handler: function() {
             if ($('#jsForm').valid()) {
                 var data = $('#jsForm').serializeObject();
-                console.log($('.center-img'));
                 data.approveResult = '1';
                 data.kind = 'T';
                 data.userId = code;
