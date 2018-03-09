@@ -2,6 +2,10 @@ $(function() {
     // 业务管理-积分管理-兑换商品管理
     var code = getQueryString('code');
     var view = !!getQueryString('v');
+    var edit = getQueryString('edit');
+    if(edit) {
+        view = false
+    }
 
     var fields = [{
         field : 'name',

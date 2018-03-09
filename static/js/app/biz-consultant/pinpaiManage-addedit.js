@@ -2,8 +2,14 @@ $(function() {
     // 业务管理-品牌管理
     var code = getQueryString('code');
     var view = !!getQueryString('v');
+    var edit = getQueryString('edit');
     var add = !!getQueryString('add');
     var detail = getQueryString('detail');
+
+    if(edit) {
+        view = false
+    }
+
     var fields = [{
         field : 'name',
         title : '品牌名称',

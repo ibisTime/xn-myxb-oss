@@ -2,6 +2,10 @@ $(function() {
     // 业务管理-喜报预报管理-预报
     var code = getQueryString('code');
     var view = !!getQueryString('v');
+    var edit = getQueryString('edit');
+    if(edit) {
+        view = false
+    }
 
     var fields = [{
         field : 'title',
