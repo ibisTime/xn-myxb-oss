@@ -48,12 +48,10 @@ $(function() {
 	}];
 if(sessionStorage.getItem('loginKind') == 'M') {
 	var searchParams = {
-        type:'1',
 		handler : getUserId()
     }
 }else {
     var searchParams = {
-        type:'1'
     }
 }
 	buildList({

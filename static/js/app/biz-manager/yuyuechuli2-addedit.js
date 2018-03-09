@@ -29,7 +29,7 @@ $(function() {
             return data.mryUser?data.mryUser.storeName:'-';
         }
     }, {
-        field : 'remark',
+        field : 'remark1',
         title : '讲师',
         formatter : function (v, data) {
             return data.user?data.user.realName:'-';
@@ -42,13 +42,6 @@ $(function() {
         field : 'appointDays',
         title : '预约天数'
     },{
-        field : 'planDatetime',
-        title : '排班时间',
-        formatter : dateTimeFormat
-    }, {
-        field : 'planDays',
-        title : '排班天数'
-    }, {
         field : 'status',
         title : '状态',
         type: 'select',
@@ -60,6 +53,23 @@ $(function() {
             '5':'已下课待录入',
             '6':'已录入'
         }
+    }, {
+        field : 'realDatetime',
+        title : '实际时间',
+        formatter : dateTimeFormat
+    }, {
+        field : 'realDays',
+        title : '实际天数'
+    }, {
+        field : 'clientNumber',
+        title : '见客户数'
+    }, {
+        field : 'sucNumber',
+        title : '成交数'
+    }, {
+        field : 'saleAmount',
+        title : '成交额',
+        formatter : moneyFormat
     }];
 
     buildDetail({

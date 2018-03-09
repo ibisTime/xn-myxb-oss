@@ -34,6 +34,10 @@ $(function() {
     buildDetail({
         fields: fields,
         code: code,
+        beforeSubmit : function (data) {
+            data.saleAmount *= 1000;
+            return data;
+        },
         addCode : '805515',
         detailCode: '805521',
         view: view

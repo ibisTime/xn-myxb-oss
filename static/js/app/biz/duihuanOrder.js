@@ -6,8 +6,7 @@ $(function() {
 		checkbox : true
 	}, {
 		field : 'code',
-		title : '订单编号',
-		search: true
+		title : '订单编号'
 	}, {
 		field : 'realName',
 		title : '下单用户',

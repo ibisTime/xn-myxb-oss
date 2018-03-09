@@ -23,7 +23,8 @@ $(function() {
         }
     },{
         field : 'saleAmount',
-        title : '回款金额'
+        title : '回款金额',
+        formatter : moneyFormat
     }, {
         field : 'updater',
         title : '回款记录人'

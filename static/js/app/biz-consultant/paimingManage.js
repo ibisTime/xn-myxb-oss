@@ -40,19 +40,17 @@ $(function() {
 
 	if(sessionStorage.getItem('loginKind') == 'A') {
         var searchParams = {
-            type:'0',
 			adviser : getUserId()
         }
 	}else {
         var searchParams = {
-            type:'0'
         }
 	}
 
 	buildList({
 		columns: columns,
 		searchParams : searchParams,
-		pageCode: '805259',
+		pageCode: '805278',
 		deleteCode: '805004'
 	});
 

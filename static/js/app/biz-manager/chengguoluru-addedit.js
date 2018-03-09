@@ -154,6 +154,7 @@ $(function() {
             handler: function() {
                 if ($('#jsForm').valid()) {
                     var data = $('#jsForm').serializeObject();
+                    data.saleAmount *= 1000;
                     reqApi({
                         code: '805514',
                         json: data
