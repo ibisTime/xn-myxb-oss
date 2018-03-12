@@ -3,15 +3,15 @@ $(function() {
     if (!sessionStorage.getItem('token')) {
 		//判断域名是 hhr开头 合伙人域名 kind为11
 		// var kind = document.domain.substr(0, 1)=='h'?'PA':(sessionStorage.getItem('loginKind') || '01')
-        var port = location.port;
-        // debugger;
-        var kind = port === '4408'
-            ? 'P'
-            : port === '4407'
-                ? 'A'
-                    : port === '4406'
-                        ?'M'
-                            :'P';
+        var host = location.host;
+        var str = host.split('.')[0];
+        var kind = str === 'admin'
+            ?'P'
+            : str === 'jjr'
+                ? 'M'
+                : str === 'pp'
+                    ? 'A'
+                    : 'P';
         // location.href = 'signin.html?kind=' + (sessionStorage.getItem('loginKind') || kind);
         location.href = 'signin.html?kind=' + kind;
         sessionStorage.setItem('loginKind',kind);
