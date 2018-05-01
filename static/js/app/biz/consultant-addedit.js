@@ -7,11 +7,7 @@ $(function() {
         field: 'kind',
         type: 'hidden',
         value: 'A'
-    },{
-        field : 'loginName',
-        title : '登录名',
-        hidden : view?false : true
-    },{
+    }, {
         field : 'realName',
         title : '真实姓名',
         required : true
@@ -20,53 +16,13 @@ $(function() {
         title : '手机号',
         required : true,
         mobile : true
-    },{
-        field : 'mainBrand',
-        title : '主荐品牌',
-        required : true,
-        search: true,
-        type: 'select',
-        listCode: '805258',
-        keyName : 'code',
-        valueName: 'name'
-    },{
-        field : 'remark',
-        title : '备注'
-    }];
-
-    var columns = [{
-        field: 'kind',
-        type: 'hidden',
-        value: 'A'
-    },{
-        field : 'loginName',
-        title : '登录名',
-        hidden : view?false : true
-    },{
-        field : 'realName',
-        title : '真实姓名',
-        required : true
     }, {
-        field : 'mobile',
-        title : '手机号',
-        required : true,
-        mobile : true
-    },{
-        field : 'mainBrand',
-        title : '主荐品牌',
-        required : true,
-        search: true,
-        type: 'select',
-        listCode: '805257',
-        keyName : 'code',
-        valueName: 'realName'
-    },{
         field : 'remark',
         title : '备注'
     }];
 
     buildDetail({
-        fields: view?columns:fields,
+        fields: fields,
         code: {
             userId: code
         },

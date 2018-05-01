@@ -1,56 +1,39 @@
 $(function() {
-	// 业务管理-品牌管理
+	// 业务管理-品牌管理-类别管理
 	var columns = [{
 		field : '',
 		title : '',
 		checkbox : true
 	}, {
 		field : 'name',
-		title : '品牌名称',
+		title : '名称',
 		search: true
-	},{
-		field : 'contacts',
-		title : '联系人姓名'
 	}, {
-		field : 'mobile',
-		title : '联系人手机号'
-	}, {
-		field : 'realName',
-		title : '品牌顾问'
-	}, {
-		field : 'location',
-		title : '是否推荐',
+        field : 'status',
+        title : '状态',
         search: true,
         type: 'select',
-		data : {'0':'否','1':'是'}
-	}, {
-		field : 'status',
-		title : '状态',
-		search: true,
-		type: 'select',
         data : {'1':'未上架','2':'已上架','3':'已下架'}
-	}, {
-		field : 'orderNo',
-		title : 'UI次序'
-	}, {
+    }, {
+        field : 'orderNo',
+        title : 'UI次序'
+    }, {
+        field : 'updater',
+        title : '最新修改人'
+    }, {
+        field : 'updateDatetime',
+        title : '最新修改时间',
+        formatter : dateTimeFormat
+    }, {
 		field : 'remark',
 		title : '备注'
 	}];
-    if(sessionStorage.getItem('loginKind') == 'A') {
-        buildList({
-            columns: columns,
-            searchParams : {
-                adviser : getUserId()
-            },
-            pageCode: '805256'
-        });
-    } else {
-        buildList({
-            columns: columns,
-            pageCode: '805256'
-        });
-    }
 
+	buildList({
+		columns: columns,
+		pageCode: '805120',
+		deleteCode: '805004'
+	});
     // 上架
     $('#upBtn').click(function() {
         var selRecords = $('#tableList').bootstrapTable('getSelections');
@@ -58,11 +41,11 @@ $(function() {
             toastr.info("请选择记录");
             return;
         }
-        if(selRecords[0].status == '1' || selRecords[0].status == '3') {
+        if (selRecords[0].status == '1' || selRecords[0].status == '3') {
             confirm('确定上架？').then(function () {
                 var dw = dialog({
                     content: '<form class="pop-form" id="popForm" novalidate="novalidate">' +
-                    '<ul class="form-info" id="formContainer"><li style="text-align:center;font-size: 15px;">请输入该品牌的位序</li></ul>' +
+                    '<ul class="form-info" id="formContainer"><li style="text-align:center;font-size: 15px;">请输入该类别的UI次序</li></ul>' +
                     '</form>'
                 });
 
@@ -72,16 +55,10 @@ $(function() {
                     container: $('#formContainer'),
                     fields: [{
                         field: 'orderNo',
-                        title: '顺序',
+                        title: 'UI次序',
                         required: true,
                         number: true,
                         min: '0'
-                    },{
-                        field : 'location1',
-                        title : '是否推荐',
-                        required: true,
-                        type: 'select',
-                        data : {'0':'否','1':'是'}
                     }],
                     buttons: [{
                         title: '确定',
@@ -92,7 +69,6 @@ $(function() {
                                     code: '805253',
                                     json: {
                                         code: selRecords[0].code,
-                                        location : data.location1,
                                         orderNo: data.orderNo,
                                         updater : getUserName()
                                     }
@@ -109,12 +85,10 @@ $(function() {
                         }
                     }]
                 });
-            });
+            })
         } else {
             toastr.info('已经是上架的状态了');
         }
-
-
     });
     // 下架
     $('#downBtn').click(function() {
@@ -123,7 +97,7 @@ $(function() {
             toastr.info("请选择记录");
             return;
         }
-        if(selRecords[0].status == '2') {
+        if (selRecords[0].status == '2') {
             confirm('确定下架？').then(function () {
                 reqApi({
                     code: 805254,
@@ -135,32 +109,8 @@ $(function() {
                     sucList();
                 });
             })
-        }else {
+        } else {
             toastr.info('已经是下架的状态了');
-        }
-
-
-    });
-    // 设置品牌顾问
-    $('#setConsultantBtn').click(function() {
-        var selRecords = $('#tableList').bootstrapTable('getSelections');
-        if (selRecords.length <= 0) {
-            toastr.info("请选择记录");
-            return;
-        }
-        window.location.href = "../biz-consultant/pinpaiManage_setConsultant.html?code=" + selRecords[0].code+"&v=1";
-    });
-    // 修改
-    $('#editBtn').off().click(function() {
-        var selRecords = $('#tableList').bootstrapTable('getSelections');
-        if (selRecords.length <= 0) {
-            toastr.info("请选择记录");
-            return;
-        }
-        if(selRecords[0].status == '2') {
-            toastr.info('品牌已上架，不能进行修改')
-        }else {
-            window.location.href = './pinpaiManage_addedit.html?v=false&edit=1&code='+selRecords[0].code;
         }
     });
 });

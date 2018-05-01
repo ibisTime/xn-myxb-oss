@@ -5,21 +5,9 @@ $(function() {
     var caina = !!getQueryString('caina');
     var check = !!getQueryString('check');
 
-    var fields = [ {
-        field : 'score',
-        title : '评分'
-    },{
+    var fields = [{
         field : 'content',
         title : '内容'
-    }, {
-        field : 'isAccept',
-        title : '是否采纳',
-        type:'select',
-        data : {
-            '0':'待采纳',
-            '1':'未采纳',
-            '2':'已采纳'
-        }
     }, {
         field : 'status',
         title : '状态',

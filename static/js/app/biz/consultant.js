@@ -12,29 +12,12 @@ $(function() {
 		field : 'mobile',
 		title : '手机号'
 	}, {
-		field : 'mainBrand',
-		title : '主荐品牌',
-        search: true,
-        type: 'select',
-        required : true,
-        listCode: '805258',
-        keyName : 'code',
-        valueName: 'name'
-	},
-	// 	{
-	// 	field : 'remark',
-	// 	title : '所辖区域',
-     //    search: true,
-     //    type: 'select'
-	// },
-		{
 
         field : 'status',
         title : '状态',
         search: true,
         type: 'select',
-        formatter : Dict.getNameForList('user_status'),
-        key: 'user_status'
+        data : {'0':'正常', '1':'程序锁定', '2':'人工锁定'}
 	}, {
 		field : 'remark',
 		title : '备注'

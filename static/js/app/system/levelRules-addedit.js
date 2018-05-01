@@ -5,10 +5,7 @@ $(function() {
         title: '参数键',
         field: 'ckey',
         maxlength: 20,
-        readonly: true,
-        key: 'level',
-        formatter: Dict.getNameForList("level"),
-        search: true
+        readonly: true
     }, {
         title: '参数说明',
         field: 'remark',

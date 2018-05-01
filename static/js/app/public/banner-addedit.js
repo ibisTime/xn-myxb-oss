@@ -48,8 +48,6 @@ $(function() {
         field: 'kind',
         search:true,
         type:'select',
-        // key: 'banner_kind',
-        // formatter: Dict.getNameForList("banner_kind"),
         key: 'banner_kind',
         keyCode:'805906',
         required : true

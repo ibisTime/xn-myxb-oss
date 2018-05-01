@@ -6,20 +6,34 @@ $(function() {
     var fields = [{
         field: 'kind',
         type: 'hidden',
-        value: 'M'
+        value: 'Y'
     }, {
         field: 'realName',
         title: '真实姓名',
         required: true
-    },  {
+    }, {
         field: 'mobile',
         title: '手机号',
         required: true,
         mobile: true
-    }, {
+    }];
+    if (view) {
+        fields = fields.concat([{
+            field: 'level',
+            title: '等级',
+            type: 'select',
+            key: 'hhr_level'
+        }, {
+            field : 'status',
+            title : '状态',
+            type: 'select',
+            data : {'0':'正常', '1':'程序锁定', '2':'人工锁定'}
+        }]);
+    }
+    fields.push({
         field: 'remark',
         title: '备注'
-    }];
+    });
 
     buildDetail({
         fields: fields,

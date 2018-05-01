@@ -15,7 +15,11 @@ $(function() {
         //     var data = {"type":"1", 'roleCode': sessionStorage.getItem('roleCode')};
         //
         // }
-            var data = {"parentCode":parentCode,"type":"1", 'roleCode': sessionStorage.getItem('roleCode')};
+        var data = {
+        	parentCode: parentCode,
+        	type: 1,
+        	roleCode: sessionStorage.getItem('roleCode')
+        };
 
 		// 一级菜单
 		reqApi({
@@ -60,6 +64,9 @@ $(function() {
 						code: '805026',
 						json: ooo
 					}, true).then(function(data) {
+						data = data.sort(function (d1, d2) {
+							return +d1.orderNo > +d2.orderNo;
+						});
 						// 二级菜单
 						var html = '';
 						$.each(data, function(i, nextItem) {

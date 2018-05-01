@@ -53,11 +53,12 @@ $(function() {
             toastr.info("请选择记录");
             return;
         }
-        if(selRecords[0].status == '1') {
-            window.location.href = "../biz-manager/ziliaoshenhe_addedit.html?v=1&check=1&code=" + selRecords[0].code;
-        }else {
-        	toastr.info('该状态不能进行审核');
-		}
+        window.location.href = "../biz-manager/ziliaoshenhe_addedit.html?v=1&check=1&code=" + selRecords[0].code;
+  //       if(selRecords[0].status == '1') {
+  //           window.location.href = "../biz-manager/ziliaoshenhe_addedit.html?v=1&check=1&code=" + selRecords[0].code;
+  //       }else {
+  //       	toastr.info('该状态不能进行审核');
+		// }
 
     });
 });

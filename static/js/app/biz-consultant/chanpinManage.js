@@ -35,7 +35,7 @@ $(function() {
 		type: 'select',
         data : {'1':'未上架','2':'已上架','3':'已下架'}
 	}, {
-	    title : '次序',
+	    title : 'UI次序',
         field : 'orderNo'
     }, {
 		field : 'remark',

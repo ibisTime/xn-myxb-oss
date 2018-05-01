@@ -4,10 +4,7 @@ $(function() {
 		field : '',
 		title : '',
 		checkbox : true
-	},  {
-		field : 'score',
-		title : '评分'
-	},{
+	}, {
 		field : 'content',
 		title : '内容'
 	}, {
@@ -24,21 +21,11 @@ $(function() {
 	}, {
 		field : 'realName',
 		title : '评论人'
-	},{
+	}, {
 		field : 'commentDatetime',
 		title : '评论时间',
 		formatter : dateTimeFormat
-	},{
-        field : 'isAccept',
-        title : '是否采纳',
-        search: true,
-        type:'select',
-        data : {
-            '0':'待采纳',
-            '1':'未采纳',
-            '2':'已采纳'
-        }
-    }];
+	}];
 
 	buildList({
 		columns: columns,
