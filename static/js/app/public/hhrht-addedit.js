@@ -18,7 +18,7 @@ $(function() {
 	buildDetail({
 		fields: fields,
 		code: {
-			ckey: 'FWSHT'
+			ckey: 'HHRHT'
 		},
 		editCode: '805911',
 		detailCode: '805917',
