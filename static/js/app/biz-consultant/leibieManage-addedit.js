@@ -9,11 +9,12 @@ $(function() {
     }, {
         field : 'status',
         title : '状态',
-        data : {'1':'未上架','2':'已上架','3':'已下架'},
+        data : {'0':'未上架','1':'已上架','2':'已下架'},
         type : view ? 'select' : 'hidden'
     }, {
         field : 'orderNo',
-        title : 'UI次序'
+        title : 'UI次序',
+        required : true
     }, {
         field : 'remark',
         title : '备注'
@@ -22,10 +23,18 @@ $(function() {
     var options = {
         fields: fields,
         code : code,
-        addCode: '',
-        editCode: '805279',
-        detailCode : '805277',
-        view: view
+        addCode: '805240',
+        editCode: '805241',
+        detailCode : '805246',
+        view: view,
+        beforeSubmit: function(data){
+        	if(!code){
+        		delete data.status;
+        		delete data.code;
+        		delete data.id;
+        	}
+        	return data;
+        }
     };
     buildDetail(options);
 

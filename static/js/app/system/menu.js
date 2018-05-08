@@ -32,17 +32,17 @@ $(function() {
 		field : 'orderNo',
 		title : '菜单顺序'
 	}, {
-        field: 'kind',
-        title: '菜单针对对象',
-        type : 'select',
-        search: true,
-        listCode: '805906',
-		params : {
-        	parentKey : 'menu_kind'
-		},
-        keyName: 'dkey',
-        valueName: 'dvalue'
-    },{
+//      field: 'kind',
+//      title: '菜单针对对象',
+//      type : 'select',
+//      search: true,
+//      listCode: '805906',
+//		params : {
+//      	parentKey : 'menu_kind'
+//		},
+//      keyName: 'dkey',
+//      valueName: 'dvalue'
+//  },{
 		field : 'remark',
 		title : '备注'
 	}];

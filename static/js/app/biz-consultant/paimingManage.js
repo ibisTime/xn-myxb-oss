@@ -24,11 +24,10 @@ $(function() {
 		field : 'refNo',
 		title : '品牌',
         search: true,
-        type: 'select',
-        listCode: '805258',
-        keyName : 'code',
-        searchName :'code',
-        valueName: 'name'
+		type: 'select',
+		pageCode: '805256',
+		keyName: 'code',
+		valueName: 'name',
 	}, {
 		field : 'rank',
 		title : '排名'
@@ -37,21 +36,18 @@ $(function() {
 		title : '业绩额',
 		formatter : moneyFormat
 	}];
-
+	
+	var searchParams = {};
 	if(sessionStorage.getItem('loginKind') == 'A') {
-        var searchParams = {
-			adviser : getUserId()
-        }
-	}else {
-        var searchParams = {
+        searchParams={
+			adviser: getUserId()
         }
 	}
-
+	
 	buildList({
 		columns: columns,
 		searchParams : searchParams,
 		pageCode: '805278',
-		deleteCode: '805004'
 	});
 
     // 详情
@@ -62,6 +58,5 @@ $(function() {
             return;
         }
         window.location.href = "../biz-consultant/paimingManage_detail.html?v=1&code=" + selRecords[0].code;
-
     });
 });

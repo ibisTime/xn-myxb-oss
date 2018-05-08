@@ -15,8 +15,8 @@ $(function() {
         field: 'level',
         title: '等级',
         type: 'select',
-        key: 'hhr_level',
-        formatter: Dict.getNameForList('hhr_level'),
+        key: 'user_level_partner',
+        formatter: Dict.getNameForList('user_level_partner'),
         search: true
     }, {
         field : 'status',
@@ -33,7 +33,7 @@ $(function() {
         columns: columns,
         searchParams: {
             companyCode : OSS.company,
-            kind : 'Y'
+            kind : 'B'
         },
         pageCode: '805120',
         deleteCode: '805004'

@@ -76,7 +76,7 @@ $(function() {
             limit : 1000
         },
         keyName: 'userId',
-        valueName: 'realName',
+        valueName: '{{realName.DATA}}-{{mobile.DATA}}',
         required : true
     },{
         field : 'planDatetime',

@@ -37,6 +37,13 @@ $(function() {
             required : true,
             mobile : true
         },{
+            field : 'level',
+            title : '用户等级',
+	        type: 'select',
+	        key: 'user_level_specialist',
+	        formatter : Dict.getNameForList('user_level_specialist'),
+            required : true
+        }, {
             field : 'speciality',
             title : '专长领域',
             required : true
@@ -52,10 +59,6 @@ $(function() {
             type: 'img',
             single: true,
             required : true
-        }, {
-            field : 'level',
-            title : '用户等级',
-            type : 'hidden'
         }, {
             field : 'gender',
             title : '性别',
@@ -85,9 +88,7 @@ $(function() {
                 data.style = data.style.toString();
                 data.userId = code;
                 data.loginName = data.mobile;
-                if (data.level == "") {
-                    delete data.level
-                }
+                return data;
             },
             addCode : '805042',
             editCode : '805095',

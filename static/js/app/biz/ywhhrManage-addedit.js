@@ -6,7 +6,7 @@ $(function() {
     var fields = [{
         field: 'kind',
         type: 'hidden',
-        value: 'Y'
+        value: 'B'
     }, {
         field: 'realName',
         title: '真实姓名',

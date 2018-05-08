@@ -13,7 +13,7 @@ $(function() {
         title : '状态',
         search: true,
         type: 'select',
-        data : {'1':'未上架','2':'已上架','3':'已下架'}
+        data : {'0':'未上架','1':'已上架','2':'已下架'}
     }, {
         field : 'orderNo',
         title : 'UI次序'
@@ -31,8 +31,7 @@ $(function() {
 
 	buildList({
 		columns: columns,
-		pageCode: '805120',
-		deleteCode: '805004'
+		pageCode: '805245',
 	});
     // 上架
     $('#upBtn').click(function() {
@@ -41,54 +40,21 @@ $(function() {
             toastr.info("请选择记录");
             return;
         }
-        if (selRecords[0].status == '1' || selRecords[0].status == '3') {
-            confirm('确定上架？').then(function () {
-                var dw = dialog({
-                    content: '<form class="pop-form" id="popForm" novalidate="novalidate">' +
-                    '<ul class="form-info" id="formContainer"><li style="text-align:center;font-size: 15px;">请输入该类别的UI次序</li></ul>' +
-                    '</form>'
-                });
-
-                dw.showModal();
-
-                buildDetail({
-                    container: $('#formContainer'),
-                    fields: [{
-                        field: 'orderNo',
-                        title: 'UI次序',
-                        required: true,
-                        number: true,
-                        min: '0'
-                    }],
-                    buttons: [{
-                        title: '确定',
-                        handler: function () {
-                            if ($('#popForm').valid()) {
-                                var data = $('#popForm').serializeObject();
-                                reqApi({
-                                    code: '805253',
-                                    json: {
-                                        code: selRecords[0].code,
-                                        orderNo: data.orderNo,
-                                        updater : getUserName()
-                                    }
-                                }).done(function () {
-                                    sucList();
-                                    dw.close().remove();
-                                });
-                            }
-                        }
-                    }, {
-                        title: '取消',
-                        handler: function () {
-                            dw.close().remove();
-                        }
-                    }]
-                });
-            })
-        } else {
-            toastr.info('已经是上架的状态了');
+        
+        if (selRecords[0].status == '1') {
+            toastr.info('已上架！');
+            return;
         }
+        confirm('确定上架？').then(function () {
+        	reqApi({
+                    code: 805242,
+                    json: {
+                        code: selRecords[0].code,
+                    }
+                }).then(function(){
+                    sucList();
+                });
+        })
     });
     // 下架
     $('#downBtn').click(function() {
@@ -97,20 +63,20 @@ $(function() {
             toastr.info("请选择记录");
             return;
         }
-        if (selRecords[0].status == '2') {
-            confirm('确定下架？').then(function () {
-                reqApi({
-                    code: 805254,
-                    json: {
-                        code: selRecords[0].code,
-                        updater : getUserName()
-                    }
-                }).then(function(){
-                    sucList();
-                });
-            })
-        } else {
-            toastr.info('已经是下架的状态了');
+        
+        if (selRecords[0].status == '0'||selRecords[0].status == '2') {
+            toastr.info('不是可下架的状态！');
+            return;
         }
+        confirm('确定下架？').then(function () {
+            reqApi({
+                code: 805243,
+                json: {
+                    code: selRecords[0].code,
+                }
+            }).then(function(){
+                sucList();
+            });
+        })
     });
 });

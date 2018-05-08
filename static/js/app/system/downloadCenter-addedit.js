@@ -16,7 +16,6 @@ $(function() {
     },  {
         title: '参数值',
         field: 'cvalue',
-        type: "textarea",
         required: true,
     }];
 

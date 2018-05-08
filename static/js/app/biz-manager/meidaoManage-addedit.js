@@ -88,13 +88,13 @@ $(function() {
                 if(data.level==""){
                     delete data.level
                 }
-                data.photo = $("#photo").attr("data-url");
-                if(data.photo == undefined || data.photo == '') {
-                    toastr.info('头像不能为空');
-                    return
-                }else {
+//              data.photo = $("#photo").attr("data-url");
+//              if(data.photo == undefined || data.photo == '') {
+//                  toastr.info('头像不能为空');
+//                  return
+//              }else {
                     return data;
-                }
+//              }
 
             },
             addCode : '805042',

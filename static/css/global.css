@@ -394,6 +394,7 @@ textarea {
 
 .toolbar {
 	float: left;
+	margin-bottom: 0;
 }
 
 .toolbar li {
@@ -406,6 +407,7 @@ textarea {
 	border-radius: 3px;
 	cursor: pointer;
 	display: none;
+	margin-bottom: 10px;
 }
 
 .toolbar li span {
@@ -486,6 +488,7 @@ textarea {
 	margin-bottom: 13px;
 	clear: both;
 	padding-right: 20px;
+	position: relative;
 }
 .ui-dialog .form-info li{
 	text-align: center;
@@ -554,9 +557,10 @@ textarea {
 }
 
 .form-info span {
+	max-width: 600px;
 	line-height: 33px;
 	display: table;
-	white-space: normal;
+	word-break: break-all;
 }
 
 .form-info span.error {
@@ -1265,6 +1269,9 @@ svg circle:hover {
 .search-form-li-date{
 	min-width: 455px !important;
 }
+.pop-form-uRef .form-info li label{
+	width: 120px;
+}
 @keyframes antRotate {
     100% {
         transform: rotate(405deg);
@@ -1546,6 +1553,7 @@ svg circle:hover {
 }
 .am-modal .am-modal-body {
     color: #888;
+    min-width: 400px;
     height: 100%;
     padding: 20px 30px 20px;
     text-align: left;

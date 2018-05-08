@@ -1,34 +1,21 @@
 $(function() {
 
-    var dict = {
-        'MKF_FWJY': '服务精英门槛费',
-        'MKF_FWJY_FQ': '服务精英返销帮券',
-        'MKF_FWS': '服务商门槛费',
-        'MKF_FWS_FQ': '服务商返销帮券'
-    };
-
     var columns = [{
         field: '',
         title: '',
         checkbox: true
     }, {
-        field: 'ckey',
-        title: '规则名称',
-        formatter: function (v) {
-            return dict[v];
-        }
+        field: 'remark',
+        title: '规则名称'
     }, {
         field: 'cvalue',
         title: '值'
-    }, {
-        field: 'remark',
-        title: '参数说明'
     }];
     buildList({
         columns: columns,
         pageCode: '805915',
         searchParams : {
-            type: 'MKF'
+            type: 'SIGN'
         }
     });
 

@@ -8,6 +8,16 @@ $(function() {
 		field : 'name',
 		title : '品牌名称',
 		search: true
+    }, {
+        field: 'categoryCode',
+        title: '类别',
+        type: 'select',
+        pageCode: '805245',
+        params: {
+        },
+        keyName: 'code',
+        valueName: 'name',
+        search: true,
 	},{
 		field : 'contacts',
 		title : '联系人姓名'
@@ -36,21 +46,19 @@ $(function() {
 		field : 'remark',
 		title : '备注'
 	}];
+	
+	var searchParams={};
     if(sessionStorage.getItem('loginKind') == 'A') {
-        buildList({
-            columns: columns,
-            searchParams : {
+    	searchParams = {
                 adviser : getUserId()
-            },
-            pageCode: '805256'
-        });
-    } else {
+           };
+    }
         buildList({
             columns: columns,
-            pageCode: '805256'
+            pageCode: '805256',
+            searchParams: searchParams
         });
-    }
-
+    
     // 上架
     $('#upBtn').click(function() {
         var selRecords = $('#tableList').bootstrapTable('getSelections');
@@ -59,64 +67,63 @@ $(function() {
             return;
         }
         if(selRecords[0].status == '1' || selRecords[0].status == '3') {
-            confirm('确定上架？').then(function () {
-                var dw = dialog({
-                    content: '<form class="pop-form" id="popForm" novalidate="novalidate">' +
-                    '<ul class="form-info" id="formContainer"><li style="text-align:center;font-size: 15px;">请输入该品牌的位序</li></ul>' +
-                    '</form>'
-                });
-
-                dw.showModal();
-
-                buildDetail({
-                    container: $('#formContainer'),
-                    fields: [{
-                        field: 'orderNo',
-                        title: '顺序',
-                        required: true,
-                        number: true,
-                        min: '0'
-                    },{
-                        field : 'location1',
-                        title : '是否推荐',
-                        required: true,
-                        type: 'select',
-                        data : {'0':'否','1':'是'}
-                    }],
-                    buttons: [{
-                        title: '确定',
-                        handler: function () {
-                            if ($('#popForm').valid()) {
-                                var data = $('#popForm').serializeObject();
-                                reqApi({
-                                    code: '805253',
-                                    json: {
-                                        code: selRecords[0].code,
-                                        location : data.location1,
-                                        orderNo: data.orderNo,
-                                        updater : getUserName()
-                                    }
-                                }).done(function () {
-                                    sucList();
-                                    dw.close().remove();
-                                });
-                            }
-                        }
-                    }, {
-                        title: '取消',
-                        handler: function () {
-                            dw.close().remove();
-                        }
-                    }]
-                });
+            var dw = dialog({
+                content: '<form class="pop-form" id="popForm" novalidate="novalidate">' +
+                '<ul class="form-info" id="formContainer"><li style="text-align:center;font-size: 15px;">请输入该品牌的位序</li></ul>' +
+                '</form>'
             });
+
+            dw.showModal();
+
+            buildDetail({
+                container: $('#formContainer'),
+                fields: [{
+                    field: 'orderNo1',
+                    title: '顺序',
+                    required: true,
+                    number: true,
+                    min: '0',
+                    value: selRecords[0].orderNo?selRecords[0].orderNo:'',
+                },{
+                    field : 'location1',
+                    title : '是否推荐',
+                    required: true,
+                    type: 'select',
+                    data : {'0':'否','1':'是'},
+                    value: selRecords[0].location?selRecords[0].location:'',
+                }],
+                buttons: [{
+                    title: '确定',
+                    handler: function () {
+                        if ($('#popForm').valid()) {
+                            var data = $('#popForm').serializeObject();
+                            reqApi({
+                                code: '805253',
+                                json: {
+                                    code: selRecords[0].code,
+                                    location : data.location1,
+                                    orderNo: data.orderNo1,
+                                }
+                            }).done(function () {
+                                sucList();
+                                dw.close().remove();
+                            });
+                        }
+                    }
+                }, {
+                    title: '取消',
+                    handler: function () {
+                        dw.close().remove();
+                    }
+                }]
+            });
+            
+        	dw.__center();	
+        	
         } else {
             toastr.info('已经是上架的状态了');
-        }
-
-
-    });
-    // 下架
+        };
+    });   // 下架
     $('#downBtn').click(function() {
         var selRecords = $('#tableList').bootstrapTable('getSelections');
         if (selRecords.length <= 0) {
@@ -129,7 +136,6 @@ $(function() {
                     code: 805254,
                     json: {
                         code: selRecords[0].code,
-                        updater : getUserName()
                     }
                 }).then(function(){
                     sucList();

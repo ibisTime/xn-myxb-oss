@@ -620,7 +620,6 @@ function objectArrayFilter(arr, keys) {
 }
 
 function buildList(options) {
-	showLoading();
     options = options || {};
     var searchs = JSON.parse(sessionStorage.getItem('listSearchs') || '{}')[location.pathname];
 
@@ -869,7 +868,6 @@ function buildList(options) {
             }
             var data = codeParams;
 			
-			showLoading();
             reqApi({ code: options.deleteCode, json: data }).done(function(data) {
                 sucList();
             });
@@ -1035,7 +1033,6 @@ function buildList(options) {
     });
 
     chosen();
-    // hideLoading();
 }
 
 function selectImage(file, name) {
@@ -1138,7 +1135,7 @@ function buildDetail(options) {
         }
         if (item.type == 'title') {
             html += '<div ' + (item.field ? 'id="' + item.field + '"' : '') +
-                ' style="' + (item.hidden ? 'display:none;' : '') + '" class="form-title">' + item.title + '</div>';
+                ' style="' + (item.hidden ? 'display:none;' : '') + '" class="form-title"><span>'+ item.title + '</span></div>';
         } else if (item.type == 'hidden') {
             html = '<input type="hidden" id="' + item.field + '" name="' + item.field + '"/>' + html;
         } else if (item.readonly) {
@@ -1147,7 +1144,7 @@ function buildDetail(options) {
             } else if (item.type == 'o2m') {
                 html += '<li class="clearfix" type="' + (item.amount ? 'amount' : '') +
                     '" style="' + (item.width ? ('width: ' + item.width + ';display:inline-block;') : '') +
-                    (item.hidden ? 'display: none;' : '') + '"><label>' + item.title + '</label>' +
+                    (item.hidden ? 'display: none;' : '') + '"><label>' + item.title + ':</label>' +
                     '<div id="' + item.field + '" name="' + item.field + '"></div></li>';
             } else if (item.type == "checkbox") {
                 html += '<li class="clearfix" style="display:inline-block;"><label>' + item.title + ':</label>';
@@ -1702,7 +1699,7 @@ function buildDetail(options) {
                         }
                         $('#' + item.field).html('<div class="zmdi ' + selectOne.icon + ' zmdi-hc-5x" title="' + selectOne.value + '"></div>');
                     } else if (item.type == "checkbox") {
-                        var checkData = displayValue.split(/,/);
+                        var checkData = displayValue?displayValue.split(/,/):[];
                         for (var h = 0; h < checkData.length; h++) {
                             for (var k = 0, len1 = item.items.length; k < len1; k++) {
                                 var rd = item.items[k];

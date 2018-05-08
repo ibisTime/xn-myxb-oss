@@ -47,57 +47,56 @@ $(function() {
             return;
         }
         if(selRecords[0].status == '0' || selRecords[0].status == '2') {
-            confirm('确定上架？').then(function () {
-                var dw = dialog({
-                    content: '<form class="pop-form" id="popForm" novalidate="novalidate">' +
-                    '<ul class="form-info" id="formContainer"><li style="text-align:center;font-size: 15px;">请输入该喜报的位序</li></ul>' +
-                    '</form>'
-                });
+            var dw = dialog({
+                content: '<form class="pop-form" id="popForm" novalidate="novalidate">' +
+                '<ul class="form-info" id="formContainer"><li style="text-align:center;font-size: 15px;">请输入该喜报的位序</li></ul>' +
+                '</form>'
+            });
 
-                dw.showModal();
+            dw.showModal();
 
-                buildDetail({
-                    container: $('#formContainer'),
-                    fields: [{
-                        field: 'orderNo',
-                        title: '顺序',
-                        required: true,
-                        number: true,
-                        min: '0'
-                    },{
-                        field : 'location1',
-                        title : '是否推荐',
-                        required: true,
-                        type: 'select',
-                        data : {'0':'否','1':'是'}
-                    }],
-                    buttons: [{
-                        title: '确定',
-                        handler: function () {
-                            if ($('#popForm').valid()) {
-                                var data = $('#popForm').serializeObject();
-                                reqApi({
-                                    code: '805433',
-                                    json: {
-                                        code: selRecords[0].code,
-                                        location : data.location1,
-                                        updater: getUserName(),
-                                        orderNo: data.orderNo
-                                    }
-                                }).done(function () {
-                                    sucList();
-                                    dw.close().remove();
-                                });
-                            }
+            buildDetail({
+                container: $('#formContainer'),
+                fields: [{
+                    field: 'orderNo',
+                    title: '顺序',
+                    required: true,
+                    number: true,
+                    min: '0'
+                },{
+                    field : 'location1',
+                    title : '是否推荐',
+                    required: true,
+                    type: 'select',
+                    data : {'0':'否','1':'是'}
+                }],
+                buttons: [{
+                    title: '确定',
+                    handler: function () {
+                        if ($('#popForm').valid()) {
+                            var data = $('#popForm').serializeObject();
+                            reqApi({
+                                code: '805433',
+                                json: {
+                                    code: selRecords[0].code,
+                                    location : data.location1,
+                                    updater: getUserName(),
+                                    orderNo: data.orderNo
+                                }
+                            }).done(function () {
+                                sucList();
+                                dw.close().remove();
+                            });
                         }
-                    }, {
-                        title: '取消',
-                        handler: function () {
-                            dw.close().remove();
-                        }
-                    }]
-                });
-            })
+                    }
+                }, {
+                    title: '取消',
+                    handler: function () {
+                        dw.close().remove();
+                    }
+                }]
+            });
+            dw.__center();	
         }
         else
         {

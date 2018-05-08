@@ -1,4 +1,5 @@
 $(function() {
+	
     // 业务管理-品牌管理
     var code = getQueryString('code');
     var view = !!getQueryString('v');
@@ -11,6 +12,17 @@ $(function() {
     }
 
     var fields = [{
+        field: 'categoryCode',
+        title: '类别',
+        type: 'select',
+        pageCode: '805245',
+        params: {
+        	status:'1'
+        },
+        keyName: 'code',
+        valueName: 'name',
+        required : true
+	},{
         field : 'name',
         title : '品牌名称',
         required : true
@@ -56,6 +68,17 @@ $(function() {
     }];
 // 新增
     var columns = [{
+        field: 'categoryCode',
+        title: '类别',
+        type: 'select',
+        pageCode: '805245',
+        params: {
+        	status:'1'
+        },
+        keyName: 'code',
+        valueName: 'name',
+        required : true
+	},{
         field : 'name',
         title : '品牌名称',
         required : true

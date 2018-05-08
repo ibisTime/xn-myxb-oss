@@ -24,9 +24,9 @@ $(function() {
 		field : 'level',
 		title : '等级',
         type: 'select',
-        key: 'hhr_level',
+        key: 'user_level_service',
         search: true,
-        formatter: Dict.getNameForList('hhr_level')
+        formatter: Dict.getNameForList('user_level_service')
 	}, {
 		field : 'adviserUser',
 		title : '团队顾问',
@@ -34,12 +34,12 @@ $(function() {
             return data.adviserUser?data.adviserUser.realName:'-';
         }
 	}, {
-        field: 'contract_status',
+        field: 'signStatus',
         title: '签约状态',
         type: 'select',
-        key: 'contract_status',
+        key: 'sign_status',
         search: true,
-        formatter: Dict.getNameForList('contract_status')
+        formatter: Dict.getNameForList('sign_status')
     }, {
         field : 'status',
         title : '状态',
@@ -95,7 +95,7 @@ $(function() {
             toastr.info("请选择记录");
             return;
         }
-        if (selRecords[0].status == '3') {
+        if (selRecords[0].signStatus == '1') {
             window.location.href = "../biz/bossManage_addedit.html?v=0&check=1&code=" + selRecords[0].userId+"&mobile="+selRecords[0].mobile;
         }else {
             toastr.info('该状态下不能进行审核');

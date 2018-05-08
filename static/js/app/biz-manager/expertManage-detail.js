@@ -22,6 +22,12 @@ $(function() {
         required : true,
         mobile : true
     }, {
+		field : 'level',
+		title : '等级',
+        type: 'select',
+        key: 'user_level_specialist',
+        formatter : Dict.getNameForList('user_level_specialist'),
+	}, {
         field : 'speciality',
         title : '专长领域'
     }, {

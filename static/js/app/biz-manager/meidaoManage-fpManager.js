@@ -51,11 +51,11 @@ $(function() {
         field : 'handler',
         title : '经纪人',
         type : 'select',
-        listCode: '805120',
+        pageCode: '805120',
         params: {
             companyCode : OSS.company,
             kind : 'M',
-            serviceKind :'T',
+            serviceKind :'B',
             start : 1,
             limit : 1000
         },

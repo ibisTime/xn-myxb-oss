@@ -13,6 +13,7 @@ $(function() {
         title: '币种',
         type: 'select',
         key: 'currency',
+
         formatter: Dict.getNameForList("currency"),
         search: true
     }, {
@@ -54,9 +55,9 @@ $(function() {
         formatter: dateTimeFormat,
         field1: 'dateStart',
         title1: '创建时间',
-        type1: 'datetime',
+        type: 'date',
         field2: 'dateEnd',
-        type2: 'datetime',
+        twoDate: true,
         search: true
     }];
     buildList({
@@ -73,6 +74,6 @@ $(function() {
             toastr.info("请选择记录");
             return;
         }
-        location.href = "ledgerFF_addedit.html?v=1&code=" + selRecords[0].code;
+        location.href = "ledger_addedit.html?v=1&code=" + selRecords[0].code;
     });
 });

@@ -9,6 +9,44 @@ $(function() {
         view = false
     }
     var columns = [{
+    	field: 'categoryCode',
+        title: '品牌大类',
+        type: 'select',
+        pageCode: '805245',
+        params:{
+        	status:'1'
+        },
+        keyName : 'code',
+        valueName: 'name',
+        required: true,
+        onChange: function(v, data) {
+            $("#brandCode").renderDropdown({
+                listCode: '805256',
+                params: {
+                    categoryCode: v,
+                    status: "2",
+                    start:'1',
+                    limit:'10'
+                },
+                keyName: 'code',
+                valueName: 'name',
+            })
+        },
+    }, {
+        field: "brandCode",
+        title: "所属品牌",
+        type: "select",
+        required: true,
+    }, {
+        field: "type",
+        title: "类型",
+        type: "select",
+        data:{
+        	'T':'T类',
+        	'C':'C类'
+        },
+        required: true,
+    }, {
         field : 'name',
         title : '名称',
         required : true
@@ -17,19 +55,13 @@ $(function() {
         title : '广告语',
         required : true
     }, {
-        field : 'brandCode',
-        title : '所属品牌',
-        required : true,
-        type : 'select',
-        listCode: '805258',
-        keyName : 'code',
-        valueName: 'name'
-    }, {
         field : 'price',
         title : '价格',
-        formatter : view?moneyFormat:function (v, data) {
-            return (data.price/1000);
+        formatter : function(v, data){
+        	return parseInt(moneyFormat(v));
         },
+		'Z+': true,
+		amount: true,
         required : true
     },{
         field : 'pic',
@@ -45,6 +77,7 @@ $(function() {
     },{
         field : 'description',
         title : '详情',
+        type:'textarea',
         required : true
     },  {
         field : 'remark',
@@ -54,24 +87,6 @@ $(function() {
     buildDetail({
         fields: columns,
         code: code,
-        beforeSubmit : function (data) {
-
-            if(data.price.indexOf('.')!=-1) {
-                toastr.info('积分价格只能为整数');
-                return
-            }if(data.price.indexOf(',')!=-1) {
-                toastr.info('积分价格不能以逗号分隔');
-                return
-            }
-
-            // 判断价格
-            if(data.price>=9999999999999999) {
-                toastr.info('价格过大');
-                return
-            }
-            data.price*=1000;
-            return data
-        },
         addCode:'805260',
         detailCode: '805267',
         editCode:'805262',

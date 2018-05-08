@@ -27,16 +27,16 @@ $(function() {
 		field : 'level',
 		title : '等级',
         type: 'select',
-        key: 'hhr_level',
+        key: 'user_level_service',
         search: true,
-        formatter: Dict.getNameForList('hhr_level')
+        formatter: Dict.getNameForList('user_level_service')
 	}, {
-        field: 'contract_status',
+        field: 'signStatus',
         title: '签约状态',
         type: 'select',
-        key: 'contract_status',
+        key: 'sign_status',
         search: true,
-        formatter: Dict.getNameForList('contract_status')
+        formatter: Dict.getNameForList('sign_status')
     }, {
 		field : 'status',
 		title : '状态',
@@ -81,8 +81,8 @@ $(function() {
             toastr.info("请选择记录");
             return;
         }
-        if (selRecords[0].status == '3') {
-            window.location.href = "../biz-manager/meidaoManage_addedit.html?check=1&v=0&code="+selRecords[0].userId+"&mobile="+selRecords[0].mobile;
+        if (selRecords[0].signStatus == '1') {
+            window.location.href = "../biz-manager/meidaoManage_check.html?check=1&v=0&code="+selRecords[0].userId+"&mobile="+selRecords[0].mobile;
         }else {
             toastr.info('该状态下不能进行审核');
         }
@@ -140,7 +140,7 @@ $(function() {
         buildDetail({
             container: $('#formContainer'),
             fields: [{
-                field: 'orderNo',
+                field: 'orderNo1',
                 title: 'UI次序',
                 required: true,
                 number: true,
@@ -155,7 +155,7 @@ $(function() {
                             code: '805096',
                             json: {
                                 location : '1',
-                                orderNo: data.orderNo,
+                                orderNo: data.orderNo1,
                                 updater : getUserName(),
                                 userId : selRecords[0].userId
                             }
@@ -172,6 +172,7 @@ $(function() {
                 }
             }]
         });
+        dw.__center();	
     });
     // 查看评论
     $('#chakanpinglunBtn').click(function() {

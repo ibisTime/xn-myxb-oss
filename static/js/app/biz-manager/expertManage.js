@@ -27,8 +27,9 @@ $(function() {
 		field : 'level',
 		title : '等级',
         type: 'select',
-        key: 'zj_level',
-        formatter : Dict.getNameForList('zj_level')
+        key: 'user_level_specialist',
+        formatter : Dict.getNameForList('user_level_specialist'),
+        search: true,
 	}, {
 		field : 'status',
 		title : '状态',
@@ -43,17 +44,9 @@ $(function() {
 		field : 'styleName',
 		title : '授课风格'
 	}, {
-        field : 'location',
-        title : '是否推荐',
-        search: true,
-        type: 'select',
-        data : {'0':'否','1':'是'}
-	},
-		{
 		field : 'orderNo',
 		title : '序号'
-	},
-		{
+	}, {
 		field : 'remark',
 		title : '备注'
 	}];
@@ -160,6 +153,7 @@ $(function() {
                 }
             }]
         });
+        dw.__center();	
     });
     // 查看评论
     $('#chakanpinglunBtn').click(function() {

@@ -38,13 +38,8 @@ $(function() {
     },  {
         field: 'kind',
         title: '菜单针对对象',
-        listCode: '805906',
-        params: {
-            parentKey : 'menu_kind'
-        },
-        keyName: 'dkey',
-        valueName: 'dvalue',
-		type : 'select'
+    	value:'0',
+        type:'hidden'
     },{
         field: 'remark',
         title: '备注',
