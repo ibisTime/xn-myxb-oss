@@ -58,16 +58,12 @@ $(function() {
             '6':'已录入'
         }
 	}];
-    if(sessionStorage.getItem('loginKind') == 'M') {
-        var searchParams = {
-            type : 'S',
-            handler : getUserId()
-        }
-    }else {
-        var searchParams = {
-            type : 'S'
-        }
-    }
+	var searchParams = {
+		type: 'S'
+	}
+	if(sessionStorage.getItem('loginKind') == 'M') {
+		searchParams.handler = getUserId()
+	}
 	buildList({
 		columns: columns,
         searchParams : searchParams,

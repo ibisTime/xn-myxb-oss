@@ -52,15 +52,11 @@ $(function() {
 			'6': '已录入'
 		}
 	}];
+	var searchParams = {
+		type: 'T'
+	}
 	if(sessionStorage.getItem('loginKind') == 'M') {
-		var searchParams = {
-			type: 'T',
-			handler: getUserId()
-		}
-	} else {
-		var searchParams = {
-			type: 'T'
-		}
+		searchParams.handler = getUserId()
 	}
 	buildList({
 		columns: columns,

@@ -50,17 +50,12 @@ $(function() {
 		field : 'remark',
 		title : '备注'
 	}];
-    if (sessionStorage.getItem('loginKind') == 'M') {
-        var searchParams = {
-            companyCode : OSS.company,
-            kind : 'S',
-            handler : getUserId()
-        }
-    }else {
-        var searchParams = {
+	var searchParams = {
             companyCode : OSS.company,
             kind : 'S'
         }
+    if (sessionStorage.getItem('loginKind') == 'M') {
+        searchParams.handler = getUserId()
     }
 	buildList({
 		columns: columns,

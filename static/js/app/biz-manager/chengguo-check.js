@@ -85,12 +85,9 @@ $(function() {
             if ($('#jsForm').valid()) {
                 var data = $('#jsForm').serializeObject();
                 data.approveResult = '1';
-                data.kind = 'T';
-                data.userId = code;
-                data.mobile = mobile;
                 data.approver = getUserName();
                 reqApi({
-                    code: '805044',
+                    code: '805516',
                     json: data
                 }).done(function(data) {
                     sucDetail();
@@ -102,13 +99,11 @@ $(function() {
         handler: function() {
             if ($('#jsForm').valid()) {
                 var data = $('#jsForm').serializeObject();
-                data.result = '0';
-                data.kind = 'T';
+                data.approveResult = '0';
                 data.code = code;
-                data.mobile = mobile;
                 data.approver = getUserName();
                 reqApi({
-                    code: '805044',
+                    code: '805516',
                     json: data
                 }).done(function(data) {
                     sucDetail();
@@ -122,10 +117,9 @@ $(function() {
         }
     }];
     buildDetail({
-        fields: luru1,
+        fields: fields,
         code: code,
         buttons : buttons,
-        addCode : '805514',
         detailCode: '805521',
         view: true
     });

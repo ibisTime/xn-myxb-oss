@@ -30,17 +30,14 @@ $(function() {
 		field : 'remark',
 		title : '备注'
 	}];
+	
+	var searchParams = {
+		type: 'T'
+	}
+	if(sessionStorage.getItem('loginKind') == 'M') {
+		searchParams.handler = getUserId()
+	}
 
-    if(sessionStorage.getItem('loginKind') == 'M') {
-        var searchParams = {
-            type : 'T',
-            handler : getUserId()
-        }
-    }else {
-        var searchParams = {
-            type : 'T'
-        }
-    }
 	buildList({
 		columns: columns,
 		searchParams : searchParams,
