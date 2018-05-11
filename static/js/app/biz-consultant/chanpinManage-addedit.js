@@ -58,7 +58,7 @@ $(function() {
         field : 'price',
         title : '价格',
         formatter : function(v, data){
-        	return parseInt(moneyFormat(v));
+        	return parseInt(moneyFormat1(v));
         },
 		'Z+': true,
 		amount: true,

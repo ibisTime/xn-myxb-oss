@@ -32,7 +32,7 @@ $(function() {
         field : 'remark10',
         title : '专家',
         formatter : function (v, data) {
-            return data.user?data.user.realName:'-';
+			return data.user ? data.user.realName?data.user.realName+"("+data.user.mobile+")" :data.user.mobile : '-';
         }
     }, {
         field : 'appointDatetime',

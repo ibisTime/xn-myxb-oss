@@ -15,7 +15,7 @@ $(function() {
 		field: 'orderNo',
 		title: '推荐人',
 		formatter: function(v, data) {
-			return data.refereeUser ? data.refereeUser.realName : '-';
+			return data.refereeUser ? data.refereeUser.realName?data.refereeUser.realName+"("+data.refereeUser.mobile+")" :data.refereeUser.mobile : '-';
 		}
 	}, {
 		field: 'handler',

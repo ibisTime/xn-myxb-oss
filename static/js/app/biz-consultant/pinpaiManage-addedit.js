@@ -46,6 +46,11 @@ $(function() {
         type : 'img',
         single : true
     }, {
+        field : 'description',
+        title : '简介',
+        type: 'textarea',
+        required : true
+    }, {
         field : 'location',
         title : '是否推荐',
         data : {'0':'否','1':'是'},
@@ -101,6 +106,11 @@ $(function() {
         required : true,
         type : 'img',
         single : true
+    }, {
+        field : 'description',
+        title : '简介',
+        type: 'textarea',
+        required : true
     }, {
         field : 'remark',
         title : '备注'

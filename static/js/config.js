@@ -6,9 +6,9 @@ OSS.system = 'CD-CXB000020';
 // companyCode
 OSS.company = 'CD-CXB000020';
 // system name
-OSS.systemName = '美业销帮管理平台';
+OSS.systemName = '美销帮管理平台';
 // company name
-OSS.companyName = '美业销帮';
+OSS.companyName = '美销帮';
 // menuCode
 OSS.menuRoot = 'HYSM201700000000000000';
 // picUrl

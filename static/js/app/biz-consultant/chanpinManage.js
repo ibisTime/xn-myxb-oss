@@ -29,7 +29,7 @@ $(function() {
 			title: '价格',
 			field: 'price',
 			formatter: function(v, data) {
-				return parseInt(moneyFormat(v));
+				return parseInt(moneyFormat1(v));
 			},
 		}, {
 			field: 'location',

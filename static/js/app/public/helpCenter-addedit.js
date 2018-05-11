@@ -1,46 +1,39 @@
 $(function() {
-	var code;
-	reqApi({
-		code: '805917',
-		json: {
-			ckey: 'help_center'
-		},
-		sync: true
-	}).then(function(data) {
-		code = data.id;
-	});
+	var code = getQueryString('code');
 	var view = !!getQueryString('v');
 	
 	var fields = [{
-		field: 'remark',
-		type: 'hidden',
-		value: '关于我们'
-	},{
-		title: '内容',
-		field: 'cvalue',
-		type: 'textarea',
+		field: 'title',
+        title: '标题',
 		required: true
+    }, {
+        title: '内容',
+        field: 'content',
+		type: 'textarea',
+		normalArea: true,
+		required: true
+    }, {
+        title: '序号',
+        field: 'orderNo',
+		required: true
+    }, {
+        title: '备注',
+        field: 'remark',
+    }, {
+        title: '状态',
+        field: 'status',
+        value:'1',
+        type:'hidden'
 	}];
 	
 	buildDetail({
 		fields: fields,
 		code: code,
-		editCode: '805911',
-		detailCode: '805916',
-		buttons: [{
-			title: '保存',
-			handler: function() {
-				if ($('#jsForm').valid()) {
-					var data = $('#jsForm').serializeObject();
-					data['id'] = data['code'];
-					reqApi({
-						code: '805911',
-						json: data
-					}).done(function(data) {
-						toastr.success('操作成功');
-					});
-				}
-			}
-		}]
+		view: view,
+		addCode:'805440',
+		editCode: '805441',
+		detailCode: '805446',
 	});
 });
+
+

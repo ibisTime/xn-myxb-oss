@@ -32,7 +32,7 @@ $(function() {
         field : 'remark1',
         title : '讲师',
         formatter : function (v, data) {
-            return data.user?data.user.realName:'-';
+			return data.user ? data.user.realName?data.user.realName+"("+data.user.mobile+")" :data.user.mobile : '-';
         }
     }, {
         field : 'appointDatetime',

@@ -55,7 +55,7 @@ $(function() {
         params: {
             companyCode : OSS.company,
             kind : 'M',
-            serviceKind :'B',
+//          serviceKind :'B',
             start : 1,
             limit : 1000
         },

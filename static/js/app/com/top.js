@@ -1,19 +1,16 @@
 $('title', window.parent.document).html(OSS.systemName);
 $(function() {
+	
+	var timestamp = new Date().getTime()
+	
     if (!sessionStorage.getItem('token')) {
-		//判断域名是 hhr开头 合伙人域名 kind为11
+		//判断域名是 ？开头 的域名 kind为？
 		// var kind = document.domain.substr(0, 1)=='h'?'PA':(sessionStorage.getItem('loginKind') || '01')
         var host = location.host;
         var str = host.split('.')[0];
-        var kind = str === 'admin'
-            ?'P'
-            : str === 'jjr'
-                ? 'M'
-                : str === 'pp'
-                    ? 'A'
-                    : 'P';
+        var kind = str === 'admin'?'P' : str === 'jjr' ? 'M' : str === 'pp' ? 'A': 'P';
         // location.href = 'signin.html?kind=' + (sessionStorage.getItem('loginKind') || kind);
-        location.href = 'signin.html?kind=' + kind;
+        location.href = 'signin.html?kind=' + kind+"&timestamp="+timestamp;
         sessionStorage.setItem('loginKind',kind);
         return;
     }
@@ -94,7 +91,7 @@ $(function() {
                 window.sessionStorage.setItem('userName', '');
                 window.sessionStorage.setItem('roleCode', '');
                 window.sessionStorage.setItem('qiniuUrl', '');
-                location.href = 'signin.html?kind=' + (sessionStorage.getItem('loginKind') || 'P')
+                location.href = 'signin.html?kind=' + (sessionStorage.getItem('loginKind') || 'P')+'&timestamp='+new Date().getTime();
             }
         });
     });

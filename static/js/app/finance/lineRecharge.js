@@ -30,12 +30,6 @@ $(function() {
         formatter: Dict.getNameForList('biz_type'),
         search: true
     }, {
-        field: 'payCardInfo',
-        title: '开户行',
-    }, {
-        field: 'payCardNo',
-        title: '银行卡号',
-    }, {
         field: 'status',
         title: '状态',
         type: 'select',

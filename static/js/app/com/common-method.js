@@ -80,6 +80,33 @@ function moneyFormat(money, format) {
     return money;
 }
 
+function moneyFormat1(money, format) {
+    var flag = true;
+    if (isNaN(money)) {
+        return '-';
+    }
+    if (money < 0) {
+        money = -1 * money;
+        flag = false;
+    }
+    if (format == '' || format == null || format == undefined || typeof format == 'object') {
+        format = 2;
+    }
+    //钱除以1000并保留两位小数
+    money = (money / 1000).toString();
+    money = money.replace(/(\.\d\d)\d+/ig, "$1");
+    money = parseFloat(money).toFixed(format);
+    //千分位转化
+//  var re = /\d{1,3}(?=(\d{3})+$)/g;
+//  money = money.replace(/^(\d+)((\.\d+)?)$/, function(s, s1, s2) {
+//      return s1.replace(re, "$&,") + s2;
+//  });
+    if (!flag) {
+        money = "-" + money;
+    }
+    return money;
+}
+
 function moneyParse(money, rate) {
     rate = rate || 1000;
     return ((+('' + money).replace(/,/g, '')) * rate).toFixed(0);
@@ -1197,9 +1224,9 @@ function buildDetail(options) {
                 html += '<div class="btn-file"><span>选择文件</span>' + '<input type="file" tabindex="1" id="' + item.field + '" name="' + item.field + '" />' + '</div><div id="' + item.field + '" style="margin-left: 195px;"></div></li>';
             } else if (item.type == 'textarea' && !item.normalArea) {
                 textareaList.push({ field: item.field });
-                html += '<div style="width:800px;float:left;"><textarea style="height:300px;" id="' + item.field + '" name="' + item.field + '"></textarea></div></li>';
+                html += '<div style="width:800px;float:left;"><textarea style="height:300px;resize: none;" id="' + item.field + '" name="' + item.field + '"></textarea></div></li>';
             } else if (item.type == 'textarea' && item.normalArea) {
-                html += '<div style="width:400px;float:left;"><textarea style="height:200px;width: 320px;border: 1px solid #e0e0e0;padding: 8px;" id="' + item.field + '" name="' + item.field + '"></textarea></div></li>';
+                html += '<div style="width:400px;float:left;"><textarea style="height:200px;width: 320px;border: 1px solid #e0e0e0;padding: 8px;resize: none;" id="' + item.field + '" name="' + item.field + '"></textarea></div></li>';
             } else if (item.type == 'citySelect') {
                 if (item.onlyProvince) {
                     html += '<div id="city-group" data-only-prov="' + item.onlyProvince + '"><select id="province" name="province" class="control-def prov"><option value="">请选择</option></select></div></li>';
@@ -1229,7 +1256,7 @@ function buildDetail(options) {
 
                 rules[item.field] = { required: true };
             }else if(item.type == 'doubleLine'){
-                html += '<textarea id="' + item.field + '" rows="2" style="height:80px;" name="' + item.field + '" class="control-def" ' + (item.placeholder ?
+                html += '<textarea id="' + item.field + '" rows="2" style="height:80px;resize: none;" name="' + item.field + '" class="control-def" ' + (item.placeholder ?
                     ('placeholder="' + item.placeholder + '"') :
                     '') + '/></li>';
             } else {
@@ -1927,8 +1954,10 @@ function buildDetail(options) {
                 if (item.link) {
                     $('#' + item.field).html('<a target="_blank" href="' + displayValue + '">' + displayValue + '</a>');
                 }
-                if (item.type == 'textarea') {
+                if (item.type == 'textarea'&&!item.normalArea) {
                     $('#' + item.field).css('width', '800px');
+                }else{
+                	$('#' + item.field).css('width', '320px');
                 }
                 if (item.afterSet) {
                     item.afterSet(displayValue, data);
