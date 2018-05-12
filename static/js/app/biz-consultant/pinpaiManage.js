@@ -28,6 +28,9 @@ $(function() {
 		field : 'realName',
 		title : '品牌顾问'
 	}, {
+		field : 'brandFwsName',
+		title : '经销商'
+	}, {
 		field : 'location',
 		title : '是否推荐',
         search: true,
@@ -168,5 +171,15 @@ $(function() {
         }else {
             window.location.href = './pinpaiManage_addedit.html?v=false&edit=1&code='+selRecords[0].code;
         }
+    });
+    
+    // 设置经销商
+    $('#setBrandFwsBtn').click(function() {
+        var selRecords = $('#tableList').bootstrapTable('getSelections');
+        if (selRecords.length <= 0) {
+            toastr.info("请选择记录");
+            return;
+        }
+        window.location.href = "../biz-consultant/pinpaiManage_setBrandFws.html?code=" + selRecords[0].code+"&v=1";
     });
 });

@@ -34,22 +34,17 @@ $(function() {
         field : 'status',
         title : '状态',
         data : {'1':'未上架','2':'已上架','3':'已下架'},
-        type : !view? 'hidden' : 'select'
     }, {
-        field : 'remark',
-        title : '备注',
-        readonly: false
-    },{
-        field : 'brandFwsName',
-        title : '经销商',
-    },  {
-    	field : 'brandAdviser',
+        field : 'realName',
         title : '品牌顾问',
+    },  {
+        field : 'brandFws',
+        title : '经销商',
         type : 'select',
         pageCode: '805120',
         params: {
             companyCode : OSS.company,
-            kind : 'A',
+            kind : 'C',
         },
         keyName: 'userId',
         valueName: '{{realName.DATA}}-{{mobile.DATA}}',
@@ -70,7 +65,7 @@ $(function() {
                     data.updater = getUserName();
                     data.code = code;
                     reqApi({
-                        code: '805300',
+                        code: '805302',
                         json: data
                     }).done(function() {
                         sucDetail();

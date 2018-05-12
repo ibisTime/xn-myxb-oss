@@ -7,7 +7,7 @@ $(function() {
 	}, {
 		field: 'remark',
 		type: 'hidden',
-		value: '服务商政策'
+		value: '经销商政策'
 	},{
 		title: '内容',
 		field: 'cvalue',

@@ -1,5 +1,5 @@
 $(function() {
-	// 业务管理-美导管理-预约处理
+	// 业务管理-专家管理-成果录入
 	var columns = [{
 		field: '',
 		title: '',
@@ -26,11 +26,12 @@ $(function() {
 			return data.mryUser ? data.mryUser.storeName : '-';
 		}
 	}, {
-		field: 'remark',
-		title: '美导',
+		field: 'expert',
+		title: '专家',
 		formatter: function(v, data) {
 			return data.user ? data.user.realName?data.user.realName+"("+data.user.mobile+")" :data.user.mobile : '-';
 		}
+
 	}, {
 		field: 'appointDatetime',
 		title: '预约时间',
@@ -39,9 +40,15 @@ $(function() {
 		field: 'appointDays',
 		title: '预约天数'
 	}, {
+		field: 'planDatetime',
+		title: '排班时间',
+		formatter: dateTimeFormat
+	}, {
+		field: 'planDays',
+		title: '排班天数'
+	}, {
 		field: 'status',
 		title: '状态',
-		search: true,
 		type: 'select',
 		data: {
             '1':'已预约待排班',
@@ -57,8 +64,10 @@ $(function() {
             '11':'后台审核不通过'
 		}
 	}];
+
 	var searchParams = {
 		type: 'T',
+		status: '7'
 	}
 	if(sessionStorage.getItem('loginKind') == 'M') {
 		searchParams.handler = getUserId()
@@ -69,17 +78,16 @@ $(function() {
 		pageCode: '805520',
 		deleteCode: '805004'
 	});
-	// 排班
-	$('#paibanBtn').click(function() {
+	
+	// 审核
+	$('#checkBtn').off("click").click(function() {
 		var selRecords = $('#tableList').bootstrapTable('getSelections');
 		if(selRecords.length <= 0) {
 			toastr.info("请选择记录");
 			return;
 		}
-		if(selRecords[0].status == '1') {
-			window.location.href = "../biz-manager/yuyuechuli_paiban.html?v=1&code=" + selRecords[0].code + "&check=1";
-		} else {
-			toastr.info('该状态下不可排班');
-		}
+		
+		window.location.href = "../biz-manager/chengguo1_addedit.html?code=" + selRecords[0].code;
+
 	});
 });

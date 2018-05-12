@@ -1,16 +1,15 @@
 $(function() {
-    // 业务管理-美导管理-预约处理
+    // 业务管理-专家管理-成果录入
     var code = getQueryString('code');
     var view = !!getQueryString('v');
 
     var fields = [{
-        field: 'code1',
-        title: '编号',
-        readonly: true,
-        formatter: function(v, data) {
+        field : 'code1',
+        title : '编号',
+        formatter : function (v, data) {
             return data.code
         }
-    },  {
+    }, {
         field : 'url',
         title : '预约人',
         formatter : function (v, data) {
@@ -23,16 +22,16 @@ $(function() {
             return data.mryUser?data.mryUser.mobile:'-';
         }
     }, {
-        field : 'remark',
+        field : 'storeName',
         title : '店铺',
         formatter : function (v, data) {
             return data.mryUser?data.mryUser.storeName:'-';
         }
     }, {
-        field : 'remark11',
-        title : '美导',
+        field : 'expert',
+        title : '专家',
         formatter : function (v, data) {
-			return data.user ? data.user.realName?data.user.realName+"("+data.user.mobile+")" :data.user.mobile : '-';
+            return data.user?data.user.realName:'-';
         }
     }, {
         field : 'appointDatetime',
@@ -41,6 +40,13 @@ $(function() {
     }, {
         field : 'appointDays',
         title : '预约天数'
+    },{
+        field : 'planDatetime',
+        title : '排班时间',
+        formatter : dateTimeFormat
+    }, {
+        field : 'planDays',
+        title : '排班天数'
     }, {
         field : 'status',
         title : '状态',
@@ -58,8 +64,8 @@ $(function() {
             '10':'后台审核通过',
             '11':'后台审核不通过'
         }
-    }, {
-    	 field : 'realDatetime',
+    },{
+        field : 'realDatetime',
         title : '实际上门时间',
         formatter : dateTimeFormat
     },{
@@ -68,15 +74,14 @@ $(function() {
     },{
         field : 'clientNumber',
         title : '见客户数'
-    }, {
+    },{
         field : 'sucNumber',
-        title : '成交数'
+        title : '成交客户数'
     }, {
         field : 'saleAmount',
-        title : '成交额',
-        formatter : moneyFormat,
+        title : '销售业额'
     }, {
-    	field : 'detailList',
+        field : 'detailList',
         title : '成果明细',
         type:'o2m',
         readonly: true,
@@ -91,16 +96,55 @@ $(function() {
             field: "amount",
             formatter: moneyFormat
         }]
+    },{
+        field : 'approveNote',
+        title : '备注',
+        readonly : view?true:false
     }];
-
+    
+    var buttons = [{
+        title: '通过',
+        handler: function() {
+            if ($('#jsForm').valid()) {
+                var data = $('#jsForm').serializeObject();
+                data.approveResult = '1';
+                data.approver = getUserName();
+                reqApi({
+                    code: '805516',
+                    json: data
+                }).done(function(data) {
+                    sucDetail();
+                });
+            }
+        }
+    }, {
+        title: '不通过',
+        handler: function() {
+            if ($('#jsForm').valid()) {
+                var data = $('#jsForm').serializeObject();
+                data.approveResult = '0';
+                data.code = code;
+                data.approver = getUserName();
+                reqApi({
+                    code: '805516',
+                    json: data
+                }).done(function(data) {
+                    sucDetail();
+                });
+            }
+        }
+    }, {
+        title: '返回',
+        handler: function() {
+            goBack();
+        }
+    }];
     buildDetail({
         fields: fields,
-        code: {
-            code: code
-        },
+        code: code,
+        buttons : view?'':buttons,
         detailCode: '805521',
-        view: view
+        view: true
     });
-
 
 });

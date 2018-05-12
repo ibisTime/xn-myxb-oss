@@ -10,7 +10,7 @@ $(function() {
     if(edit) {
         view = false
     }
-
+	//详情
     var fields = [{
         field: 'categoryCode',
         title: '类别',
@@ -61,18 +61,40 @@ $(function() {
         data : {'1':'未上架','2':'已上架','3':'已下架'},
         type : !view? 'hidden' : 'select'
     }, {
-        field : 'brandAdviser',
+        field : 'realName',
         title : '品牌顾问',
-        type : 'select',
-        listCode: '805121',
-        keyName: 'userId',
-        valueName: 'realName'
     },{
+    	field : 'brandFwsName',
+        title : '经销商',
+	},{
         field : 'remark',
         title : '备注'
     }];
 // 新增
     var columns = [{
+    	field : 'brandFws',
+        title : '经销商',
+        type : 'select',
+        pageCode: '805120',
+        params: {
+            companyCode : OSS.company,
+            kind : 'C',
+        },
+        keyName: 'userId',
+        valueName: '{{realName.DATA}}-{{mobile.DATA}}',
+        required : true
+	},{
+    	field : 'brandAdviser',
+        title : '品牌顾问',
+        type : 'select',
+        pageCode: '805120',
+        params: {
+            companyCode : OSS.company,
+            kind : 'A',
+        },
+        keyName: 'userId',
+        valueName: '{{realName.DATA}}-{{mobile.DATA}}',
+	},{
         field: 'categoryCode',
         title: '类别',
         type: 'select',
@@ -117,7 +139,6 @@ $(function() {
     }];
 
         if(view) {
-
             buildDetail({
                 fields: fields,
                 code: {

@@ -1172,7 +1172,7 @@ function buildDetail(options) {
                 html += '<li class="clearfix" type="' + (item.amount ? 'amount' : '') +
                     '" style="' + (item.width ? ('width: ' + item.width + ';display:inline-block;') : '') +
                     (item.hidden ? 'display: none;' : '') + '"><label>' + item.title + ':</label>' +
-                    '<div id="' + item.field + '" name="' + item.field + '"></div></li>';
+                    '<div id="' + item.field + '" name="' + item.field + '" style="float: left;"></div></li>';
             } else if (item.type == "checkbox") {
                 html += '<li class="clearfix" style="display:inline-block;"><label>' + item.title + ':</label>';
                 for (var k = 0, len1 = item.items.length; k < len1; k++) {
@@ -1250,7 +1250,7 @@ function buildDetail(options) {
                 dateTimeList.push(item);
                 html += '<input id="' + item.field + '" name="' + item.field + '" class="lay-input"/></li>';
             } else if (item.type == "o2m") {
-                html += '<div id="' + item.field + '" style="display: inline-block;"></div>';
+                html += '<div id="' + item.field + '" style="display: inline-block;float: left;"></div>';
             } else if(item.type=='imgCheck'){
             	html += '<div class="imgCheckWrap"><div id="' + item.field + '" style="display: inline-block;width:100px;height: 100px;background-size:100px 100px"></div><input type="button" id="'+item.imgCheckBtnId+'" value="'+item.imgCheckBtnVal+'" class="btn" style="margin-left: 100px"/>';
 
