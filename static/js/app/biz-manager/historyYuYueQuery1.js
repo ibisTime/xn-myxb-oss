@@ -27,7 +27,7 @@ $(function() {
 		}
 	}, {
 		field: 'remark',
-		title: '服务商',
+		title: '美导',
 		formatter: function(v, data) {
 			return data.user ? data.user.realName?data.user.realName+"("+data.user.mobile+")" :data.user.mobile : '-';
 		}
@@ -58,8 +58,7 @@ $(function() {
 		}
 	}];
 	var searchParams = {
-		type: 'T',
-		status:'1'
+		type: 'S',
 	}
 	if(sessionStorage.getItem('loginKind') == 'M') {
 		searchParams.handler = getUserId()
@@ -70,13 +69,13 @@ $(function() {
 		pageCode: '805520',
 		deleteCode: '805004'
 	});
-	// 排班
-	$('#paibanBtn').click(function() {
+	// 详情
+	$('#detailBtn').off("click").click(function() {
 		var selRecords = $('#tableList').bootstrapTable('getSelections');
 		if(selRecords.length <= 0) {
 			toastr.info("请选择记录");
 			return;
 		}
-		window.location.href = "../biz-manager/yuyuechuli_paiban.html?v=1&code=" + selRecords[0].code + "&check=1";
+		window.location.href = "./chengguo_check.html?v=1&code=" + selRecords[0].code;
 	});
 });

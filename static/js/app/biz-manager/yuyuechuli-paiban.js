@@ -30,7 +30,7 @@ $(function() {
         }
     }, {
         field : 'remark10',
-        title : '美导',
+        title : '服务商',
         formatter : function (v, data) {
 			return data.user ? data.user.realName?data.user.realName+"("+data.user.mobile+")" :data.user.mobile : '-';
         }

@@ -21,7 +21,10 @@ $(function() {
         valueName: 'dvalue'
 	}, {
 		field : 'nickname',
-		title : '评论人'
+		title : '评论人',
+		formatter: function(v, data){
+			return data.commentUser.realName
+		}
 	}, {
 		field : 'commentDatetime',
 		title : '评论时间',

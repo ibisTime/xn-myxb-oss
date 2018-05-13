@@ -23,14 +23,14 @@ $(function() {
             return data.mryUser?data.mryUser.mobile:'-';
         }
     }, {
-        field : 'remark',
+        field : 'storeName',
         title : '店铺',
         formatter : function (v, data) {
             return data.mryUser?data.mryUser.storeName:'-';
         }
     }, {
-        field : 'remark10',
-        title : '专家',
+        field : 'userrealName',
+        title : '销售天团',
         formatter : function (v, data) {
 			return data.user ? data.user.realName?data.user.realName+"("+data.user.mobile+")" :data.user.mobile : '-';
         }
@@ -46,12 +46,17 @@ $(function() {
         title : '状态',
         type: 'select',
         data : {
-            '1':'待排班',
+            '1':'已预约待排班',
             '2':'已排班待上门',
             '3':'无档期',
             '4':'已上门待下课',
-            '5':'已下课待录入',
-            '6':'已录入'
+            '5':'已下课待成果录入',
+            '6':'已录入待经销商审核',
+            '7':'经销商已审核',
+            '8':'经销商审核不通过',
+            '9':'已支付待后台复核',
+            '10':'后台审核通过',
+            '11':'后台审核不通过'
         }
     },{
         field: 'isPlan',

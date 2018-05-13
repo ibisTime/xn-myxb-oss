@@ -19,12 +19,6 @@ $(function() {
 		field: 'mobile',
 		title: '手机号'
 	}, {
-		field: 'orderNo',
-		title: '推荐人',
-		formatter: function(v, data) {
-			return data.refereeUser ? data.refereeUser.realName : '-';
-		}
-	}, {
 		field: 'level',
 		title: '等级',
 		type: 'select',

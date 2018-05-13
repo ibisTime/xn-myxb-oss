@@ -7,15 +7,6 @@ $(function() {
         title : '品牌名称',
         required : true
     },{
-        field : 'contacts',
-        title : '联系人姓名',
-        required : true
-    }, {
-        field : 'mobile',
-        title : '联系人手机号',
-        mobile : true,
-        required : true
-    },  {
         field : 'slogan',
         title : '广告语',
         required : true
@@ -36,10 +27,6 @@ $(function() {
         data : {'1':'未上架','2':'已上架','3':'已下架'},
         type : !view? 'hidden' : 'select'
     }, {
-        field : 'remark',
-        title : '备注',
-        readonly: false
-    },{
         field : 'brandFwsName',
         title : '经销商',
     },  {

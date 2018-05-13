@@ -7,7 +7,7 @@ $(function() {
 	}, {
 		field: 'remark',
 		type: 'hidden',
-		value: '服务商合同'
+		value: '经销商合同'
 	},{
 		title: '内容',
 		field: 'cvalue',
@@ -18,7 +18,7 @@ $(function() {
 	buildDetail({
 		fields: fields,
 		code: {
-			ckey: 'FWS_CONTRACT'
+			ckey: 'JXS_CONTRACT'
 		},
 		editCode: '805911',
 		detailCode: '805917',

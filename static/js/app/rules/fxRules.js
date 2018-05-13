@@ -15,7 +15,7 @@ $(function() {
         columns: columns,
         pageCode: '805915',
         searchParams : {
-            type: 'MRY_LEVEL'
+            type: 'DIST_ORDER'
         }
     });
 });

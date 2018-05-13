@@ -27,18 +27,22 @@ $(function() {
         pageCode: '805505'
     });
 
-    $('#checkBtn').css('display','none');
-    $('#fenpeiManagerBtn').css('display','none');
-    $('#chakanpinglunBtn').css('display','none');
-    $('#setTuijianBtn').css('display','none');
-    $('#scheduleListBtn').css('display','none');
-    $('#zhuxiaoBtn').css('display','none');
+    $('.tools .toolbar').empty();
+    $('.tools .toolbar').html('<li style="display:block;" id="addBtn"><span><img src="/static/images/t01.png"></span>新增</li>'
+    						+'<li style="display:block;" id="editBtn"><span><img src="/static/images/t01.png"></span>修改</li>'
+    						+'<li style="display:block;" id="detailBtn"><span><img src="/static/images/t01.png"></span>详情</li>'
+    						+'<li style="display:block;" id="backBtn"><span><img src="/static/images/t01.png"></span>返回</li>');
+    						
+    $('#backBtn').on('click', function() {
+         window.location = './meidaoManage.html';
+    });
+    
     // 新增
-    $('#addBtn').off().click(function() {
+    $('#addBtn').on('click', function() {
         window.location.href = './expertManage_scheduleListDetail.html?userId='+userId;
     });
     // 修改
-    $('#editBtn').off().click(function() {
+    $('#editBtn').on('click', function() {
         var selRecords = $('#tableList').bootstrapTable('getSelections');
         if (selRecords.length <= 0) {
             toastr.info("请选择记录");
@@ -47,7 +51,7 @@ $(function() {
         window.location.href = './expertManage_scheduleListDetail.html?code='+selRecords[0].code;
     });
     // 详情
-    $('#detailBtn').off().click(function() {
+    $('#detailBtn').on('click', function() {
         var selRecords = $('#tableList').bootstrapTable('getSelections');
         if (selRecords.length <= 0) {
             toastr.info("请选择记录");

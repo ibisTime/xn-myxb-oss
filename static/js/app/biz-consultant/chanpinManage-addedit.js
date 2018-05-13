@@ -55,6 +55,22 @@ $(function() {
         title : '广告语',
         required : true
     }, {
+        field: "isSell",
+        title: "是否可销售",
+        type: "select",
+        data:{
+        	'0':'否',
+        	'1':'是'
+        },
+        required: true,
+        onChange: function(v, data) {
+        	if(v=='1'){
+            	$("#price").parent().css("display", "block");
+            } else {
+                $("#price").parent().css("display", "none");
+            }
+        },
+    }, {
         field : 'price',
         title : '价格',
         formatter : function(v, data){
@@ -62,7 +78,7 @@ $(function() {
         },
 		'Z+': true,
 		amount: true,
-        required : true
+        required : true,
     },{
         field : 'pic',
         title : '缩略图',

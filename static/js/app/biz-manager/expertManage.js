@@ -12,12 +12,6 @@ $(function() {
 		field : 'mobile',
 		title : '手机号'
 	}, {
-        field : 'orderNo',
-        title : '推荐人',
-        formatter : function (v,data) {
-			return data.refereeUser ? data.refereeUser.realName?data.refereeUser.realName+"("+data.refereeUser.mobile+")" :data.refereeUser.mobile : '-';
-        }
-    }, {
         field : 'handler',
         title : '经纪人',
         formatter : function (v, data) {
@@ -166,7 +160,7 @@ $(function() {
             toastr.info("请选择记录");
             return;
         }
-        window.location.href = './meidaoManage_scheduleList.html?code='+selRecords[0].userId;
+        window.location.href = './expertManage_scheduleList.html?code='+selRecords[0].userId;
     });
 
     // 详情

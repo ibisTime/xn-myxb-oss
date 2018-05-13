@@ -1928,7 +1928,9 @@ function buildDetail(options) {
                         });
                     } else if (item.type == 'datetime' || item.type == 'date') {
                         $('#' + item.field).val((item.type == 'datetime' ? dateTimeFormat : dateFormat)(displayValue));
-                    } else {
+                    } else if (item.type == 'select') {
+                    	$('#' + item.field).val(displayValue);
+                    }else {
                         if (item.formatter) {
                             $('#' + item.field).val(item.formatter(displayValue, data));
                         } else {

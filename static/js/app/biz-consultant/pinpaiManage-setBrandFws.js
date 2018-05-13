@@ -7,15 +7,6 @@ $(function() {
         title : '品牌名称',
         required : true
     },{
-        field : 'contacts',
-        title : '联系人姓名',
-        required : true
-    }, {
-        field : 'mobile',
-        title : '联系人手机号',
-        mobile : true,
-        required : true
-    },  {
         field : 'slogan',
         title : '广告语',
         required : true
@@ -39,12 +30,12 @@ $(function() {
         title : '品牌顾问',
     },  {
         field : 'brandFws',
-        title : '经销商',
+        title : '服务商',
         type : 'select',
         pageCode: '805120',
         params: {
             companyCode : OSS.company,
-            kind : 'C',
+            kind : 'T',
         },
         keyName: 'userId',
         valueName: '{{realName.DATA}}-{{mobile.DATA}}',

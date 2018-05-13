@@ -19,17 +19,11 @@ $(function() {
         valueName: 'name',
         search: true,
 	},{
-		field : 'contacts',
-		title : '联系人姓名'
-	}, {
-		field : 'mobile',
-		title : '联系人手机号'
-	}, {
 		field : 'realName',
 		title : '品牌顾问'
 	}, {
 		field : 'brandFwsName',
-		title : '经销商'
+		title : '服务商'
 	}, {
 		field : 'location',
 		title : '是否推荐',

@@ -27,7 +27,7 @@ $(function() {
 		}
 	}, {
 		field: 'expert',
-		title: '专家',
+		title: '服务商',
 		formatter: function(v, data) {
 			return data.user ? data.user.realName?data.user.realName+"("+data.user.mobile+")" :data.user.mobile : '-';
 		}
@@ -88,6 +88,5 @@ $(function() {
 		}
 		
 		window.location.href = "../biz-manager/chengguo1_addedit.html?code=" + selRecords[0].code;
-
 	});
 });

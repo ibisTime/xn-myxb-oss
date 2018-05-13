@@ -29,9 +29,9 @@ $(function() {
         }
     }, {
         field : 'expert',
-        title : '专家',
+        title : '服务商',
         formatter : function (v, data) {
-            return data.user?data.user.realName:'-';
+			return data.user ? data.user.realName?data.user.realName+"("+data.user.mobile+")" :data.user.mobile : '-';
         }
     }, {
         field : 'appointDatetime',
@@ -79,7 +79,8 @@ $(function() {
         title : '成交客户数'
     }, {
         field : 'saleAmount',
-        title : '销售业额'
+        title : '销售业额',
+        formatter: moneyFormat
     }, {
         field : 'detailList',
         title : '成果明细',
@@ -97,6 +98,10 @@ $(function() {
             formatter: moneyFormat
         }]
     },{
+        field : 'pdf',
+        title : '成果确认函',
+        type: 'img',
+    }, {
         field : 'approveNote',
         title : '备注',
         readonly : view?true:false

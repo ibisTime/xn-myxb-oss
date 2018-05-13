@@ -32,6 +32,16 @@ $(function() {
 				return parseInt(moneyFormat1(v));
 			},
 		}, {
+	        field: "isSell",
+	        title: "是否可销售",
+	        type: "select",
+	        data:{
+	        	'0':'否',
+	        	'1':'是'
+	        },
+	        required: true,
+			search: true,
+	    }, {
 			field: 'location',
 			title: '是否推荐',
 			search: true,
