@@ -18,7 +18,11 @@ $(function() {
         keyName: 'code',
         valueName: 'name',
         search: true,
+        visible: false
 	},{
+		field : 'categoryName',
+		title : '类别'
+	}, {
 		field : 'realName',
 		title : '品牌顾问'
 	}, {

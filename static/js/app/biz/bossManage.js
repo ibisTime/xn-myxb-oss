@@ -96,7 +96,7 @@ $(function() {
             return;
         }
         if (selRecords[0].signStatus == '1') {
-            window.location.href = "../biz/bossManage_addedit.html?v=0&check=1&code=" + selRecords[0].userId+"&mobile="+selRecords[0].mobile;
+            window.location.href = "../biz/bossManage_check.html?code=" + selRecords[0].userId;
         }else {
             toastr.info('该状态下不能进行审核');
         }
@@ -115,6 +115,10 @@ $(function() {
     // 修改
     $('#editBtn').click(function() {
         var selRecords = $('#tableList').bootstrapTable('getSelections');
+        if (selRecords.length <= 0) {
+            toastr.info("请选择记录");
+            return;
+        }
         window.location.href = './bossManage_addedit.html?code='+selRecords[0].userId+'&level='+selRecords[0].level;
     });
 });

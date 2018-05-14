@@ -1,5 +1,5 @@
 $(function() {
-	// 业务管理-美导管理-资料审核
+	// 业务管理-服务商管理-资料审核
 	var columns = [{
 		field : '',
 		title : '',

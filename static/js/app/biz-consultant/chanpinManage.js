@@ -16,6 +16,10 @@ $(function() {
 			pageCode: '805256',
 			keyName: 'code',
 			valueName: 'name',
+			visible: false
+		}, {
+			field : 'brandName',
+			title : '所属品牌'
 		}, {
 	        field: "type",
 	        title: "类型",
@@ -196,7 +200,7 @@ $(function() {
 		if(selRecords[0].status == '2') {
 			toastr.info('产品已上架，不能进行修改')
 		} else {
-			window.location.href = './chanpinManage_addedit.html?v=false&edit=1&code=' + selRecords[0].code;
+			window.location.href = './chanpinManage_addedit.html?code=' + selRecords[0].code;
 		}
 	});
 });

@@ -1,5 +1,5 @@
 $(function() {
-    // 业务管理-美导管理-资料审核-审核
+    // 业务管理-服务商管理-资料审核-审核
     var code = getQueryString('code');
     var check = getQueryString('check');
     var view = !!getQueryString('v');
@@ -26,15 +26,15 @@ $(function() {
         field : 'slogan',
         title : '广告语'
     },  {
-        field : 'introduce',
+        field : 'description',
         title : '个人简介',
-        type : 'doubleLine'
+        type : 'textarea',
+        normalArea:true
     }, {
         field : 'remark',
         title : '备注',
         readonly : check?false :view?true:false
     }];
-
 
 if(check) {
     var buttons = [{

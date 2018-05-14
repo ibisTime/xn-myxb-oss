@@ -1,5 +1,5 @@
 $(function() {
-    // 业务管理-美导管理-行程列表-列表页
+    // 业务管理-服务商管理-行程列表-列表页
     var userId = getQueryString('code');
     var check = !!getQueryString('check');
     var fields = [{
@@ -34,7 +34,7 @@ $(function() {
     						+'<li style="display:block;" id="backBtn"><span><img src="/static/images/t01.png"></span>返回</li>');
     						
     $('#backBtn').on('click', function() {
-         window.location = './meidaoManage.html';
+         window.location = './expertManage.html';
     });
     
     // 新增

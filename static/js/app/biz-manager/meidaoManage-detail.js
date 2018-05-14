@@ -1,5 +1,5 @@
 $(function() {
-    // 业务管理-美导管理-美导管理
+    // 业务管理-服务商管理-服务商管理
     var code = getQueryString('code');
     var view = !!getQueryString('v');
     var check = !!getQueryString('check');
@@ -46,6 +46,10 @@ $(function() {
         field : 'introduce',
         title : '个人简介',
         required : true
+    }, {
+        field : 'pdf',
+        title : '身份证',
+        type: 'img',
     }, {
         field : 'remark',
         title : '备注',

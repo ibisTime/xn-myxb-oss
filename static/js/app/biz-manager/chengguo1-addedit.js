@@ -1,5 +1,5 @@
 $(function() {
-    // 业务管理-专家管理-成果录入
+    // 业务管理-销售天团管理-成果录入
     var code = getQueryString('code');
     var view = !!getQueryString('v');
 

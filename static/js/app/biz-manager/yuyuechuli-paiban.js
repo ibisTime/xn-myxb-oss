@@ -1,5 +1,5 @@
 $(function() {
-    // 业务管理-美导管理-预约处理
+    // 业务管理-服务商管理-预约处理
     var code = getQueryString('code');
     var view = !!getQueryString('v');
 
@@ -60,7 +60,7 @@ $(function() {
         }
     },{
         field: 'isPlan',
-        title: '是否有美导',
+        title: '是否有服务商',
         type : 'select',
         data : {
             '1' : '是',
@@ -70,7 +70,7 @@ $(function() {
         readonly : false
     },{
         field: 'owner',
-        title: '美导',
+        title: '服务商',
         type : 'select',
         readonly : false,
         listCode: '805120',

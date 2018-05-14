@@ -26,8 +26,7 @@ $(function() {
 		field : 'commentDatetime',
 		title : '评论时间',
         formatter : dateTimeFormat
-	}
-	];
+	}];
 
     var searchParams = {
         entityCode : code

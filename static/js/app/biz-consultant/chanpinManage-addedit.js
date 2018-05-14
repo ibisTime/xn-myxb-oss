@@ -1,17 +1,12 @@
 $(function() {
     // 业务管理-品牌管理-产品管理
     var code = getQueryString('code');
-    var edit = getQueryString('edit');
     var view = !!getQueryString('v');
-    var detail = !!getQueryString('detail');
 
-    if(edit) {
-        view = false
-    }
     var columns = [{
     	field: 'categoryCode',
         title: '品牌大类',
-        type: 'select',
+        type:'select',
         pageCode: '805245',
         params:{
         	status:'1'
@@ -35,9 +30,13 @@ $(function() {
     }, {
         field: "brandCode",
         title: "所属品牌",
-        type: "select",
+        type: view?'hidden':'select',
         required: true,
     }, {
+		field : 'brandName',
+		title : '所属品牌',
+		hidden: view?false:true
+	}, {
         field: "type",
         title: "类型",
         type: "select",

@@ -1,5 +1,5 @@
 $(function() {
-	// 业务管理-美导管理-预约处理
+	// 业务管理-服务商管理-预约处理
 	var columns = [{
 		field: '',
 		title: '',
@@ -27,7 +27,7 @@ $(function() {
 		}
 	}, {
 		field: 'remark',
-		title: '美导',
+		title: '服务商',
 		formatter: function(v, data) {
 			return data.user ? data.user.realName?data.user.realName+"("+data.user.mobile+")" :data.user.mobile : '-';
 		}
@@ -38,6 +38,13 @@ $(function() {
 	}, {
 		field: 'appointDays',
 		title: '预约天数'
+	}, {
+		field : 'planDatetime',
+		title : '排班时间',
+		formatter : dateTimeFormat
+	}, {
+		field : 'planDays',
+		title : '排班天数'
 	}, {
 		field: 'status',
 		title: '状态',

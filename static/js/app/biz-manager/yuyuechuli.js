@@ -1,5 +1,5 @@
 $(function() {
-	// 业务管理-美导管理-预约处理
+	// 业务管理-服务商管理-预约处理
 	var columns = [{
 		field: '',
 		title: '',

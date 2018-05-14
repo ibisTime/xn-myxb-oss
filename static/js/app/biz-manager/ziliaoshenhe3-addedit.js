@@ -1,5 +1,5 @@
 $(function() {
-    // 业务管理-专家管理-资料审核-审核
+    // 业务管理-销售天团管理-资料审核-审核
     var code = getQueryString('code');
     var check = getQueryString('check');
     var view = !!getQueryString('v');
@@ -26,9 +26,10 @@ $(function() {
         type: 'select',
         data :{'1':'待审核','2':'审核不通过','3':'审核通过'}
     },  {
-        field : 'introduce',
+        field : 'description',
         title : '个人简介',
-        type : 'doubleLine'
+        type : 'textarea',
+        normalArea:true
     }, {
         field : 'remark',
         title : '备注',

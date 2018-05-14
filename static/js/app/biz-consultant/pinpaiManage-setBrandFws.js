@@ -1,5 +1,5 @@
 $(function() {
-    // 业务管理-美导管理-美导管理
+    // 业务管理-服务商管理-服务商管理
     var code = getQueryString('code');
     var view = !!getQueryString('v');
     var fields = [{
@@ -7,6 +7,9 @@ $(function() {
         title : '品牌名称',
         required : true
     },{
+		field : 'categoryName',
+		title : '类别'
+	}, {
         field : 'slogan',
         title : '广告语',
         required : true
@@ -25,6 +28,7 @@ $(function() {
         field : 'status',
         title : '状态',
         data : {'1':'未上架','2':'已上架','3':'已下架'},
+        type : !view? 'hidden' : 'select'
     }, {
         field : 'realName',
         title : '品牌顾问',

@@ -12,16 +12,8 @@ $(function() {
 	}
 	//详情
 	var fields = [{
-		field: 'categoryCode',
-		title: '类别',
-		type: 'select',
-		pageCode: '805245',
-		params: {
-			status: '1'
-		},
-		keyName: 'code',
-		valueName: 'name',
-		required: true
+		field : 'categoryName',
+		title : '类别'
 	}, {
 		field: 'name',
 		title: '品牌名称',
@@ -77,6 +69,8 @@ $(function() {
 		params: {
 			companyCode: OSS.company,
 			kind: 'T',
+			updater:'',
+			status: '0'
 		},
 		keyName: 'userId',
 		valueName: '{{realName.DATA}}-{{mobile.DATA}}',
@@ -89,6 +83,8 @@ $(function() {
 		params: {
 			companyCode: OSS.company,
 			kind: 'A',
+			updater:'',
+			status: '0'
 		},
 		keyName: 'userId',
 		valueName: '{{realName.DATA}}-{{mobile.DATA}}',

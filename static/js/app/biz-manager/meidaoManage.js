@@ -1,5 +1,5 @@
 $(function() {
-	// 业务管理-美导管理-美导管理
+	// 业务管理-服务商管理-服务商管理
 	var columns = [{
 		field: '',
 		title: '',
@@ -128,7 +128,7 @@ $(function() {
 		}
 		var dw = dialog({
 			content: '<form class="pop-form" id="popForm" novalidate="novalidate">' +
-				'<ul class="form-info" id="formContainer"><li style="text-align:center;font-size: 15px;">请输入该美导的UI次序</li></ul>' +
+				'<ul class="form-info" id="formContainer"><li style="text-align:center;font-size: 15px;">请输入该服务商的UI次序</li></ul>' +
 				'</form>'
 		});
 

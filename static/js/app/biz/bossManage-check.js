@@ -1,5 +1,5 @@
 $(function() {
-    // 业务管理-服务商管理-服务商管理
+    // 业务管理-经销商管理-经销商管理
     var code = getQueryString('code');
     var view = !!getQueryString('v');
 
@@ -9,7 +9,7 @@ $(function() {
         mobile : true
     }, {
         field : 'pdf',
-        title : '身份证',
+        title : '营业执照',
         type: 'img',
         single: true,
     }, {
