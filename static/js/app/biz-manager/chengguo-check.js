@@ -147,7 +147,7 @@ $(function() {
     buildDetail({
         fields: fields,
         code: code,
-        buttons : buttons,
+        buttons : view?'':buttons,
         detailCode: '805521',
         view: true
     });

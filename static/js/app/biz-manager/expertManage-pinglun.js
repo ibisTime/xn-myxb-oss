@@ -41,17 +41,13 @@ $(function() {
 		deleteCode: '805004'
 	});
 
-	$('#addBtn').css('display','none');
-	$('#editBtn').css('display','none');
-	$('#chakanpinglunBtn').css('display','none');
-	$('#upBtn').css('display','none');
-	$('#downBtn').css('display','none');
-	$('#checkBtn').css('display','none');
-	$('#fenpeiManagerBtn').css('display','none');
-	$('#setTuijianBtn').css('display','none');
-	$('#scheduleListBtn').css('display','none');
-	$('#zhuxiaoBtn').css('display','none');
-	// $('#detailBtn').css('display','none');
+	$('.tools .toolbar').empty();
+    $('.tools .toolbar').html('<li style="display:block;" id="detailBtn"><span><img src="/static/images/t01.png"></span>详情</li>'
+    						+'<li style="display:block;" id="backBtn"><span><img src="/static/images/t01.png"></span>返回</li>');
+    						
+    $('#backBtn').on('click', function() {
+         window.location = './expertManage.html';
+    });
     // 查看评论
     $('#detailBtn').off().click(function() {
         var selRecords = $('#tableList').bootstrapTable('getSelections');

@@ -4,6 +4,16 @@ $(function() {
     var view = !!getQueryString('v');
 
     var columns = [{
+        field : 'realName',
+        title : '姓名',
+        readonly: false,
+        required : true
+    }, {
+        field : 'storeName',
+        title : '店名',
+        readonly: false,
+        required : true
+    }, {
         field : 'mobile',
         title : '手机号',
         mobile : true

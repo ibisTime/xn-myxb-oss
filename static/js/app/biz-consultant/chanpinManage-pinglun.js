@@ -45,7 +45,9 @@ $(function() {
 	$('#upBtn').css('display','none');
 	$('#downBtn').css('display','none');
 	// $('#detailBtn').css('display','none');
-    // 查看评论
+	
+	
+    // 详情
     $('#detailBtn').off().click(function() {
         var selRecords = $('#tableList').bootstrapTable('getSelections');
         if (selRecords.length <= 0) {

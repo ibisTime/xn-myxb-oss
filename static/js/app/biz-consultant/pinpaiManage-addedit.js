@@ -55,7 +55,7 @@ $(function() {
 		title: '品牌顾问',
 	}, {
 		field: 'brandFwsName',
-		title: '经销商',
+		title: '服务商',
 	}, {
 		field: 'remark',
 		title: '备注'
