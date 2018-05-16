@@ -142,7 +142,13 @@ $(function() {
         }, {
             title: "折扣价格",
             field: "discountPrice",
-            formatter: moneyFormat
+            formatter: function(v,data){
+            	if(data.product.type=="C"){
+            		return '-'
+            	}else{
+            		return moneyFormat(v)
+            	}
+            }
         }, {
         	
             title: "数量",
