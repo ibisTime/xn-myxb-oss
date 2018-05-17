@@ -112,7 +112,7 @@ $(function() {
 					title: '顺序',
 					required: true,
 					number: true,
-					value: selRecords.orderNo ? selRecords.orderNo : '',
+					value: selRecords[0].orderNo ? selRecords[0].orderNo : '',
 					min: '0'
 				}, {
 					field: 'location1',
@@ -123,7 +123,7 @@ $(function() {
 						'0': '否',
 						'1': '是'
 					},
-					value: selRecords.location ? selRecords.location : '',
+					value: selRecords[0].location ? selRecords[0].location : '',
 				}],
 				buttons: [{
 					title: '确定',

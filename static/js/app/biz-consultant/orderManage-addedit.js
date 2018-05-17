@@ -92,7 +92,7 @@ $(function() {
 			return data.user.mobile
 		}
 	}, {
-		field: 'amount',
+		field: 'totalAmount',
 		title: '订单价格',
 		formatter: moneyFormat
 	}, {
