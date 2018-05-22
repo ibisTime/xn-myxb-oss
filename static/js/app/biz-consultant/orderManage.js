@@ -10,11 +10,19 @@ $(function() {
 	}, {
 		field: 'applyUser',
 		title: '下单用户',
-		formatter: function(v, data){
-			return data.user.mobile
+		formatter: function(v, data) {
+			var kindData = {
+				'C': '经销商',
+				'B': '合伙人',
+				'A': '品牌顾问',
+				'M': '经纪人',
+				"S": "销售天团",
+				'T': '服务商',
+			}
+			return data.user.mobile + "(" + kindData[data.user.kind] + ")";
 		}
 	}, {
-		field: 'amount',
+		field: 'totalAmount',
 		title: '订单价格',
 		formatter: moneyFormat
 	}, {
@@ -31,15 +39,9 @@ $(function() {
 		field: 'status',
 		title: '状态',
 		search: true,
-		type: 'select',
-		data: {
-			'0': '待付款',
-			'1': '已付款',
-			'2': '用户取消',
-			'3': '平台取消',
-			'4': '待评价',
-			'5': '已完成'
-		}
+        type: 'select',
+        key: 'order_status',
+        formatter: Dict.getNameForList('order_status')
 	}, {
 		field: 'receiver',
 		title: '收件人'
@@ -66,24 +68,24 @@ $(function() {
 			toastr.info("请选择记录");
 			return;
 		}
-		
-		if(selRecords[0].status != '0') {
-			toastr.info('该订单不是可取消状态')
-			return ;
-		}
-		
-		confirm("确定取消订单？").then(function() {
-            reqApi({
-                code: '805273',
-                json: {
-                    userId: getUserId(),
-                    code: selRecords[0].code
-                }
-            }).then(function() {
-                sucList();
-            });
 
-        },function() {})
+		if(selRecords[0].status != '1') {
+			toastr.info('该订单不是可取消状态')
+			return;
+		}
+
+		confirm("确定取消订单？").then(function() {
+			reqApi({
+				code: '805526',
+				json: {
+					updater: getUserId(),
+					code: selRecords[0].code
+				}
+			}).then(function() {
+				sucList();
+			});
+
+		}, function() {})
 	});
 	// 发货
 	$('#fahuoBtn').click(function() {
@@ -94,11 +96,11 @@ $(function() {
 		}
 		if(selRecords[0].status != '1') {
 			toastr.info('该订单不是待发货状态')
-			return ;
+			return;
 		}
-		window.location.href = "../biz-consultant/orderManage_addedit.html?code=" + selRecords[0].code+ "&status="+ selRecords[0].status;
+		window.location.href = "../biz-consultant/orderManage_addedit.html?code=" + selRecords[0].code + "&status=" + selRecords[0].status;
 	});
-	
+
 	// 详情
 	$('#detailBtn').off("click").click(function() {
 		var selRecords = $('#tableList').bootstrapTable('getSelections');
@@ -106,6 +108,62 @@ $(function() {
 			toastr.info("请选择记录");
 			return;
 		}
-		window.location.href = "../biz-consultant/orderManage_addedit.html?code=" + selRecords[0].code + "&v=1&status="+ selRecords[0].status;
+		window.location.href = "../biz-consultant/orderManage_addedit.html?code=" + selRecords[0].code + "&v=1&status=" + selRecords[0].status+"&kind="+selRecords[0].user.kind;
+	});
+
+	// 厂家转账
+	$('#cjzzBtn').click(function() {
+		var selRecords = $('#tableList').bootstrapTable('getSelections');
+		if(selRecords.length <= 0) {
+			toastr.info("请选择记录");
+			return;
+		}
+
+		if(selRecords[0].user.kind != 'C') {
+			toastr.info('该订单不是经销商的订单')
+			return;
+		}
+		if(selRecords[0].status != '5' && selRecords[0].status != '6') {
+			toastr.info('该订单不是可转账的状态')
+			return;
+		}
+		var dw = dialog({
+			content: '<form class="pop-form" id="popForm" novalidate="novalidate">' +
+				'<ul class="form-info" id="formContainer"><li style="text-align:center;font-size: 15px;">厂家转账</li></ul>' +
+				'</form>'
+		});
+
+		dw.showModal();
+
+		buildDetail({
+            container: $('#formContainer'),
+			fields: [{
+				field: 'transferAmount',
+				title: '转账金额',
+				amount: true,
+				required: true,
+			}],
+			buttons: [{
+				title: '确定',
+				handler: function() {
+					var data = $('#popForm').serializeObject();
+					data.code = selRecords[0].code;
+					reqApi({
+						code: '805525',
+						json: data
+					}).done(function(data) {
+						sucList();
+						dw.close().remove();
+					});
+				}
+			}, {
+				title: '取消',
+				handler: function() {
+					dw.close().remove();
+				}
+			}]
+		});
+
+		dw.__center();
 	});
 });

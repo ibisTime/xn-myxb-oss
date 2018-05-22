@@ -15,6 +15,14 @@ $(function() {
         title : '结束时间',
         formatter : dateTimeFormat
     }, {
+        field : 'type',
+        title : '类型',
+        type:'select',
+        data:{
+        	'1':'可预约',
+        	'2':'可调配时间'
+        }
+    }, {
         field : 'remark',
         title : '备注'
     }];
@@ -28,9 +36,7 @@ $(function() {
     });
 
     $('.tools .toolbar').empty();
-    $('.tools .toolbar').html('<li style="display:block;" id="addBtn"><span><img src="/static/images/t01.png"></span>新增</li>'
-    						+'<li style="display:block;" id="editBtn"><span><img src="/static/images/t01.png"></span>修改</li>'
-    						+'<li style="display:block;" id="detailBtn"><span><img src="/static/images/t01.png"></span>详情</li>'
+    $('.tools .toolbar').html('<li style="display:block;" id="detailBtn"><span><img src="/static/images/t01.png"></span>详情</li>'
     						+'<li style="display:block;" id="backBtn"><span><img src="/static/images/t01.png"></span>返回</li>');
     						
     $('#backBtn').on('click', function() {

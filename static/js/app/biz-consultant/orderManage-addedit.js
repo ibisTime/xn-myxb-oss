@@ -3,6 +3,7 @@ $(function() {
 	var code = getQueryString('code');
 	var view = !!getQueryString('v');
 	var status = getQueryString('status');
+	var kind = getQueryString('kind');
 	
 	//按钮
 	var buttons=[];
@@ -76,6 +77,16 @@ $(function() {
         single:true
 	}];
 	
+	//厂家转账
+	var cjzzFields=[{
+		title: '厂家转账',
+		type: 'title'
+	}, {
+        field: "transferAmount",
+        title: "厂家转账金额",
+        formatter: moneyFormat
+	}];
+	
 	var fields = [{
 		title: '订单信息',
 		type:'title',
@@ -89,7 +100,15 @@ $(function() {
 		field: 'applyUser',
 		title: '下单用户',
 		formatter: function(v, data){
-			return data.user.mobile
+			var kindData = {
+				'C': '经销商',
+				'B': '合伙人',
+				'A': '品牌顾问',
+				'M': '经纪人',
+				"S": "销售天团",
+				'T': '服务商',
+			}
+			return data.user.mobile + "(" + kindData[data.user.kind] + ")";
 		}
 	}, {
 		field: 'totalAmount',
@@ -102,15 +121,9 @@ $(function() {
 	}, {
 		field: 'status',
 		title: '状态',
-		data: {
-			'0': '待付款',
-			'1': '已付款',
-			'2': '用户取消',
-			'3': '平台取消',
-			'4': '待评价',
-			'5': '已完成'
-		},
-		type: 'select'
+        type: 'select',
+        key: 'order_status',
+        formatter: Dict.getNameForList('order_status')
 	}, {
 		title: '产品信息',
 		type:'title',
@@ -170,8 +183,13 @@ $(function() {
 	
 	if(status=='1'&&!view){
 		fields = fields.concat(logisiticsFields)
-	}else if(status=='4'||status=='5'){
+	}else if(status=='5'||status=='6'){
 		fields = fields.concat(logisiticsFields)
+	}
+	if(kind=='C'){
+		if(status=='5'||status=='6'){
+			fields = fields.concat(cjzzFields)
+		}
 	}
 	
 	var options = {

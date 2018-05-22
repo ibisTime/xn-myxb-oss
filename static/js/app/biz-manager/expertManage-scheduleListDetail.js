@@ -17,6 +17,15 @@ $(function() {
         type : 'datetime',
         required : true
     }, {
+        field : 'type',
+        title : '类型',
+        type:'select',
+        data:{
+        	'1':'可预约',
+        	'2':'可调配时间'
+        },
+        required : true
+    }, {
         field : 'remark',
         title : '备注'
     }];

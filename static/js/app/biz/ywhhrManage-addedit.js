@@ -27,7 +27,8 @@ $(function() {
             field : 'status',
             title : '状态',
             type: 'select',
-            data : {'0':'正常', '1':'程序锁定', '2':'人工锁定'}
+	        key: 'user_status',
+	        formatter: Dict.getNameForList('user_status'),
         }]);
     }
     fields.push({
