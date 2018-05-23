@@ -55,7 +55,7 @@ $(function() {
 		title: '品牌顾问',
 	}, {
 		field: 'brandFwsName',
-		title: '服务商',
+		title: '服务团队',
 	}, {
 		field: 'remark',
 		title: '备注'
@@ -63,7 +63,7 @@ $(function() {
 	// 新增
 	var columns = [{
 		field: 'brandFws',
-		title: '服务商',
+		title: '服务团队',
 		type: 'select',
 		pageCode: '805120',
 		params: {

@@ -1,5 +1,5 @@
 $(function() {
-	// 业务管理-销售天团管理-成果录入
+	// 业务管理-销售精英管理-成果录入
 	var columns = [{
 		field: '',
 		title: '',
@@ -27,7 +27,7 @@ $(function() {
 		}
 	}, {
 		field: 'expert',
-		title: '销售天团',
+		title: '销售精英',
 		formatter: function(v, data) {
 			return data.user ? data.user.realName?data.user.realName+"("+data.user.mobile+")" :data.user.mobile : '-';
 		}

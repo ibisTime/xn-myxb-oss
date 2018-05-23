@@ -1,5 +1,5 @@
 $(function() {
-    // 业务管理-服务商管理-行程列表-列表页
+    // 业务管理-服务团队管理-行程列表-列表页
     var userId = getQueryString('code');
     var check = !!getQueryString('check');
     var fields = [{

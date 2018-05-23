@@ -1,5 +1,5 @@
 $(function() {
-    // 业务管理-服务商管理-资料审核-审核
+    // 业务管理-服务团队管理-资料审核-审核
     var code = getQueryString('code');
     var check = getQueryString('check');
     var view = !!getQueryString('v');

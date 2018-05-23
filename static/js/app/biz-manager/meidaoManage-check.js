@@ -1,5 +1,5 @@
 $(function() {
-    // 业务管理-服务商管理-服务商管理
+    // 业务管理-服务团队管理-服务团队管理
     var code = getQueryString('code');
     var view = !!getQueryString('v');
 

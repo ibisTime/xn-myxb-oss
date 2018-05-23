@@ -47,14 +47,14 @@ $(function() {
                     var kind;
                     if($.trim(list[i]["分类"])=='讲师') {
                         kind = 'L'
-                    }else if($.trim(list[i]["分类"])=='销售天团') {
+                    }else if($.trim(list[i]["分类"])=='销售精英') {
                         kind = 'S'
-                    }else if($.trim(list[i]["分类"])=='服务商') {
+                    }else if($.trim(list[i]["分类"])=='服务团队') {
                         kind = 'T'
                     }else if($.trim(list[i]["分类"])=='产品') {
                         kind = 'P'
                     }else {
-                        toastr.info('分类必须为讲师，销售天团，服务商，产品其中之一');
+                        toastr.info('分类必须为讲师，销售精英，服务团队，产品其中之一');
                         return
                     }
                     var tmpl1;

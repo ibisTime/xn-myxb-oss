@@ -27,7 +27,7 @@ $(function() {
 		title : '品牌顾问'
 	}, {
 		field : 'brandFwsName',
-		title : '服务商'
+		title : '服务团队'
 	}, {
 		field : 'location',
 		title : '是否推荐',

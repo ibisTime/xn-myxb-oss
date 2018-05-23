@@ -7,7 +7,7 @@ $(function() {
 	}, {
 		field: 'remark',
 		type: 'hidden',
-		value: '服务商合同'
+		value: '服务团队合同'
 	},{
 		title: '内容',
 		field: 'cvalue',

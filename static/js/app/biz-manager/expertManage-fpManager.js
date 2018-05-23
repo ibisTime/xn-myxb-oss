@@ -1,5 +1,5 @@
 $(function() {
-	// 业务管理-销售天团-分配经纪人
+	// 业务管理-销售精英-分配经纪人
 	var userId = getQueryString('userId');
 	var view = !!getQueryString('v');
 	var fields = [{

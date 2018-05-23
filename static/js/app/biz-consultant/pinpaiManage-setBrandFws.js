@@ -1,5 +1,5 @@
 $(function() {
-    // 业务管理-服务商管理-服务商管理
+    // 业务管理-服务团队管理-服务团队管理
     var code = getQueryString('code');
     var view = !!getQueryString('v');
     var fields = [{
@@ -34,7 +34,7 @@ $(function() {
         title : '品牌顾问',
     },  {
         field : 'brandFws',
-        title : '服务商',
+        title : '服务团队',
         type : 'select',
         pageCode: '805120',
         params: {
