@@ -14,10 +14,6 @@ $(function() {
 			return data.user.mobile
 		}
 	}, {
-		field: 'amount',
-		title: '订单价格',
-		formatter: moneyFormat
-	}, {
 		field: 'applyDatetime',
 		title: '下单时间',
 		title1: '下单时间',
@@ -27,6 +23,20 @@ $(function() {
 		field2: 'applyEndDatetime',
 		twoDate: true,
 		formatter: dateTimeFormat
+	}, {
+		field: 'totalAmount',
+		title: '订单价格',
+		formatter: moneyFormat
+	}, {
+		field: 'amount',
+		title: '实际支付',
+		formatter: moneyFormat
+	}, {
+		field: 'paytype',
+		title: '支付方式',
+		type: 'select',
+		key: 'user_level_service',
+		formatter: Dict.getNameForList('user_level_service')
 	}, {
 		field: 'status',
 		title: '状态',

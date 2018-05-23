@@ -1,5 +1,5 @@
 $(function() {
-    // 业务管理-销售天团管理-资料审核-审核
+    // 业务管理-销售精英管理-资料审核-审核
     var code = getQueryString('code');
     var check = getQueryString('check');
     var view = !!getQueryString('v');

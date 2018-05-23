@@ -17,7 +17,7 @@ $(function() {
         required : true
     }, {
         field : 'refNo',
-        title : '销售天团',
+        title : '销售精英',
         required : true,
         type : 'select',
         params : {

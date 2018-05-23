@@ -1,5 +1,5 @@
 $(function() {
-	// 业务管理-销售天团管理-销售天团管理
+	// 业务管理-销售精英管理-销售精英管理
 	var code = getQueryString('code');
 	var mobile = getQueryString('mobile');
 	var view = !!getQueryString('v');

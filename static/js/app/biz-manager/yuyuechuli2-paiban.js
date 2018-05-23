@@ -1,5 +1,5 @@
 $(function() {
-    // 业务管理-服务商管理-预约处理
+    // 业务管理-服务团队管理-预约处理
     var code = getQueryString('code');
     var view = !!getQueryString('v');
 

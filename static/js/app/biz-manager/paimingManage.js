@@ -22,10 +22,10 @@ $(function() {
 		visible: false
 	}, {
 		field: 'name',
-		title: '销售天团'
+		title: '销售精英'
 	}, {
 		field: 'refNo',
-		title: '销售天团',
+		title: '销售精英',
 		listCode: '805120',
 		params: {
 			companyCode: OSS.company,

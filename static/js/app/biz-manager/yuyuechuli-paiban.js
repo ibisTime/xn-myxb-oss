@@ -1,5 +1,5 @@
 $(function() {
-    // 业务管理-服务商管理-预约处理
+    // 业务管理-服务团队管理-预约处理
     var code = getQueryString('code');
     var view = !!getQueryString('v');
 
@@ -30,7 +30,7 @@ $(function() {
         }
     }, {
         field : 'remark10',
-        title : '服务商',
+        title : '服务团队',
         formatter : function (v, data) {
 			return data.user ? data.user.realName?data.user.realName+"("+data.user.mobile+")" :data.user.mobile : '-';
         }
@@ -60,7 +60,7 @@ $(function() {
         }
     },{
         field: 'isPlan',
-        title: '是否有服务商',
+        title: '是否有服务团队',
         type : 'select',
         data : {
             '1' : '是',
@@ -70,7 +70,7 @@ $(function() {
         readonly : false
     },{
         field: 'owner',
-        title: '服务商',
+        title: '服务团队',
         type : 'select',
         readonly : false,
         listCode: '805120',
