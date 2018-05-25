@@ -83,7 +83,7 @@ $(function() {
 			return;
 		}
 
-		if(selRecords[0].status != '1') {
+		if(selRecords[0].status != '1' && selRecords[0].status != '0') {
 			toastr.info('该订单不是可取消状态')
 			return;
 		}
