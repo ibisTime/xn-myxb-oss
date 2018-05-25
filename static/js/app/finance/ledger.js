@@ -1,6 +1,5 @@
 $(function() {
     var accountCode = getQueryString('accountCode') || '';
-    var yl = getQueryString('accountCode') || '';
     var a = getQueryString('a') || '';
 
     var currencyList = {
@@ -24,7 +23,7 @@ $(function() {
         // search: true
     }
 
-    if (yl) {
+    if (accountCode) {
         currencyList = {
             field: 'currency',
             title: '币种',

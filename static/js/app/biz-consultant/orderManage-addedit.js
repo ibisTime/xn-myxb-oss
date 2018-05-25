@@ -119,15 +119,15 @@ $(function() {
 		title: '订单价格',
 		formatter: moneyFormat
 	}, {
-		field: 'amount',
+		field: 'payAmount1',
 		title: '实际支付',
 		formatter: moneyFormat
 	}, {
-		field: 'paytype',
+		field: 'payType',
 		title: '支付方式',
 		type: 'select',
-		key: 'user_level_service',
-		formatter: Dict.getNameForList('user_level_service')
+		key: 'pay_type',
+		formatter: Dict.getNameForList('pay_type')
 	}, {
 		field: 'status',
 		title: '状态',
@@ -163,16 +163,6 @@ $(function() {
             field: "price",
             formatter: moneyFormat
         }, {
-            title: "折扣价格",
-            field: "discountPrice",
-            formatter: function(v,data){
-            	if(data.product.type=="C"){
-            		return '-'
-            	}else{
-            		return moneyFormat(v)
-            	}
-            }
-        }, {
         	
             title: "数量",
             field: "quantity"
@@ -196,10 +186,8 @@ $(function() {
 	}else if(status=='5'||status=='6'){
 		fields = fields.concat(logisiticsFields)
 	}
-	if(kind=='C'){
-		if(status=='5'||status=='6'){
-			fields = fields.concat(cjzzFields)
-		}
+	if(view){
+		fields = fields.concat(cjzzFields)
 	}
 	
 	var options = {

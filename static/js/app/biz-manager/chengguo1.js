@@ -44,9 +44,6 @@ $(function() {
 		title: '排班时间',
 		formatter: dateTimeFormat
 	}, {
-		field: 'planDays',
-		title: '排班天数'
-	}, {
 		field: 'status',
 		title: '状态',
 		type: 'select',

@@ -36,15 +36,19 @@ $(function() {
 		title: '订单价格',
 		formatter: moneyFormat
 	}, {
-		field: 'amount',
+		field: 'payAmount1',
 		title: '实际支付',
 		formatter: moneyFormat
 	}, {
-		field: 'paytype',
+		field: 'payType',
 		title: '支付方式',
 		type: 'select',
-		key: 'user_level_service',
-		formatter: Dict.getNameForList('user_level_service')
+		key: 'pay_type',
+		formatter: Dict.getNameForList('pay_type')
+	}, {
+        field: "transferAmount",
+        title: "厂家转账金额",
+		formatter: moneyFormat
 	}, {
 		field: 'status',
 		title: '状态',
@@ -129,10 +133,6 @@ $(function() {
 			return;
 		}
 
-		if(selRecords[0].user.kind != 'C') {
-			toastr.info('该订单不是经销商的订单')
-			return;
-		}
 		if(selRecords[0].status != '5' && selRecords[0].status != '6') {
 			toastr.info('该订单不是可转账的状态')
 			return;
