@@ -8,7 +8,7 @@ $(function() {
 		// var kind = document.domain.substr(0, 1)=='h'?'PA':(sessionStorage.getItem('loginKind') || '01')
         var host = location.host;
         var str = host.split('.')[0];
-        var kind = str === 'admin'?'P' : str === 'jjr' ? 'M' : str === 'pp' ? 'A': 'P';
+        var kind = str === 'admin'?'P' : str === 'jjr' ? 'M' : str === 'gw' ? 'A': 'P';
         // location.href = 'signin.html?kind=' + (sessionStorage.getItem('loginKind') || kind);
         location.href = 'signin.html?kind=' + kind+"&timestamp="+timestamp;
         sessionStorage.setItem('loginKind',kind);
